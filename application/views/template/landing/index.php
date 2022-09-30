@@ -135,6 +135,48 @@
         <div class="row">
           <div class="col-lg-6">
             <!-- F.A.Q List 1-->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                  I am located outside the city and the hospital is far from where I live/location and there is only a 24 hour clinic, can I submit a Reimbursement Claim?
+                </button>
+              </h2>
+              <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                <div class="accordion-body">
+                  ...
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                 Why does the Reimbursement Claim process sometimes take a long time?
+               </button>
+             </h2>
+             <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+              <div class="accordion-body">
+                There are several things that can cause the length of the Reimbursement Claim process, including:
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check2"></i>
+                  The attached claim document is incomplete.
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check2"></i>
+                  The claim process still requires additional information from doctors, hospitals or from customers.
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check2"></i>
+                  The insurance policy is past due so it is necessary to confirm in advance about the outstanding premium payments from the customer.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- F.A.Q List 2-->
+          <div class="accordion accordion-flush" id="faqlist2">
             <div class="accordion accordion-flush" id="faqlist1">
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -148,7 +190,6 @@
                  </div>
                </div>
              </div>
-
              <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
@@ -161,53 +202,7 @@
              </div>
            </div>
          </div>
-
-         <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-             Why does the Reimbursement Claim process sometimes take a long time?
-           </button>
-         </h2>
-         <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-          <div class="accordion-body">
-            There are several things that can cause the length of the Reimbursement Claim process, including:
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-check2"></i>
-              The attached claim document is incomplete.
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-check2"></i>
-              The claim process still requires additional information from doctors, hospitals or from customers.
-            </div>
-            <div class="d-flex align-items-center mb-2">
-              <i class="bi bi-check2"></i>
-              The insurance policy is past due so it is necessary to confirm in advance about the outstanding premium payments from the customer.
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="col-lg-6">
-
-    <!-- F.A.Q List 2-->
-    <div class="accordion accordion-flush" id="faqlist2">
-
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
-            I am located outside the city and the hospital is far from where I live/location and there is only a 24 hour clinic, can I submit a Reimbursement Claim?
-          </button>
-        </h2>
-        <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-          <div class="accordion-body">
-            ...
-          </div>
-        </div>
-      </div>
-
+       </div>
       <!-- <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">

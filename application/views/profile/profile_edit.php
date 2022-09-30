@@ -20,16 +20,11 @@
                 <label for="nik">NIK</label>
                 <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?= $record['nik'];?>" disabled required>
               </div>
-              <div class="form-group">
-                <label for="nik">Password</label>
-                <input type="text" class="form-control" name="password"  value="<?= $record['password'];?>" required>
-              </div>
             </div>
             <div class="col-md-6">
-              <label for="bantuan">Departement / Divisi / Jabatan : </label>
+              <!-- <label for="bantuan">Departement / Divisi / Jabatan : </label>
               <div class="form-group">
                 <label for="n_pasien">Nama Departement</label>
-                <!-- <input type="text" id="n_pasien" class="form-control" name="n_pasien" placeholder="Nama Pasien" value="<?=$row->n_pasien?>" required> -->
                 <select  type="option" class="form-control"  name="id_departement" id="id_departement" required>
                   <option value="<?= $record['id_departement'];?>"><?= $record['n_departement'];?></option>
                   <?php foreach($departement as $dp):?>
@@ -52,9 +47,7 @@
                     <option name="id_jabatan" value="<?= $j['id'];?>"><?= $j['n_jabatan'];?></option>
                   <?php endforeach;?>
                 </select>
-              </div>
-            </div>
-            <div class="col-md-6">
+              </div> -->
               <label for=""></label>
               <div class="form-group mt-2">
                 <label for="password">Alamat</label>
@@ -69,7 +62,8 @@
         </div>
         <div class="form-group mt-4">
           <button type="submit" name="submit" class="btn btn-success float-right ml-2">Simpan</button>
-          <button type="reset" name="reset" class="btn btn-danger float-right ">Reset</button>
+          <a class="btn btn-danger float-right" href="<?= site_url('Profile/indexProfile/'.$record['nik_profile'])?>">Kembali</a>
+          <!-- <button type="reset" name="reset" class="btn btn-danger float-right ">Reset</button> -->
         </div>
       </form>
     </div>
@@ -80,29 +74,29 @@
 <script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script>
 <script src="<?= base_url('assets/')?>js/jquery-3.3.1.js" ></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#id_departement').change(function(){ 
-            var id=$(this).val();
-            $.ajax({
-                url : "<?= site_url('admin/get_divisi');?>",
-                method : "POST",
-                data : {id: id},
-                async : true,
-                dataType : 'json',
-                success: function(data){
+  $(document).ready(function(){
+    $('#id_departement').change(function(){ 
+      var id=$(this).val();
+      $.ajax({
+        url : "<?= site_url('admin/get_divisi');?>",
+        method : "POST",
+        data : {id: id},
+        async : true,
+        dataType : 'json',
+        success: function(data){
 
-                    var html = '';
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value='+data[i].id+'>'+data[i].n_divisi+'</option>';
-                    }
-                    $('#id_divisi').html(html);
-                }
-            });
-            return false;
-        }); 
-        
-    });
+          var html = '';
+          var i;
+          for(i=0; i<data.length; i++){
+            html += '<option value='+data[i].id+'>'+data[i].n_divisi+'</option>';
+          }
+          $('#id_divisi').html(html);
+        }
+      });
+      return false;
+    }); 
+
+  });
 </script>
 
 <script type="text/javascript">

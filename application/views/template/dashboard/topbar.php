@@ -184,7 +184,7 @@
                                   <img src="<?php echo base_url('assets/').'img/profile/'.$record['img_profile'];?>" class="img-profile rounded-circle">
                                 <?php } ?>
                                 <span class="mr-2 ml-2 d-none d-lg-inline text-gray-600 small">  <?= $user['name']; ?></span>
-                                <span><i class="fas fa-sign-out-alt"></i></span>
+                                <span><i class="fas fa-caret-down"></i></span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -193,11 +193,11 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
+                                <a class="dropdown-item" href="<?= site_url('profile/editPassword/'.$user['nik'])?>">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Edit Password
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a> -->

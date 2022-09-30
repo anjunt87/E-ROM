@@ -15,71 +15,86 @@
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Jumlah Request</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <!-- <?php
-                                                 // $this->db->select('*')->from('tbl_dosen');
-                                                  //echo $this->db->count_all_results();
-                                            ?> -->
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
+                                <span>Jumlah Request :</span>
+                                <?php
+                                $this->db->select('*')->from('t_request');
+                                echo $this->db->count_all_results();
+                                ?>
+                                <br><span class="text-xs">Data yang masuk</span>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Pending Request</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php
-                                                  //$this->db->select('*')->from('tbl_periode');
-                                                  //echo $this->db->count_all_results();
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Request</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                            14
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <!-- End of Main Content 1 -->
+        </div>
 
-            <!-- Begin Page Content 2 -->
-            <div class="container-fluid">
-
-            <!-- Page Heading -->
-            <!-- <h1 class="h3 mb-4 text-gray-800">Blank Page</h1> -->
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Pending Request</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <span>Pending Request :</span>
+                                <?php
+                                $this->db->select('*')->from('t_request')->like('a_divisi', 0);
+                                echo $this->db->count_all_results();
+                                ?>
+                                <br><span class="text-xs">Data yang belum diposes Divisi, Departement, OHC dan Keuangan</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Request Approved</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"> 
+                                <span>Aproved Rembustment :</span>
+                                <?php
+                                    $this->db->select('*')->from('t_request')->like('a_keuangan', 1);
+                                    echo $this->db->count_all_results();
+                                ?> 
+                                <br><span class="text-xs">Data yang sudah Approved sampai Div. Keuangan</span>
+                         </div>
+                     </div>
+                     <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Headeng -->
+<h1 class="h3 my-4 mb-4 text-gray-800">Struktur Organisasi</h1>
+<div class="row">
+            <img src="<?= base_url('assets/'); ?>img/fav/Struktur Organisasi.jpg" alt="logo" width="100%" data-lity>
+
+</div>
+
+</div>
+<!-- End of Main Content 1 -->
+
+<!-- Begin Page Content 2 -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <!-- <h1 class="h3 mb-4 text-gray-800">Blank Page</h1> -->
+</div>
             <!-- /.container-fluid -->

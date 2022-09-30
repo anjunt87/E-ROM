@@ -1,0 +1,29 @@
+hasil Inputan belum
+Total Nominal
+nama divisi
+ketua divisi
+nik ket divisi
+bukti 1
+bukti 2
+
+#18AB50
+
+Input Select Bertingkat ok
+Data yang masuk berdasarkan divisi ny	 	ok
+Data yang masuk berdasarkan Departement ny OK
+Profile Crud OK
+Edit Select Bertingkat OK
+dashboard semua role
+button approve OK
+QRcode generator User
+Input Request Gambar
+Edit Request Gambar
+Edit Profile Gambar
+Edit Password Profile
+hitung tanggal
+
+Bug
+Search data request users keseluruhan
+
+Link Github
+https://github.com/anjunt87/E-ROM.git

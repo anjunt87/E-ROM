@@ -7,7 +7,7 @@
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
             <div class="card-body box-profile">
-                <button href="#" data-toggle="modal" data-target="#editImageProfiletModal<?= $record['nik'];?>" class="btn btn-sm btn-circle btn-success float-right"><i class="fas fa-edit"></i></button>
+                <button href="#" data-toggle="modal" data-target="#editImageProfileModal<?= $record['nik'];?>" class="btn btn-sm btn-circle btn-success float-right"><i class="fas fa-edit"></i></button>
               <div class="text-center">
                 <?php if($record['img_profile'] == null ){ ?>
                   <img style="height: 200px; width: 200px;" src="<?php echo base_url().'/assets/img/profile/undraw_profile.svg'?>" class="avatar-img rounded-circle" data-lity>
@@ -91,7 +91,7 @@
 
 <!-- Edit Image Profile Modal -->
 
-<div class="modal fade" id="editImageProfiletModal<?= $record['nik'];?>" tabindex="-1" role="dialog" aria-labelledby="editImageProfiletModal" aria-hidden="true">
+<div class="modal fade" id="editImageProfileModal<?= $record['nik'];?>" tabindex="-1" role="dialog" aria-labelledby="editImageProfiletModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
