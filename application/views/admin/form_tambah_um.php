@@ -33,12 +33,11 @@
                                         <?php endforeach;?>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="text" class="form-control" name="password" placeholder="password" value="" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                                </div> -->
+                                <br>
                                 <label for="bantuan">Departement / Divisi / Jabatan : </label>
                                 <div class="form-group">
                                     <label for="n_pasien">Nama Departement</label>
@@ -78,7 +77,16 @@
                                     <label for="exampleInputPassword1">NIK Atasan</label>
                                     <input type="text" class="form-control" name="nik_profile" id="nik_profile" placeholder="NIK Atasan" disabled="">
                                 </div>
-                              </div>
+                                <!-- <div class="form-group">
+                                    <label for="exampleInputPassword1">Departement Atasan</label>
+                                    <input type="text" class="form-control" name="id_departement" id="id_departement" placeholder="Departement Atasan" disabled="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Divisi Atasan</label>
+                                    <input type="text" class="form-control" name="id_divisi" id="id_divisi" placeholder="Divisi Atasan" disabled="">
+                                </div> -->
+                            </div>
+                            
                           </div>
                       </div><!-- /.card-body -->
                       <div class="form-group mt-4">
@@ -130,6 +138,8 @@
         $('[name="title"]').val(ui.label);
         $('[name="nik_profile"]').val(ui.item.nik_profile);
         $('[name="id_profile"]').val(ui.item.id);
+        // $('[name="id_departement"]').val(ui.item.id_departement);
+        // $('[name="id_divisi"]').val(ui.item.id_divisi);
       }
     });
 });

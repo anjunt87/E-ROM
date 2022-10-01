@@ -147,44 +147,5 @@ class Rom_Model extends CI_Model {
       return $this->db->get('t_profile')->result();
     } 
 
-    public function ApprovedDivisi($id){
-        $id=  $this->uri->segment(3);
-        $params = [
-            'id_request' => $id,
-            'a_divisi' => "1",
-        ];
-        $this->db->where('id_request',  $id);
-        $this->db->update('t_request', $params);
-    }
-
-    public function ApprovedDepartement($id){
-        $id=  $this->uri->segment(3);
-        $params = [
-            'id_request' => $id,
-            'a_departement' => "1",
-        ];
-        $this->db->where('id_request',  $id);
-        $this->db->update('t_request', $params);
-    }
-
-    public function ApprovedOhc($id){
-        $id=  $this->uri->segment(3);
-        $params = [
-            'id_request' => $id,
-            'a_ohc' => "1",
-        ];
-        $this->db->where('id_request',  $id);
-        $this->db->update('t_request', $params);
-    }
-
-    public function ApprovedKeuangan($id){
-        $id=  $this->uri->segment(3);
-        $params = [
-            'id_request' => $id,
-            'a_keuangan' => "1",
-        ];
-        $this->db->where('id_request',  $id);
-        $this->db->update('t_request', $params);
-    }
 }
 

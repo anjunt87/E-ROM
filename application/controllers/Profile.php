@@ -149,9 +149,9 @@ class Profile extends CI_Controller {
 		
 		
         $this->form_validation->set_rules('password','Password','required');
-        $this->form_validation->set_rules('cpw_baru','Password','required|matches[password]');
+        // $this->form_validation->set_rules('cpw_baru','Password','required|matches[password]');
         $this->form_validation->set_message('required','%s wajib diisi');
-        $this->form_validation->set_error_delimiters('<p class="alert">','</p>');
+        // $this->form_validation->set_error_delimiters('<p class="alert">','</p>');
         
         if( $this->form_validation->run() == FALSE ){
             $where = array ('nik' => $this->session->userdata('nik')); 

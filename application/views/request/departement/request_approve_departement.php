@@ -33,33 +33,36 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
-                    <?php $no=1; foreach ($request->result() as $r) { ?>
-                        <?php $data = $record['id_departement']; ?>
-                            <?php if($r->id_departement ===  $data ){ 
-                                if($r->a_departement == 1 ) {
-                                        echo "<tbody>";
-                                        echo "<tr>";
-                                        echo "<td>".$no;
-                                        echo "<td>".$r->n_pegawai;
-                                        echo "<td>".$r->n_pasien;
-                                        echo "<td>".$r->nik_request;
-                                        echo "<td>".$r->id_jabatan;
-                                        echo "<td>".$r->pisa;
-                                        echo "<td>".$r->tgl_pengajuan;
-                                        echo "<td>".$r->ket;
-                                        echo "<td>";
-                                    if($r->a_departement == 0 ){ 
-                                        echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                                    }elseif ($r->a_departement == 1 ){ 
-                                        echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}
-                                        echo "<td>";
-                                    if($r->a_departement == 0 ){ 
-                                        echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
+                                    <?php $no=1; foreach ($request->result() as $r) { ?>
+                                        <?php $data = $record['id_departement']; ?>
+                                        <?php if($r->id_departement ===  $data ){ 
+                                            if($r->a_departement == 1 || $r->a_departement == 2 ) {
+                                                echo "<tbody>";
+                                                echo "<tr>";
+                                                echo "<td>".$no;
+                                                echo "<td>".$r->n_pegawai;
+                                                echo "<td>".$r->n_pasien;
+                                                echo "<td>".$r->nik_request;
+                                                echo "<td>".$r->id_jabatan;
+                                                echo "<td>".$r->pisa;
+                                                echo "<td>".$r->tgl_pengajuan;
+                                                echo "<td>".$r->ket;
+                                                echo "<td>";
+                                                if($r->a_departement == 0 ){ 
+                                                    echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
+                                                }elseif ($r->a_departement == 1 ){ 
+                                                    echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                                                }elseif ($r->a_departement == 2 ){ 
+                                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                                                }
+                                                echo "<td>";
+                                                if($r->a_departement == 0 ){ 
+                                                    echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
                                             // echo "<a class=\"badge badge-sm badge-primary mr-2\"  href=".site_url('request/editRequest/'.$r->id_request).">Edit</a>";
                                             // echo "<a class=\"badge badge-sm badge-danger mr-2\" data-toggle=\"modal\" data-target=\"#deleteModal\" href=\"#\" >Hapus</a>";
-                                    }elseif ($r->a_departement == 1 ){ 
-                                        echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
-                                    }
-                                }
-                            }?>
-                        <?php $no++; }?>
+                                                }elseif ($r->a_departement == 1 || $r->a_departement == 2 ){ 
+                                                    echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
+                                                }
+                                            }
+                                        }?>
+                                        <?php $no++; }?>

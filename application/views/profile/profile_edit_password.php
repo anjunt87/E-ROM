@@ -36,7 +36,7 @@
                     </div>
                     <span class="help-block alert-danger alert-danger"><?= form_error('password')?></span>
                 </div>
-                <label for="" class="control-label">Konfirmasi Password Baru</label>
+                <!-- <label for="" class="control-label">Konfirmasi Password Baru</label>
                 <div class="input-group mb-3 <?= form_error('cpw_baru') ? 'has-error' : null?>">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
@@ -50,7 +50,7 @@
                         </span>
                     </div>
                     <span class="help-block alert-danger alert-danger"><?= form_error('cpw_baru')?></span>
-                </div>
+                </div> -->
             </div>
             <p class="mb-2">Persyaratan kata sandi</p>
             <p class="small text-muted mb-2">Untuk membuat kata sandi baru, Anda harus memenuhi semua persyaratan berikut :</p>

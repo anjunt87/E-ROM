@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 30 Sep 2022 pada 05.55
+-- Generation Time: 01 Okt 2022 pada 09.04
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `t_profile` (
   `qr_code_profile` varchar(128) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik` (`nik_profile`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data untuk tabel `t_profile`
@@ -152,10 +152,12 @@ CREATE TABLE IF NOT EXISTS `t_profile` (
 INSERT INTO `t_profile` (`id`, `id_departement`, `id_divisi`, `id_jabatan`, `id_atasan`, `n_lengkap`, `nik_profile`, `alamat`, `no_hp`, `img_profile`, `qr_code_profile`) VALUES
 (1, 1, 1, 1, 1, 'ADMINISTATOR', '3215010807960007', '65446464164', '6666233', 'avatar.jpg', 'b.jpg'),
 (2, 2, 1, 1, 0, 'DIVISI OHC', '15416255201095', 'adaada', '0861622266412', '', 'b.jpg'),
-(3, 2, 1, 1, 0, 'DEPARTEMENT', '1541', 'adaada', '0861622266412', '', 'b.jpg'),
-(4, 1, 1, 1, 0, 'DIVISION', '416255201095', 'adaada', '0861622266412', '', 'b.jpg'),
+(3, 1, 1, 1, 0, 'DEPARTEMENT', '1541', 'adaada', '0861622266412', '', 'b.jpg'),
+(4, 1, 1, 1, 1, 'DIVISION', '416255201095', 'adaada', '0861622266412', '', 'b.jpg'),
 (5, 2, 1, 1, 0, 'KEUANGAN', '1541625', 'adaada', '0861622266412', '', 'b.jpg'),
-(6, 1, 1, 1, 0, 'User (Karyawan)', 'q109564665', 'adaada', '0861622266412', '', 'b.jpg');
+(6, 1, 1, 1, 0, 'User (Karyawan)', 'q109564665', 'adaada', '0861622266412', '', 'b.jpg'),
+(7, 5, 19, 1, 1, 'Andro', '152456399963', '', '', '', ''),
+(8, 2, 7, 1, 3, 'Rachel Strong', '4546546464', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -197,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `t_request` (
   `t_approve` int(11) NOT NULL,
   `t_ket` varchar(128) NOT NULL,
   PRIMARY KEY (`id_request`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data untuk tabel `t_request`
@@ -206,12 +208,15 @@ CREATE TABLE IF NOT EXISTS `t_request` (
 INSERT INTO `t_request` (`id_request`, `id_departement`, `id_divisi`, `id_jabatan`, `id_atasan`, `n_pegawai`, `nik_request`, `k_healt`, `rs_dokter`, `n_pasien`, `ttl_pasien`, `ket`, `pisa`, `d_sakit`, `kronologi`, `kuitansi`, `tgl_kuitansi`, `u_berobat`, `nominal`, `t_pengajuan`, `bukti1`, `bukti2`, `kep_divisi`, `n_kep_divisi`, `nik_kep_divisi`, `tgl_pengajuan`, `a_divisi`, `a_departement`, `a_ohc`, `a_keuangan`, `t_approve`, `t_ket`) VALUES
 (1, 1, 1, 1, 1, 'andri', '8071996', 254963488, 'dr.saenudin', 'kobokanaer', '2000-09-01', 'sakit', 'istri', 'panas', '-', 'ada', '2022-09-17', '-', 1500000, 1500000, 'a.jpg', 'b.jpg', 'IT Departement', 'samsudin', 123645855, '2022-09-17', 1, 1, 1, 1, 0, ''),
 (2, 1, 2, 1, 1, 'aaa', '0', 0, '', '', '0000-00-00', '', '', '', '', '', '0000-00-00', '', 0, 0, '', '', '', '', 0, '0000-00-00', 1, 1, 1, 0, 0, ''),
-(3, 1, 1, 1, 1, 'aaaasas2222', 'q109564665', 45454, 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 'aaaa', 'aaa', 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 165464, 165464, 'a.jpg', '', 'aaaa', 'aaaa', 54646, '2022-09-28', 1, 0, 0, 0, 0, ''),
+(3, 1, 1, 1, 1, 'aaaasas2222', 'q109564665', 45454, 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 'aaaa', 'aaa', 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 165464, 165464, 'a.jpg', '', 'aaaa', 'aaaa', 54646, '2022-09-28', 1, 2, 0, 0, 1, 'data tidak valid\r\n'),
 (4, 2, 1, 1, 1, 'aaaa', '46546464', 0, 'aaaa', 'aaaa', '0000-00-00', 'aaaa', 'aaaa', 'aaaa', 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 165464, 0, '', '', '', '', 0, '2022-09-18', 1, 1, 0, 0, 0, ''),
 (5, 1, 1, 1, 1, 'aaaa', '46546464', 0, 'aaaa', 'aaaa', '0000-00-00', 'aaaa', 'aaaa', 'aaaa', 'aaaa', 'aaaa', '2022-09-18', 'aaaa', 165464, 0, '', '', '', '', 0, '2022-09-18', 1, 0, 0, 0, 0, ''),
 (6, 1, 1, 1, 1, 'adadad', '3215010807960007', 0, 'dada', 'dada', '0000-00-00', 'ada', 'ada', 'dad', 'dadad', 'dadad', '2022-09-18', 'adaad', 64644, 0, '', '', '', '', 0, '2022-09-18', 1, 0, 0, 0, 0, ''),
-(8, 1, 1, 1, 1, 'User (Karyawan)', 'q109564665', 4654, '64646', '46', '0000-00-00', '664', '64', '646', '46', '46', '2002-06-04', '46', 4, 0, '', '', '', '', 0, '2022-09-28', 0, 0, 0, 0, 0, ''),
-(9, 1, 1, 1, 1, 'User (Karyawan)', 'q109564665', 5464, '46', '46', '0000-00-00', '66', '646', '46', '464', '64', '2022-04-06', '646', 664, 0, '', '', '', '', 0, '2022-09-28', 0, 0, 0, 0, 0, '');
+(8, 1, 1, 1, 1, 'User (Karyawan)', 'q109564665', 4654, '64646', '46', '0000-00-00', '664', '64', '646', '46', '46', '2002-06-04', '46', 4, 0, '', '', '', '', 0, '2022-09-28', 1, 2, 0, 0, 1, 'sasaffa'),
+(9, 1, 1, 1, 1, 'User (Karyawan)', 'q109564665', 5464, '46', '46', '0000-00-00', '66', '646', '46', '464', '64', '2022-04-06', '646', 664, 0, '', '', '', '', 0, '2022-09-28', 1, 0, 0, 0, 0, ''),
+(10, 1, 1, 0, 0, 'Voluptate cupidatat ', '416255201095', 0, 'Quidem cillum facere', 'Omnis cillum quisqua', '0000-00-00', 'Eius similique nemo ', 'Laudantium ', 'Voluptatibus ratione', 'Veniam totam et lab', 'Maxime at qui quaera', '2012-03-26', 'Architecto consequat', 71, 0, '', '', '', '', 0, '2022-10-01', 0, 0, 0, 0, 0, ''),
+(11, 1, 1, 1, 0, 'DIVISION', '416255201095', 0, 'aaaaaaa', 'aaaaaa', '0000-00-00', 'aa', 'aaaaaaaa', 'aaaaa', 'aaaaaaa', 'aaaaa', '2022-10-01', 'aaa', 111, 0, '', '', '', '', 0, '2022-10-01', 0, 0, 0, 0, 0, ''),
+(12, 5, 19, 1, 1, 'Andro', '152456399963', 0, 'Quae blanditiis aute', 'Unde accusamus ut eo', '2022-10-01', 'Dolore excepturi ali', 'Consequatur', 'Facere beatae adipis', 'Do voluptatum ration', 'Dignissimos reprehen', '1977-03-06', 'Eum quas suscipit hi', 5, 5, '', '', '', '', 0, '2022-10-01', 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -233,19 +238,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik` (`nik`),
   UNIQUE KEY `nik_2` (`nik`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `id_atasan`, `name`, `nik`, `image`, `qr_code`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 0, 'ADMINISTATOR', '3215010807960007', '', '', '$2y$10$LA3BlfLZLiVS/VaPtQjGi.JkSEqrzis1VqLEejM8fNw8go0hr5MZS', 1, 1, 1664505187),
+(1, 0, 'ADMINISTATOR', '3215010807960007', '', '', '$2y$10$4wV39cLYY53wJ3iqutYBN.aIENowJUxxIPUi4hGTBtHrTrxvilnnC', 1, 1, 1664505187),
 (2, 0, 'DIVISI OHC', '15416255201095', '', '', '$2y$10$LA3BlfLZLiVS/VaPtQjGi.JkSEqrzis1VqLEejM8fNw8go0hr5MZS', 2, 1, 1664020496),
 (3, 0, 'DEPARTEMENT', '1541', '', '', '$2y$10$JRd.UDxngl4jRhKIlkMq1uhHtd95gI60b4u/GQwGiVXtiZkoqOsUi', 3, 1, 1663983204),
-(4, 0, 'DIVISION', '416255201095', '', '', '$2y$10$Fk/OiAbaDnVcbQ2eTAXW/.pjVklZpDrbAzF60qy39OiLbx2FeJPgS', 4, 1, 1638859895),
+(4, 1, 'DIVISION', '416255201095', '', '', '$2y$10$Fk/OiAbaDnVcbQ2eTAXW/.pjVklZpDrbAzF60qy39OiLbx2FeJPgS', 4, 1, 1638859895),
 (5, 0, 'KEUANGAN', '1541625', '', '', '$2y$10$k.u24BXZZBN186x0i3Aag.WM8pxu2yoJEkHL53kpPFs6Quiilx9Zy', 5, 1, 1664020513),
-(6, 1, 'KARYAWAN', 'q109564665', '', '', '$2y$10$dIsokG/saZyO8iiU4dLOfug4CVsWwNIKngFH4o7NPsOfxA7Ug73By', 6, 1, 1609912555);
+(6, 1, 'KARYAWAN', 'q109564665', '', '', '$2y$10$dIsokG/saZyO8iiU4dLOfug4CVsWwNIKngFH4o7NPsOfxA7Ug73By', 6, 1, 1609912555),
+(7, 1, 'Andro', '152456399963', '', '', '$2y$10$2sA.n6ZAS.f8DNacQWBx/eFQwKPcuBkKTsHgI79bYLwlSU4BwVwNC', 6, 1, 1664586782),
+(8, 3, 'Rachel Strong', '4546546464', '', '', '$2y$10$hIaipDUSX5ZEL6iQo9kaG.AvSQzgtjV3/tIhXsnvgMtATUoehbJtm', 3, 1, 1664587496);
 
 -- --------------------------------------------------------
 

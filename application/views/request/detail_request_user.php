@@ -4,12 +4,12 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Request</h1>
-        <?php if($this->session->userdata('role_id') === '1' | '2'):?>
+        <?php if($this->session->userdata('role_id') === '1' || '2'):?>
             <div class="float-right">
                 <a class="btn btn-sm btn-primary shadow-sm" href="<?= site_url('PrintEkspor/printoutRequest/'.$request['id_request'])?> "><i class="fas fa-print fa-sm text-white-50"></i> Print Out Request</a>
                 <a class="btn btn-sm btn-primary shadow-sm ml-2"  href="<?= site_url('PrintEkspor/exportPdfRequest/'.$request['id_request'])?>"><i class="fas fa-print fa-sm text-white-50"></i> Ekspor Pdf Request</a>
             </div>
-        <?php elseif($this->session->userdata('role_id')=== '3' | '4' | '5' | '6' ):?>
+        <?php elseif($this->session->userdata('role_id')=== '3' || '4' || '5' || '6' ):?>
             <div class="float-right">
                 <?php if($request['a_ohc'] == 0 ){ 
                // echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
@@ -38,33 +38,70 @@
                     <tr>
                         <td>
                             <?php if($request['a_divisi'] == 0 ){ 
-                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                         }elseif ($request['a_divisi'] == 1 ){ 
-                            echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}?>
+                                echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
+                            }elseif ($request['a_divisi'] == 1 ){ 
+                                echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                            }elseif ($request['a_divisi'] == 2 ){ 
+                                echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';}?>
                         </td>
                         <td>
-                            <?php if($request['a_departement'] == 0 ){ 
-                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                         }elseif ($request['a_departement'] == 1 ){ 
-                            echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}?>
+                           <?php if($request['a_departement'] == 0){ 
+                                if ($request['a_divisi'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                }elseif ($request['a_departement'] == 0 || $request['a_divisi'] == 1) {
+                                   echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
+                                }
+                            }elseif ($request['a_departement'] == 1 ){ 
+                                echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                            }elseif ($request['a_departement'] == 2 || $request['t_approve'] == 1){ 
+                                echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';}?>
                         </td>
                         <td>
-                            <?php if($request['a_ohc'] == 0 ){ 
-                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                         }elseif ($request['a_departement'] == 1 ){ 
-                            echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}?>
+                            <?php if($request['a_ohc'] == 0){ 
+                                if ($request['a_divisi'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                } elseif ($request['a_departement'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                }elseif ($request['a_ohc'] == 0 || $request['a_divisi'] == 1 || $request['a_departement'] == 1) {
+                                   echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
+                                }
+                            }elseif ($request['a_ohc'] == 1 ){ 
+                                echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                            }elseif ($request['a_ohc'] == 2 ){ 
+                                echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';}?>
                         </td>
                         <td>
-                            <?php if($request['a_keuangan'] == 0 ){ 
-                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                         }elseif ($request['a_departement'] == 1 ){ 
-                            echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}?>
+                            <?php if($request['a_keuangan'] == 0){ 
+                                if ($request['a_divisi'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                } elseif ($request['a_departement'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                }elseif ($request['a_ohc'] == 2) {
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                                }elseif ($request['a_keuangan'] == 0 || $request['a_ohc'] == 1 || $request['a_divisi'] == 1 || $request['a_departement'] == 1) {
+                                   echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
+                                }
+                            }elseif ($request['a_keuangan'] == 1 ){ 
+                                echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                            }elseif ($request['a_keuangan'] == 2 ){ 
+                                echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                            }?>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <?php if($request['a_divisi'] == 2 || $request['a_departement'] == 2 || $request['a_ohc'] == 2 || $request['a_keuangan'] == 2){
+      echo '<div class="card shadow mb-4">
+      <div class="card-header py-3 bg-danger">
+        <h6 class="m-0 font-weight-bold">Keteragan Not Approve</h6>
+         </div>
+            <div class="card-body">';
+              echo $request['t_ket'];
+            echo '</div>
+        </div>';
+     }?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 bg-success">
@@ -296,16 +333,16 @@
             </table>
             <!-- Admin -->
             <?php if($this->session->userdata('role_id')=== '1'):?>
-                <a class="btn btn-primary float-right" href="<?= site_url('request/historyRequestAp'); ?>">Kembali</a>   
+                <a class="btn btn-primary float-right" href="<?= site_url('request/historyRequestApp'); ?>">Kembali</a>   
                 
                 <!-- Divisi OHC Approve -->
             <?php elseif($this->session->userdata('role_id')=== '2'):?>
                  <?php if($request['a_ohc'] == 0 ){ 
                     echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
-                    // echo "<a class=\"btn btn-danger float-right mr-2\" href=".site_url('').">Tolak</a>";   
+                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#OhcTolakModal\" href=\"#\" >Tolak</a>";   
                     echo "<a class=\"btn btn-success float-right  mr-2\" data-toggle=\"modal\" data-target=\"#OhcApproveModal\" href=\"#\" >Approve</a>";
 
-                }elseif ($request['a_ohc'] == 1 ){ 
+                }elseif ($request['a_ohc'] == 1 || $request['a_ohc'] == 2 ){ 
                    echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
                 }?>
 
@@ -313,9 +350,9 @@
             <?php elseif($this->session->userdata('role_id')=== '3'):?>
                 <?php if($request['a_departement'] == 0 ){ 
                     echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
-                    // echo "<a class=\"btn btn-danger float-right mr-2\" href=".site_url('').">Tolak</a>";   
+                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#DepartementTolakModal\" href=\"#\" >Tolak</a>";   
                     echo "<a class=\"btn btn-success float-right  mr-2\" data-toggle=\"modal\" data-target=\"#DepartementApproveModal\" href=\"#\" >Approve</a>";
-                }elseif ($request['a_departement'] == 1 ){ 
+                }elseif ($request['a_departement'] == 1 || $request['a_departement'] == 2 ){ 
                    echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
                 }?>
 
@@ -323,9 +360,9 @@
             <?php elseif($this->session->userdata('role_id')=== '4'):?>
                 <?php if($request['a_divisi'] == 0 ){ 
                     echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
-                    // echo "<a class=\"btn btn-danger float-right mr-2\" href=".site_url(''.$request['id_request']).">Tolak</a>";
+                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#DivisiTolakModal\" href=\"#\" >Tolak</a>";
                     echo "<a class=\"btn btn-success float-right  mr-2\" data-toggle=\"modal\" data-target=\"#DivisiApproveModal\" href=\"#\" >Approve</a>";
-                }elseif ($request['a_divisi'] == 1 ){ 
+                }elseif ($request['a_divisi'] == 1 || $request['a_divisi'] == 2){ 
                    echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
                 }?>
                
@@ -333,10 +370,10 @@
             <?php elseif($this->session->userdata('role_id')=== '5'):?>
                 <?php if($request['a_keuangan'] == 0 ){ 
                     echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
-                    // echo "<a class=\"btn btn-danger float-right mr-2\" href=".site_url('').">Tolak</a>";   
+                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#KeuangaTolakModal\" href=\"#\" >Tolak</a>";   
                     echo "<a class=\"btn btn-success float-right  mr-2\" data-toggle=\"modal\" data-target=\"#KeuanganApproveModal\" href=\"#\" >Approve</a>";
 
-                }elseif ($request['a_keuangan'] == 1 ){ 
+                }elseif ($request['a_keuangan'] == 1 || $request['a_keuangan'] == 2 ){ 
                    echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
                 }?>
 
@@ -429,6 +466,131 @@
                 </div>
             </form>
 
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Tolak Divisi -->
+<div class="modal fade" id="DivisiTolakModal" tabindex="-1" role="dialog" aria-labelledby="DivisiTolakModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Apakah kamu yakin Tolak Request ini ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="<?= site_url('request/requestTolakDivisi');?>" method="post">
+                        <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="id_request" value="<?= $request['id_request']?>">
+                            <label>Keterangan (Alasan) :</label>
+                            <textarea class="form-control" type="text" name="t_ket"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" name="submit"class="btn btn-danger">Tolak</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tolak Departement -->
+<div class="modal fade" id="DepartementTolakModal" tabindex="-1" role="dialog" aria-labelledby="DepartementTolakModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Apakah kamu yakin Tolak Request ini ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="<?= site_url('request/requestTolakDepartement');?>" method="post">
+                        <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="id_request" value="<?= $request['id_request']?>">
+                            <label>Keterangan (Alasan) :</label>
+                            <textarea class="form-control" type="text" name="t_ket"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" name="submit"class="btn btn-danger">Tolak</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tolak OHC -->
+<div class="modal fade" id="OhcTolakModal" tabindex="-1" role="dialog" aria-labelledby="OhcTolakModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Apakah kamu yakin Tolak Request ini ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="<?= site_url('request/requestTolakOhc');?>" method="post">
+                        <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="id_request" value="<?= $request['id_request']?>">
+                            <label>Keterangan (Alasan) :</label>
+                            <textarea class="form-control" type="text" name="t_ket"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" name="submit"class="btn btn-danger">Tolak</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tolak Keuangan -->
+<div class="modal fade" id="KeuanganTolakModal" tabindex="-1" role="dialog" aria-labelledby="KeuanganTolakModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Apakah kamu yakin Tolak Request ini ?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form action="<?= site_url('request/requestTolakKeuangan');?>" method="post">
+                        <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="id_request" value="<?= $request['id_request']?>">
+                            <label>Keterangan (Alasan) :</label>
+                            <textarea class="form-control" type="text" name="t_ket"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" name="submit"class="btn btn-danger">Tolak</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         </div>
     </div>
 </div>

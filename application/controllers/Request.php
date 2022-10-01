@@ -179,25 +179,117 @@ class Request extends CI_Controller {
 
 	public function requestApprovedDivisi($id){
         $id=  $this->uri->segment(3);
-		$this->Rom_model->ApprovedDivisi($id);
+		$this->Request_model->ApprovedDivisi($id);
 		redirect('request/requestUsers');     
 	}
 
 	public function requestApprovedDepartement($id){
         $id=  $this->uri->segment(3);
-		$this->Rom_model->ApprovedDepartement($id);
+		$this->Request_model->ApprovedDepartement($id);
 		redirect('request/requestUsers');     
 	}
 
 	public function requestApprovedOhc($id){
         $id=  $this->uri->segment(3);
-		$this->Rom_model->ApprovedOhc($id);
+		$this->Request_model->ApprovedOhc($id);
 		redirect('request/requestUsers');     
 	}
 
 	public function requestApprovedKeuangan($id){
         $id=  $this->uri->segment(3);
-		$this->Rom_model->ApprovedKeuangan($id);
+		$this->Request_model->ApprovedKeuangan($id);
 		redirect('request/requestUsers');     
+	}
+
+	public function requestTolakDivisi(){
+		if(isset($_POST['submit'])){
+			$id_request       =  htmlspecialchars($this->input->post('id_request',true));
+			$t_ket      =  htmlspecialchars($this->input->post('t_ket',true));
+
+			$edit_request =  array(
+				'a_divisi' => '2',
+				't_approve' => '1',
+				't_ket' => $t_ket
+			);
+			$where = array ('id_request' => $id_request);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
+			redirect('request/requestUsers');
+		}
+		else{
+
+			$id =  htmlspecialchars($this->input->post('id_request',true));
+			$param  =   array('id'=>$id);            
+			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
+		}
+	}
+
+	public function requestTolakDepartement(){
+		if(isset($_POST['submit'])){
+			$id_request       =  htmlspecialchars($this->input->post('id_request',true));
+			$t_ket      =  htmlspecialchars($this->input->post('t_ket',true));
+
+			$edit_request =  array(
+				'a_departement' => '2',
+				't_approve' => '1',
+				't_ket' => $t_ket
+			);
+			$where = array ('id_request' => $id_request);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
+			redirect('request/requestUsers');
+		}
+		else{
+
+			$id =  htmlspecialchars($this->input->post('id_request',true));
+			$param  =   array('id'=>$id);            
+			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
+		}
+	}
+
+	public function requestTolakOhc(){
+		if(isset($_POST['submit'])){
+			$id_request       =  htmlspecialchars($this->input->post('id_request',true));
+			$t_ket      =  htmlspecialchars($this->input->post('t_ket',true));
+
+			$edit_request =  array(
+				'a_ohc' => '2',
+				't_approve' => '1',
+				't_ket' => $t_ket
+			);
+			$where = array ('id_request' => $id_request);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
+			redirect('request/requestUsers');
+		}
+		else{
+
+			$id =  htmlspecialchars($this->input->post('id_request',true));
+			$param  =   array('id'=>$id);            
+			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
+		}
+	}
+
+	public function requestTolakKeuangan(){
+		if(isset($_POST['submit'])){
+			$id_request       =  htmlspecialchars($this->input->post('id_request',true));
+			$t_ket      =  htmlspecialchars($this->input->post('t_ket',true));
+
+			$edit_request =  array(
+				'a_keuangan' => '2',
+				't_approve' => '1',
+				't_ket' => $t_ket
+			);
+			$where = array ('id_request' => $id_request);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
+			redirect('request/requestUsers');
+		}
+		else{
+
+			$id =  htmlspecialchars($this->input->post('id_request',true));
+			$param  =   array('id'=>$id);            
+			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
+		}
 	}
 }

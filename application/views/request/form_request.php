@@ -18,15 +18,18 @@
                                 <div class="form-group">
                                     <input type="hidden" name="id" value="<?= $row->id_request?>">
                                     <label for="exampleInputPassword1">Nama Pegawai</label>
-                                    <input type="text" class="form-control" name="n_pegawai" placeholder="Nama" value="<?= $record['n_lengkap'];?>" required>
+                                    <input type="hidden" class="form-control" name="n_pegawai" placeholder="Nama" value="<?= $record['n_lengkap'];?>" required>
+                                    <input type="text" class="form-control" name="" placeholder="NIK" value="<?= $record['n_lengkap'];?>" disabled required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="nik_request">NIK</label>
-                                    <input type="text" class="form-control" name="nik_request" placeholder="NIK" value="<?= $record['nik_profile'];?>" required>
+                                    <input type="hidden" class="form-control" name="nik_request" placeholder="NIK" value="<?= $record['nik_profile'];?>" required>
+                                    <input type="text" class="form-control" name="" placeholder="NIK" value="<?= $record['nik_profile'];?>" disabled required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="pergrade">Personal grade / Jabatan</label>
-                                    <input type="text" class="form-control" name="id_jabatan" placeholder="Jabatan" value="<?= $record['id_jabatan'];?>" required>
+                                    <input type="hidden" class="form-control" name="id_jabatan" placeholder="Jabatan" value="<?= $record['id_jabatan'];?>" required>
+                                    <input type="text" class="form-control" name="" placeholder="Jabatan" value="<?= $record['id_jabatan'];?>" disabled required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="nki">No. Kartu Inhealt</label>

@@ -38,8 +38,7 @@
                                     <label for="nik">Password</label>
                                     <input type="text" class="form-control" name="password"  value="<?= $record['password'];?>" required>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
+                                <br>
                                 <label for="bantuan">Departement / Divisi / Jabatan : </label>
                                 <div class="form-group">
                                     <label for="n_pasien">Nama Departement</label>

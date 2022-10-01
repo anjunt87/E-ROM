@@ -34,7 +34,7 @@
                 </tr>
             </tfoot>
             <?php $no=1; foreach ($request->result() as $r) { ?>
-                <?php if($r->a_keuangan == 1 ){ 
+                <?php if($r->a_keuangan == 1 || $r->a_keuangan == 2 ){ 
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;
@@ -48,14 +48,17 @@
                     echo "<td>";
                     if($r->a_keuangan == 0 ){ 
                      echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
-                 }elseif ($r->a_keuangan == 1 ){ 
-                    echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}
+                    }elseif ($r->a_keuangan == 1 ){ 
+                        echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
+                    }elseif ($r->a_keuangan == 2 ){ 
+                        echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                    }
                     echo "<td>";
                     if($r->a_keuangan == 0 ){ 
                         echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
                                     // echo "<a class=\"badge badge-sm badge-primary mr-2\"  href=".site_url('request/editRequest/'.$r->id_request).">Edit</a>";
                                     // echo "<a class=\"badge badge-sm badge-danger mr-2\" data-toggle=\"modal\" data-target=\"#deleteModal\" href=\"#\" >Hapus</a>";
-                    }elseif ($r->a_keuangan == 1 ){ 
+                    }elseif ($r->a_keuangan == 1 || $r->a_keuangan == 2 ){ 
                         echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
                     }
                     $no++; }

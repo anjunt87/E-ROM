@@ -8,11 +8,11 @@ class Request_model extends CI_Model {
     //     return $this->db->get('t_request');
     // }
     
-    function get($id)
-    {
-        $param  =   array('id_request'=>$id);
-        return $this->db->get_where('t_request',$param);
-    }
+    // function get($id)
+    // {
+    //     $param  =   array('id_request'=>$id);
+    //     return $this->db->get_where('t_request',$param);
+    // }
 
     // public function find_data($where, $table){
     //     return $this->db->get_where($table,$where);
@@ -29,6 +29,7 @@ class Request_model extends CI_Model {
             'k_healt' => $post['k_healt'],
             'rs_dokter' => $post['rs_dokter'],
             'n_pasien' => $post['n_pasien'],
+            'ttl_pasien' => $post['ttl_pasien'],
             'ket' => empty($post['ket']) ? null : $post['ket'],
             'pisa' => $post['pisa'],
             'd_sakit' => $post['d_sakit'],
@@ -37,6 +38,7 @@ class Request_model extends CI_Model {
             'tgl_kuitansi' => $post['tgl_kuitansi'],
             'u_berobat' => empty($post['u_berobat']) ? null : $post['u_berobat'],
             'nominal' => $post['nominal'],
+            't_pengajuan' => $post['nominal'],
             'tgl_pengajuan' => $post['tgl_pengajuan'],
             // 'bukti1' => $post['bukti1'],
             // 'bukti2' => $post['bukti2'],
@@ -55,6 +57,7 @@ class Request_model extends CI_Model {
             'k_healt' => $post['k_healt'],
             'rs_dokter' => $post['rs_dokter'],
             'n_pasien' => $post['n_pasien'],
+            'ttl_pasien' => $post['ttl_pasien'],
             'ket' => empty($post['ket']) ? null : $post['ket'],
             'pisa' => $post['pisa'],
             'd_sakit' => $post['d_sakit'],
@@ -63,6 +66,7 @@ class Request_model extends CI_Model {
             'tgl_kuitansi' => $post['tgl_kuitansi'],
             'u_berobat' => empty($post['u_berobat']) ? null : $post['u_berobat'],
             'nominal' => $post['nominal'],
+            't_pengajuan' => $post['nominal'],
             'tgl_pengajuan' => $post['tgl_pengajuan'],
             // 'bukti1' => $post['bukti1'],
             // 'bukti2' => $post['bukti2'],
@@ -71,4 +75,43 @@ class Request_model extends CI_Model {
         $this->db->update('t_request', $params);
     }
 
+     public function ApprovedDivisi($id){
+        $id=  $this->uri->segment(3);
+        $params = [
+            'id_request' => $id,
+            'a_divisi' => "1",
+        ];
+        $this->db->where('id_request',  $id);
+        $this->db->update('t_request', $params);
+    }
+
+    public function ApprovedDepartement($id){
+        $id=  $this->uri->segment(3);
+        $params = [
+            'id_request' => $id,
+            'a_departement' => "1",
+        ];
+        $this->db->where('id_request',  $id);
+        $this->db->update('t_request', $params);
+    }
+
+    public function ApprovedOhc($id){
+        $id=  $this->uri->segment(3);
+        $params = [
+            'id_request' => $id,
+            'a_ohc' => "1",
+        ];
+        $this->db->where('id_request',  $id);
+        $this->db->update('t_request', $params);
+    }
+
+    public function ApprovedKeuangan($id){
+        $id=  $this->uri->segment(3);
+        $params = [
+            'id_request' => $id,
+            'a_keuangan' => "1",
+        ];
+        $this->db->where('id_request',  $id);
+        $this->db->update('t_request', $params);
+    }
 }

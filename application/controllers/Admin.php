@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
 		$name = htmlspecialchars($this->input->post('name'));
 		$nik = htmlspecialchars($this->input->post('nik'));
 		$role = htmlspecialchars($this->input->post('role'));
-		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+		$password = password_hash($this->input->post('nik'), PASSWORD_DEFAULT);
 		$id_departement = htmlspecialchars($this->input->post('id_departement'));
 		$id_divisi = htmlspecialchars($this->input->post('id_divisi'));
 		$id_jabatan = htmlspecialchars($this->input->post('id_jabatan'));
@@ -286,6 +286,8 @@ class Admin extends CI_Controller {
         $result_array[] = array(
             'label'=>$row->n_lengkap,
             'nik_profile'=>strtoupper($row->nik_profile),
+            // 'id_departement'=>strtoupper($row->id_departement),
+            // 'id_divisi'=>strtoupper($row->id_divisi),
             'id'=>strtoupper($row->id)
           );
         echo json_encode($result_array);
