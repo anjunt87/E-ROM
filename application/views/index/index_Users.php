@@ -13,12 +13,12 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Jumlah Request</div>
+                                            Jumlah Request</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <!-- <?php
-                                                 // $this->db->select('*')->from('tbl_dosen');
-                                                  //echo $this->db->count_all_results();
-                                                ?> -->
+                                               <?php
+                                               $this->db->select('*')->from('t_request')->like('nik_request', $this->session->userdata('nik'));
+                                               echo $this->db->count_all_results();
+                                               ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -39,9 +39,9 @@
                                                 Pending Request</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                  //$this->db->select('*')->from('tbl_periode');
-                                                  //echo $this->db->count_all_results();
-                                                ?>
+                                                   $this->db->select('*')->from('t_request')->like('nik_request', $this->session->userdata('nik'))->like('a_departement', '1');
+                                                   echo $this->db->count_all_results();
+                                                   ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -59,9 +59,12 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Request</div>
+                                                Total Request Approve</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                                14
+                                                <?php
+                                                   $this->db->select('*')->from('t_request')->like('nik_request', $this->session->userdata('nik'))->like('a_keuangan', '1');
+                                                   echo $this->db->count_all_results();
+                                                   ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -75,3 +78,4 @@
 
                 </div>
             <!-- End of Main Content -->
+

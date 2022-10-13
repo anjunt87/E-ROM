@@ -19,6 +19,7 @@
     
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?= base_url('assets/'); ?>css/bootstrap-steps.min.css" rel="stylesheet">
 
     <!-- Zoom Image -->
     <link href="<?= base_url('assets/'); ?>css/lity.css" rel="stylesheet" type="text/css">
@@ -77,6 +78,15 @@
     color: black;
 }
 
+.circle-green-branch {
+    width: 24px;
+    height: 24px;
+    background-color: #00ac4f;
+    border-radius: 100%;
+    border: 5px solid #c2e3ae;
+    position: absolute;
+    margin-left: 7px;
+}
 </style>
 
 </head>

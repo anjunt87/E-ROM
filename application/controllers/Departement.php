@@ -66,23 +66,23 @@ class Departement extends CI_Controller {
 
 			$this->Rom_model->insert_data($tambah_departement, 't_departement');
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Simpan</div>');
-			redirect('Departement');
+			redirect('Departement/positionIndex');
 		}
 	}
 
 	function edit() 
 	{
 		if(isset($_POST['submit'])){
-			$id       =  htmlspecialchars($this->input->post('id',true));
+			$id       =  htmlspecialchars($this->input->post('id_departement',true));
 			$n_departement      =  htmlspecialchars($this->input->post('n_departement',true));
 
 			$edit_departement =  array(
 				'n_departement' => $n_departement
 			);
-			$where = array ('id' => $id);
+			$where = array ('id_departement' => $id);
 			$this->Rom_model->update_data("t_departement", $edit_departement, $where);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
-			redirect('Departement');
+			redirect('Departement/positionIndex');
 		}
 		else{
 
@@ -96,10 +96,10 @@ class Departement extends CI_Controller {
 	function delete()
 	{
 		$id=  $this->uri->segment(3);
-		$this->db->where('id', $id);
+		$this->db->where('id_departement', $id);
 		$this->db->delete('t_departement');
 
 		echo $this->session->set_flashdata('message','<div class="alert alert-danger text-center" role="alert">Data Berhasil Di Hapus</div>');
-		redirect('Departement');
+		redirect('Departement/positionIndex');
 	}
 }

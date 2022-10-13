@@ -7,19 +7,18 @@
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Jumlah Request</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <span>Jumlah Request :</span>
                                 <?php
-                                $this->db->select('*')->from('t_request');
+                                $this->db->select('*')->from('t_request')->like('a_departement', 0)->like('t_approve', '0');
                                 echo $this->db->count_all_results();
                                 ?>
-                                <br><span class="text-xs">Data yang masuk</span>
+                                <span>Pending Request</span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -32,19 +31,18 @@
 
         <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Pending Request</div>
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            Cancel Request</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <span>Pending Request :</span>
                                 <?php
-                                $this->db->select('*')->from('t_request')->like('a_divisi', 0);
-                                echo $this->db->count_all_results();
+                                $this->db->select('*')->from('t_request')->like('t_approve', '1');
+                                    echo $this->db->count_all_results();
                                 ?>
-                                <br><span class="text-xs">Data yang belum diposes Divisi, Departement, OHC dan Keuangan</span>
+                                <span>Cancel Request</span>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -62,14 +60,13 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Request Approved</div>
+                            Request Approved Final</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                <span>Aproved Rembustment :</span>
                                 <?php
                                     $this->db->select('*')->from('t_request')->like('a_keuangan', 1);
                                     echo $this->db->count_all_results();
                                 ?> 
-                                <br><span class="text-xs">Data yang sudah Approved sampai Div. Keuangan</span>
+                                <span>Request Aproved</span>
                          </div>
                      </div>
                      <div class="col-auto">

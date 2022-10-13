@@ -201,7 +201,7 @@
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
             <td width="40%" style="text-align: center;">Kepada Divisi <?= $record['kep_divisi']?></td>
-            <td width="32%"></td>
+            <td width="25%"></td>
             <td style="text-align: center;">Pemohon,</td>
             <td></td>
         </tr>
@@ -209,7 +209,7 @@
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
             <td width="40%" style="text-align: center;"><span><img src="<?= base_url('assets/'); ?>img/qrcode/QRcode.jpg" alt="logo" width="100"></span></td>
-            <td width="30%"></td>
+            <td width="25%"></td>
             <td style="text-align: center;"><span><img src="<?= base_url('assets/'); ?>img/qrcode/QRcode.jpg" alt="logo" width="100"></span></td>
             <td></td>
         </tr>

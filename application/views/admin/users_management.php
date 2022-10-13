@@ -104,6 +104,7 @@
                     </button>
                 </div>
                 <div class="modal-body">Pilih "Delete" untuk menghapus data ini.</div>
+                <div class="modal-body text-danger">Jika anda menghapus User ini, data yang berhubungan dengan user akan hilang !</div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
                     <a class="btn btn-danger" href="<?= site_url('admin/deleteuser/'.$uM['nik']); ?>">Delete</a>

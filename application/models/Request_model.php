@@ -22,10 +22,13 @@ class Request_model extends CI_Model {
         $params = [
             'n_pegawai' => $post['n_pegawai'],
             'nik_request ' => $post['nik_request'],
-            'id_departement' => $post['id_departement'],
-            'id_divisi' => $post['id_divisi'],
-            'id_jabatan' => $post['id_jabatan'],
-            'id_atasan' => $post['id_atasan'],
+            'departement_id' => $post['id_departement'],
+            'divisi_id' => $post['id_divisi'],
+            'jabatan_id' => $post['id_jabatan'],
+            'atasan_id' => $post['id_atasan'],
+            'korwil_id' => $post['id_korwil'],
+            'cabang_id' => $post['id_cabang'],
+            'cabang_unit_id' => $post['id_unit'],
             'k_healt' => $post['k_healt'],
             'rs_dokter' => $post['rs_dokter'],
             'n_pasien' => $post['n_pasien'],
@@ -51,10 +54,10 @@ class Request_model extends CI_Model {
         $params = [
             'n_pegawai' => $post['n_pegawai'],
             'nik_request ' => $post['nik_request'],
-            'id_departement' => $post['id_departement'],
-            'id_divisi' => $post['id_divisi'],
-            'id_jabatan' => $post['id_jabatan'],
-            'id_atasan' => $post['id_atasan'],
+            'departement_id' => $post['id_departement'],
+            'divisi_id' => $post['id_divisi'],
+            'jabatan_id' => $post['id_jabatan'],
+            'atasan_id' => $post['id_atasan'],
             'k_healt' => $post['k_healt'],
             'rs_dokter' => $post['rs_dokter'],
             'n_pasien' => $post['n_pasien'],
@@ -76,31 +79,36 @@ class Request_model extends CI_Model {
         $this->db->update('t_request', $params);
     }
 
-     public function ApprovedDivisi($id){
-        $id=  $this->uri->segment(3);
-        $params = [
-            'id_request' => $id,
-            'a_divisi' => "1",
-        ];
-        $this->db->where('id_request',  $id);
-        $this->db->update('t_request', $params);
-    }
-
     public function ApprovedDepartement($id){
         $id=  $this->uri->segment(3);
         $params = [
             'id_request' => $id,
             'a_departement' => "1",
+            'w_departement' => date('Y-m-d'),
+
         ];
         $this->db->where('id_request',  $id);
         $this->db->update('t_request', $params);
     }
+    
+     public function ApprovedDivisi($id){
+        $id=  $this->uri->segment(3);
+        $params = [
+            'id_request' => $id,
+            'a_divisi' => "1",
+            'w_divisi' => date('Y-m-d'),
+        ];
+        $this->db->where('id_request',  $id);
+        $this->db->update('t_request', $params);
+    }
+
 
     public function ApprovedOhc($id){
         $id=  $this->uri->segment(3);
         $params = [
             'id_request' => $id,
             'a_ohc' => "1",
+            'w_ohc' => date('Y-m-d'),
         ];
         $this->db->where('id_request',  $id);
         $this->db->update('t_request', $params);
@@ -111,6 +119,7 @@ class Request_model extends CI_Model {
         $params = [
             'id_request' => $id,
             'a_keuangan' => "1",
+            'w_keuangan' => date('Y-m-d'),
         ];
         $this->db->where('id_request',  $id);
         $this->db->update('t_request', $params);

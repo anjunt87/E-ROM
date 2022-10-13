@@ -9,7 +9,8 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form role="form"  method="post" action="<?= site_url('request/process')?>">
+                <?php echo form_open_multipart('request/process')?>
+                <!-- <form role="form"  method="post" action="<?//= site_url('request/process')?>"> -->
                     <!-- cardbody input A dan B -->
                     <div class="card-body">
                         <div class="row">
@@ -28,8 +29,8 @@
                                 </div>
                                 <div class="form-group ">
                                     <label for="pergrade">Personal grade / Jabatan</label>
-                                    <input type="hidden" class="form-control" name="id_jabatan" placeholder="Jabatan" value="<?= $record['id_jabatan'];?>" required>
-                                    <input type="text" class="form-control" name="" placeholder="Jabatan" value="<?= $record['id_jabatan'];?>" disabled required>
+                                    <input type="hidden" class="form-control" name="id_jabatan" placeholder="Jabatan" value="<?= $record['jabatan_id'];?>" required>
+                                    <input type="text" class="form-control" name="" placeholder="Jabatan" value="<?= $record['jabatan_id'];?>" disabled required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="nki">No. Kartu Inhealt</label>
@@ -114,30 +115,33 @@
 
                                 
                                 <!-- id Query Harus ada valuenya -->
-                                <input type="hidden" name="id_departement" value="<?= $record['id_departement'];?>">
-                                <input type="hidden" name="id_divisi" value="<?= $record['id_divisi'];?>">
-                                <input type="hidden" name="id_atasan" value="<?= $user['id_atasan'];?>">
+                                <input type="hidden" name="id_departement" value="<?= $record['departement_id'];?>">
+                                <input type="hidden" name="id_divisi" value="<?= $record['divisi_id'];?>">
+                                <input type="hidden" name="id_korwil" value="<?= $record['korwil_id'];?>">
+                                <input type="hidden" name="id_cabang" value="<?= $record['cabang_id'];?>">
+                                <input type="hidden" name="id_unit" value="<?= $record['cabang_unit_id'];?>">
+                                <input type="hidden" name="id_atasan" value="<?= $user['atasan_id'];?>">
                                 
 
                                 <!-- Upload 1 -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Bukti Kuitansi / Resep</label>
                                 </div>
-                                <!-- <div class="input-group mb-3">
+                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Upload</span>
                                     </div>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="inputGroupFile01" >
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div> -->
+                                    </div>
                                 </div> 
 
                                 <!-- Upload 2 -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Bukti Kuitansi / Resep / dll</label>
                                 </div>
-                                <!-- <div class="input-group mb-3">
+                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Upload</span>
                                     </div>
@@ -145,14 +149,14 @@
                                         <input type="file" class="custom-file-input" id="inputGroupFile01">
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div><!-- /.card-body -->
                         <div class="form-group mt-4">
                             <button type="reset" name="reset" class="btn btn-danger float-right ml-2">Reset</button>
                             <button type="submit" name="<?= $page?>" class="btn btn-success float-right">Simpan</button>
                         </div>
-                    </form>
+                    <?php echo form_close()?>
                 </div>
             </div>
         </div>

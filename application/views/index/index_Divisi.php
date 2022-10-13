@@ -13,12 +13,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Jumlah Request</div>
+                                                Jumlah Request Users</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                <!-- <?php
-                                                 // $this->db->select('*')->from('tbl_dosen');
-                                                  //echo $this->db->count_all_results();
-                                                ?> -->
+                                               <?php
+                                               $data = $record['divisi_id'];
+                                               $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_departement', '1')->like('a_divisi', '0');
+                                               echo $this->db->count_all_results();
+                                               ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -36,11 +37,12 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Pending Request</div>
+                                                Pending Request Users</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                  //$this->db->select('*')->from('tbl_periode');
-                                                  //echo $this->db->count_all_results();
+                                                $data = $record['divisi_id'];
+                                                $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_departement', '1')->like('a_divisi', '0');
+                                                echo $this->db->count_all_results();
                                                 ?>
                                             </div>
                                         </div>
@@ -59,9 +61,13 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Request</div>
+                                                Total Request Approve Users</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                                14
+                                                <?php
+                                                $data = $record['divisi_id'];
+                                                $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_divisi', '1');
+                                                echo $this->db->count_all_results();
+                                                ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">

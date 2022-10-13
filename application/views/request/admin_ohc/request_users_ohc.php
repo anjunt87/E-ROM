@@ -34,7 +34,7 @@
                 </tr>
             </tfoot>
             <?php $no=1; foreach ($request->result() as $r) { ?>
-                <?php if($r->a_departement == 1 && $r->a_ohc == 0) {
+                <?php if($r->a_ohc == 0 && $r->a_divisi == 1) {
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;

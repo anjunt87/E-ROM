@@ -23,8 +23,8 @@
                             <td scope="row"><?= $i; ?></td>
                             <td><?= $d['n_departement']; ?></td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editDepartementModal<?= $d['id'];?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="#" data-toggle="modal" data-target="#hapusDepartementModal<?= $d['id'];?>" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="#" data-toggle="modal" data-target="#editDepartementModal<?= $d['id_departement'];?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="#" data-toggle="modal" data-target="#hapusDepartementModal<?= $d['id_departement'];?>" class="btn btn-sm btn-danger">Hapus</a>
                             </tr>
                             <?php  $i++; ?>
                         <?php  endforeach; ?>
@@ -65,7 +65,7 @@
 
 <!-- Edit Departement Modal -->
 <?php foreach ($departement as $d ): ?>
-    <div class="modal fade" id="editDepartementModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="editDepartementModal" aria-hidden="true">
+    <div class="modal fade" id="editDepartementModal<?= $d['id_departement'];?>" tabindex="-1" role="dialog" aria-labelledby="editDepartementModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,7 +77,7 @@
                 <form action="<?= site_url('departement/edit'); ?>" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="hidden" name="id" value="<?= $d['id']?>">
+                            <input type="hidden" name="id_departement" value="<?= $d['id_departement']?>">
                             <input type="text" class="form-control" id="n_departement" name="n_departement" placeholder="Nama Departement" value="<?= $d['n_departement']?>" required>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
 <!-- Hapus Departement Modal -->
 <?php foreach ($departement as $d ): ?>
-    <div class="modal fade" id="hapusDepartementModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusDepartementModal" aria-hidden="true">
+    <div class="modal fade" id="hapusDepartementModal<?= $d['id_departement'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusDepartementModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +106,7 @@
                 <div class="modal-body">Pilih "Delete" untuk menghapus data ini.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-danger" href="<?= site_url('departement/delete/'.$d['id']); ?>">Delete</a>
+                    <a class="btn btn-danger" href="<?= site_url('departement/delete/'.$d['id_departement']); ?>">Delete</a>
                 </div>
 
             </div>

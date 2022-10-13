@@ -18,7 +18,7 @@ class Profile extends CI_Controller {
 	public function IndexProfile($nik)
 	{
 		$data['title'] = 'Profile';
-		$data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+		$data['user'] = $this->db->get_where('t_users', ['nik' => $this->session->userdata('nik')])->row_array();
 		$data['record'] = $this->Rom_model->queryEditUserProfile($nik);
 
 
@@ -95,7 +95,7 @@ class Profile extends CI_Controller {
 			// var_dump($where);
 			// var_dump($edit_user);
 			// var_dump($edit_profile);
-			$this->Rom_model->update_data("user", $edit_user, $where);
+			$this->Rom_model->update_data("t_users", $edit_user, $where);
 			$this->Rom_model->update_data("t_profile", $edit_profile, $where2);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
 			redirect('Profile/indexProfile/'.$nik);
@@ -109,9 +109,10 @@ class Profile extends CI_Controller {
 	}
 
 	public function editImage(){
-		$config['upload_path']="./assets/img/profile";
-		$config['allowed_types']='gif|jpg|png';
-		$config['encrypt_name'] = TRUE;
+		$config['upload_path']		=	"./assets/img/profile";
+		$config['allowed_types']	=	'gif|png|jpg|jpeg';
+		// $config['encrypt_name'] = TRUE;
+		$config['file_name']		=	 'Profile-'.date('dmy').'-'.substr(md5(rand()), 0,10);
 
 		$this->load->library('upload',$config);
 		if($this->upload->do_upload("file")){
@@ -131,12 +132,14 @@ class Profile extends CI_Controller {
 
 			$image= $data['file_name']; 
 
-			$data2 = array(
+			$profile = array(
 				'img_profile' => $image
 			);  
+
 			$id = htmlspecialchars($this->input->post('nik'));
 			$where = array('nik_profile'=>$id); 
-			$this->Rom_model->update_data("t_profile", $data2, $where);
+			$where2 = array('nike'=>$id); 
+			$this->Rom_model->update_data("t_profile", $profile, $where);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Image Profile Berhasil Di Ubah</div>');
 			echo json_decode($result);
 		}
@@ -154,9 +157,9 @@ class Profile extends CI_Controller {
         
         if( $this->form_validation->run() == FALSE ){
             $where = array ('nik' => $this->session->userdata('nik')); 
-            $data['password']= $this->Rom_model->find_data($where, 'user')->row_array();
+            $data['password']= $this->Rom_model->find_data($where, 't_users')->row_array();
 
-            $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+            $data['user'] = $this->db->get_where('t_users', ['nik' => $this->session->userdata('nik')])->row_array();
             $data['record'] = $this->Rom_model->queryEditUserProfile($nik);
             
             // View
@@ -176,7 +179,7 @@ class Profile extends CI_Controller {
             );
 
             $where = array ('nik' => $nik);
-            $this->Rom_model->update_data('user', $data, $where);
+            $this->Rom_model->update_data('t_users', $data, $where);
             echo $this->session->set_flashdata('msg','<div class="alert alert-success text-center" role="alert">Password Berhasil Di Ubah</div>');
             redirect('Profile/indexProfile/'.$nik);
 

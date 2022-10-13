@@ -31,48 +31,38 @@ class Jabatan extends CI_Controller {
 		$this->load->view('template/dashboard/footer', $data);
 	}
 
-	function tambah()
+	function tambah() 
     {
-        $this->form_validation->set_rules('n_jabatan', 'Nama jabatan');
-        $this->form_validation->set_message('required', '%s masih kosong', 'silahkan isi terlebi dahulu');
-        $this->form_validation->set_message('min_length', '%s minimal 3 karakter');
+        if(isset($_POST['submit'])){
+			$n_jabatan      	=  htmlspecialchars($this->input->post('n_jabatan',true));
 
-        $this->form_validation->set_error_delimiters('<span class="help-block"></span>');
-
-        if($this->form_validation->run() == FALSE)
-        {
-             // $this->template->load('template','bagian/form_input', $data);
-        }
-        else
-        {
-            $tambah_jabatan = array (
-                'n_jabatan' => htmlspecialchars($this->input->post('n_jabatan'))
-            );
-
-            $this->Rom_model->insert_data($tambah_jabatan, 't_jabatan');
-            echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Simpan</div>');
-            redirect('jabatan');
-        }
+			$tambah_jabatan =  array(
+				'n_jabatan' => $n_jabatan
+			);
+			$this->Rom_model->insert_data($tambah_jabatan, 't_jabatan');
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Input</div>');
+			redirect('jabatan/positionIndex');
+		}
     }
 
 	function edit() 
 	{
 		if(isset($_POST['submit'])){
-			$id       =  htmlspecialchars($this->input->post('id',true));
+			$id       =  htmlspecialchars($this->input->post('id_jabatan',true));
 			$n_jabatan      =  htmlspecialchars($this->input->post('n_jabatan',true));
 
 			$edit_jabatan =  array(
 				'n_jabatan' => $n_jabatan
 			);
-			$where = array ('id' => $id);
+			$where = array ('id_jabatan' => $id);
 			$this->Rom_model->update_data("t_jabatan", $edit_jabatan, $where);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
-			redirect('jabatan');
+			redirect('jabatan/positionIndex');
 		}
 		else{
 
 			$id=  $this->uri->segment(3);
-			$param  =   array('id'=>$id);            
+			$param  =   array('id_jabatan'=>$id);            
 			$data['jabatan']= $this->Rom_model->find_data($param, "t_jabatan")->row_array();
 		}
 	}
@@ -80,10 +70,10 @@ class Jabatan extends CI_Controller {
 	function delete()
 	{
 		$id=  $this->uri->segment(3);
-		$this->db->where('id', $id);
+		$this->db->where('id_jabatan', $id);
 		$this->db->delete('t_jabatan');
 
 		echo $this->session->set_flashdata('message','<div class="alert alert-danger text-center" role="alert">Data Berhasil Di Hapus</div>');
-		redirect('jabatan');
+		redirect('jabatan/positionIndex');
 	}
 }

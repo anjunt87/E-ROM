@@ -39,8 +39,8 @@
                         <td><?= $d['n_divisi']; ?></td>
                         <td><?= $d['n_departement'];?></td>
                         <td>
-                            <a href="#" data-toggle="modal" data-target="#editDivisiModal<?= $d['id'];?>" class="btn btn-sm btn-primary">Edit</a>
-                            <a href="#" data-toggle="modal" data-target="#hapusDivisiModal<?= $d['id'];?>" class="btn btn-sm btn-danger">Hapus</a>
+                            <a href="#" data-toggle="modal" data-target="#editDivisiModal<?= $d['id_divisi'];?>" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="#" data-toggle="modal" data-target="#hapusDivisiModal<?= $d['id_divisi'];?>" class="btn btn-sm btn-danger">Hapus</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
@@ -64,14 +64,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= site_url('division/tambah'); ?>" method="post">
+            <form action="<?= site_url('divisi/tambah'); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nama Departement</label>
                         <select  type="option" class="form-control"  name="id_departement" required>
                             <option value="">-- Pilih Departement --</option>
                             <?php foreach($departement as $dp):?>
-                                <option name="id_departement" value="<?= $dp['id'];?>"><?= $dp['n_departement'];?></option>
+                                <option name="id_departement" value="<?= $dp['id_departement'];?>"><?= $dp['n_departement'];?></option>
                             <?php endforeach;?>
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -92,7 +92,7 @@
 
 <!-- Edit Divisi Modal -->
 <?php foreach ($divisi as $d ): ?>
-    <div class="modal fade" id="editDivisiModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="editDivisiModal" aria-hidden="true">
+    <div class="modal fade" id="editDivisiModal<?= $d['id_divisi'];?>" tabindex="-1" role="dialog" aria-labelledby="editDivisiModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -101,15 +101,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= site_url('division/edit'); ?>" method="post">
+                <form action="<?= site_url('divisi/edit'); ?>" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                             <input type="hidden" name="id" value="<?= $d['id']?>">
+                             <input type="hidden" name="id_divisi" value="<?= $d['id_divisi']?>">
                             <label>Nama Departement</label>
                             <select  type="option" class="form-control"  name="id_departement">
-                                <option name="id_departement" value="<?= $d['id_departement'];?>"><?= $d['n_departement'];?></option>
+                                <option name="id_departement" value="<?= $d['departement_id'];?>"><?= $d['n_departement'];?></option>
                                 <?php foreach($departement as $dp):?>
-                                    <option value="<?= $dp['id'];?>"><?= $dp['n_departement'];?></option>
+                                    <option value="<?= $dp['id_departement'];?>"><?= $dp['n_departement'];?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -131,7 +131,7 @@
 
 <!-- Hapus Divisi Modal -->
 <?php foreach ($divisi as $d ): ?>
-    <div class="modal fade" id="hapusDivisiModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusDivisiModal" aria-hidden="true">
+    <div class="modal fade" id="hapusDivisiModal<?= $d['id_divisi'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusDivisiModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -143,7 +143,7 @@
                 <div class="modal-body">Pilih "Delete" untuk menghapus data ini.</div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-danger" href="<?= site_url('division/delete/'.$d['id']); ?>">Delete</a>
+                    <a class="btn btn-danger" href="<?= site_url('divisi/delete/'.$d['id_divisi']); ?>">Delete</a>
                 </div>
 
             </div>

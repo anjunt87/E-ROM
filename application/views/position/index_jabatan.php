@@ -23,8 +23,8 @@
                             <td scope="row"><?= $i; ?></td>
                             <td><?= $d['n_jabatan']; ?></td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editjabatanModal<?= $d['id'];?>" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="#" data-toggle="modal" data-target="#hapusjabatanModal<?= $d['id'];?>" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="#" data-toggle="modal" data-target="#editjabatanModal<?= $d['id_jabatan'];?>" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="#" data-toggle="modal" data-target="#hapusjabatanModal<?= $d['id_jabatan'];?>" class="btn btn-sm btn-danger">Hapus</a>
                             </tr>
                             <?php  $i++; ?>
                         <?php  endforeach; ?>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Tambah</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </form>
@@ -65,7 +65,7 @@
 
 <!-- Edit jabatan Modal -->
 <?php foreach ($jabatan as $d ): ?>
-    <div class="modal fade" id="editjabatanModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="editjabatanModal" aria-hidden="true">
+    <div class="modal fade" id="editjabatanModal<?= $d['id_jabatan'];?>" tabindex="-1" role="dialog" aria-labelledby="editjabatanModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -77,7 +77,7 @@
                 <form action="<?= site_url('jabatan/edit'); ?>" method="post">
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="hidden" name="id" value="<?= $d['id']?>">
+                            <input type="hidden" name="id_jabatan" value="<?= $d['id_jabatan']?>">
                             <input type="text" class="form-control" id="n_jabatan" name="n_jabatan" placeholder="Nama jabatan" value="<?= $d['n_jabatan']?>" required>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
 
 <!-- Hapus jabatan Modal -->
 <?php foreach ($jabatan as $d ): ?>
-    <div class="modal fade" id="hapusjabatanModal<?= $d['id'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusjabatanModal" aria-hidden="true">
+    <div class="modal fade" id="hapusjabatanModal<?= $d['id_jabatan'];?>" tabindex="-1" role="dialog" aria-labelledby="hapusjabatanModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +106,7 @@
                 <div class="modal-body">Pilih "Delete" untuk menghapus data ini.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-danger" href="<?= site_url('jabatan/delete/'.$d['id']); ?>">Delete</a>
+                    <a class="btn btn-danger" href="<?= site_url('jabatan/delete/'.$d['id_jabatan']); ?>">Delete</a>
                 </div>
 
             </div>

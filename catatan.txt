@@ -10,12 +10,12 @@ button Tolak OK
 button approve OK
 Edit Password Profile OK
 Edit Profile Gambar OK
-QRcode generator User
+QRcode generator User NO
 Input Request Gambar
 Edit Request Gambar
-hitung tanggal
+hitung tanggal OK
 dashboard semua role 
-kadep kadip kebalik
+kadep kadip kebalik OK
 
 
 Bug

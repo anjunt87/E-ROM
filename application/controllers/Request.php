@@ -29,6 +29,9 @@ class Request extends CI_Controller {
 		$request->id_divisi = $this->input->post('id_divisi');		
 		$request->id_jabatan = $this->input->post('id_jabatan');
 		$request->id_atasan = $this->input->post('id_atasan');
+		$request->id_korwil = $this->input->post('id_korwil');		
+		$request->id_cabang = $this->input->post('id_cabang');
+		$request->id_unit = $this->input->post('id_unit');
 		$request->k_healt = null;
 		$request->rs_dokter = null;
 		$request->n_pasien = null;
@@ -163,7 +166,7 @@ class Request extends CI_Controller {
 	// // Permintaan Request dari Karyawan ke Departement Divisi dan OHC
 	public function historyRequestApp()
 	{
-		$data['title'] = 'Dashboard';
+		$data['title'] = 'Request History Users';
 		$data['user'] =  $this->Rom_model->dataAccount1();
 		$data['record'] =  $this->Rom_model->dataAccount2();
 		// $data['record'] = $this->Request_model->tampildata();
@@ -216,12 +219,6 @@ class Request extends CI_Controller {
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
 			redirect('request/requestUsers');
 		}
-		else{
-
-			$id =  htmlspecialchars($this->input->post('id_request',true));
-			$param  =   array('id'=>$id);            
-			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
-		}
 	}
 
 	public function requestTolakDepartement(){
@@ -232,19 +229,15 @@ class Request extends CI_Controller {
 			$edit_request =  array(
 				'a_departement' => '2',
 				't_approve' => '1',
-				't_ket' => $t_ket
+				't_ket' => $t_ket,
+				'w_departement' => date('Y-m-d')
 			);
 			$where = array ('id_request' => $id_request);
 			$this->Rom_model->update_data("t_request", $edit_request, $where);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
 			redirect('request/requestUsers');
 		}
-		else{
-
-			$id =  htmlspecialchars($this->input->post('id_request',true));
-			$param  =   array('id'=>$id);            
-			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
-		}
+		
 	}
 
 	public function requestTolakOhc(){
@@ -261,12 +254,6 @@ class Request extends CI_Controller {
 			$this->Rom_model->update_data("t_request", $edit_request, $where);
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
 			redirect('request/requestUsers');
-		}
-		else{
-
-			$id =  htmlspecialchars($this->input->post('id_request',true));
-			$param  =   array('id'=>$id);            
-			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
 		}
 	}
 
@@ -285,11 +272,67 @@ class Request extends CI_Controller {
 			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Data Berhasil Di Ubah</div>');
 			redirect('request/requestUsers');
 		}
-		else{
+	}
 
-			$id =  htmlspecialchars($this->input->post('id_request',true));
-			$param  =   array('id'=>$id);            
-			$data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
-		}
+	public function requestKadaluarsaDepartement($id){
+			$edit_request =  array(
+				'a_departement' => '2',
+				't_approve' => '1',
+            	'w_departement' => date('Y-m-d'),
+				't_ket' => "Request Telah Kadaluarsa"
+			);
+			$where = array ('id_request' => $id);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			redirect('request/detailRequestUser/'.$id);
+	}
+
+	public function requestKadaluarsaDivisi($id){
+			$edit_request =  array(
+				'a_divisi' => '2',
+				't_approve' => '1',
+				'w_divisi' => date('Y-m-d'),
+				't_ket' => "Request Telah Kadaluarsa"
+			);
+			$where = array ('id_request' => $id);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			redirect('request/detailRequestUser/'.$id);
+	}
+
+	public function requestKadaluarsaOhc($id){
+			$edit_request =  array(
+				'a_ohc' => '2',
+				't_approve' => '1',
+				'w_ohc' => date('Y-m-d'),
+				't_ket' => "Request Telah Kadaluarsa"
+			);
+			$where = array ('id_request' => $id);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			redirect('request/detailRequestUser/'.$id);
+	}
+
+	public function requestKadaluarsaKeuangan($id){
+			$edit_request =  array(
+				'a_keuangan' => '2',
+				't_approve' => '1',
+				'w_keuangan' => date('Y-m-d'),
+				't_ket' => "Request Telah Kadaluarsa"
+			);
+			$where = array ('id_request' => $id);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			redirect('request/detailRequestUser/'.$id);
+	}
+
+	public function requestTolakKuitansi($id){
+			$edit_request =  array(
+				't_approve' => '1',
+				'w_departement' => date('Y-m-d'),
+				'w_divisi' => date('Y-m-d'),
+				'w_ohc' => date('Y-m-d'),
+				'w_keuangan' => date('Y-m-d'),
+				't_ket' => "Tanggal Kuitansi telah melebihi batas waktu pengajuan, batas pengajuan hanya berlaku selama 3 bulan dari tanggal kuitansi ke tanggal pengajuan."
+			);
+			$where = array ('id_request' => $id);
+			$this->Rom_model->update_data("t_request", $edit_request, $where);
+			redirect('request/detailRequestUser/'.$id);
 	}
 }

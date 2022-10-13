@@ -33,65 +33,40 @@ class Rom_Model extends CI_Model {
     {
         $this->db->where($where);
         $this->db->delete($table, $where);
-    }
-     // End Operasi Dasar CRUD
-
-    // function getUser($id)
-    // {
-    //     $param  =   array('id'=>$id);
-    //     return $this->db->get_where('user',$param);
-    // }
-
-    // function get_divisi($id_departement){
-    //     $query = $this->db->get_where('t_divisi', array('id_departement' => $id_departement));
-    //     return $query;
-    // }
-
-    // function tampildata()
-    // {
-    //     return $this->db->get('user');
-    // }
-
-    // public function  deleteuser($id)
-    // {
-    //     $this->db->where('nik',$id);
-    //     // $this->db->delete('t_profile');
-    //     $this->db->delete('user');
-    // }
-
-    // public function CariallUser()
-    // {
-    //     // database untuk mencari data sesuai keyword yang di cari
-    //     $keyword = $this->input->post('keyword', true);
-
-    //     $this->db->like('name', $keyword);
-    //     return $this->db->get('user')->result_array();
-    // }
-
-
-    // public function get_nama($title)
-    // {
-    //   $this->db->like('name', $title, 'BOTH');
-    //   $this->db->order_by('name', 'asc');
-    //   $this->db->limit(10);
-    //   return $this->db->get('tbl_guru')->result();
-    // }
+    }// End Operasi Dasar CRUD
 
     public function queryDivisiDepartement(){
         $query = "SELECT `t_divisi`.*, `t_departement`.`n_departement`
         FROM `t_divisi` JOIN `t_departement`
-        ON `t_divisi`.`id_departement` = `t_departement`.`id`
+        ON `t_divisi`.`departement_id` = `t_departement`.`id_departement`
         ";
         return $this->db->query($query)->result_array();
+    }
+
+    public function queryKorwilCabang(){
+        $query = "SELECT `t_cabang`.*, `t_korwil`.`n_korwil`
+        FROM `t_cabang` JOIN `t_korwil`
+        ON `t_cabang`.`korwil_id` = `t_korwil`.`id_korwil`
+        ";
+        return $this->db->query($query)->result_array();
+    }
+
+    public function queryKorwilCabangUnit(){
+        $this->db->select('*');    
+        $this->db->from('t_unit_cabang');
+        $this->db->join('t_cabang', 't_unit_cabang.cabang_id = t_cabang.id_cabang');
+        $this->db->join('t_korwil', 't_unit_cabang.korwil_id = t_korwil.id_korwil');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function queryGetUserProfile(){
         $this->db->select('*');    
         $this->db->from('t_profile');
-        $this->db->join('user', 't_profile.nik_profile = user.nik');
-        $this->db->join('t_departement', 't_profile.id_departement = t_departement.id');
-        $this->db->join('t_divisi', 't_profile.id_divisi = t_divisi.id');
-        $this->db->join('t_jabatan', 't_profile.id_jabatan = t_jabatan.id');
+        $this->db->join('t_users', 't_profile.nik_profile = t_users.nik');
+        $this->db->join('t_departement', 't_profile.departement_id = t_departement.id_departement');
+        $this->db->join('t_divisi', 't_profile.divisi_id = t_divisi.id_divisi');
+        $this->db->join('t_jabatan', 't_profile.jabatan_id = t_jabatan.id_jabatan');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -99,13 +74,16 @@ class Rom_Model extends CI_Model {
     public function queryEditUserProfile($nik){
         $id =  $this->session->userdata('nik');
         $this->db->select('*');
-        $this->db->from('user');
-        $this->db->join('t_profile','user.nik = t_profile.nik_profile', $nik);
-        $this->db->join('user_role', 'user.role_id = user_role.id');
-        $this->db->join('t_departement', 't_profile.id_departement = t_departement.id');
-        $this->db->join('t_divisi', 't_profile.id_divisi = t_divisi.id');
-        $this->db->join('t_jabatan', 't_profile.id_jabatan = t_jabatan.id');
-        $this->db->where('user.nik' , $nik);
+        $this->db->from('t_users');
+        $this->db->join('t_profile','t_users.nik = t_profile.nik_profile', $nik);
+        $this->db->join('user_role', 't_users.role_id = user_role.id');
+        $this->db->join('t_departement', 't_profile.departement_id = t_departement.id_departement');
+        $this->db->join('t_divisi', 't_profile.divisi_id = t_divisi.id_divisi');
+        $this->db->join('t_jabatan', 't_profile.jabatan_id = t_jabatan.id_jabatan');
+        $this->db->join('t_korwil', 't_profile.korwil_id = t_korwil.id_korwil');
+        $this->db->join('t_cabang', 't_profile.cabang_id = t_cabang.id_cabang');
+        $this->db->join('t_unit_cabang', 't_profile.cabang_unit_id = t_unit_cabang.id_unit');
+        $this->db->where('t_users.nik' , $nik);
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -115,10 +93,10 @@ class Rom_Model extends CI_Model {
         // $param  =   array('id'=>$id);
         $this->db->select('*');
         $this->db->from('t_request');
-        $this->db->join('t_profile','t_request.id_atasan = t_profile.id');
-        $this->db->join('t_departement', 't_request.id_departement = t_departement.id');
-        $this->db->join('t_divisi', 't_request.id_divisi = t_divisi.id');
-        $this->db->join('t_jabatan', 't_request.id_jabatan = t_jabatan.id');
+        $this->db->join('t_profile','t_request.atasan_id = t_profile.id');
+        $this->db->join('t_departement', 't_request.departement_id = t_departement.id_departement');
+        $this->db->join('t_divisi', 't_request.divisi_id = t_divisi.id_divisi');
+        $this->db->join('t_jabatan', 't_request.jabatan_id = t_jabatan.id_jabatan');
         $this->db->where('t_request.id_request' , $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -127,13 +105,13 @@ class Rom_Model extends CI_Model {
 
     public function dataAccount1()
     {
-        $data = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+        $data = $this->db->get_where('t_users', ['nik' => $this->session->userdata('nik')])->row_array();
         return $data;
     }
 
     public function dataAccount2()
     {
-        $data = $this->db->get_where('user', ['nik' => 
+        $data = $this->db->get_where('t_users', ['nik' => 
             $this->session->userdata('nik')])->row_array();
         $where = array ('nik_profile' => $this->session->userdata('nik'));
         $data = $this->Rom_model->find_data($where, 't_profile')->row_array();

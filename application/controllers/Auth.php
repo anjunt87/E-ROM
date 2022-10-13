@@ -24,7 +24,7 @@ class Auth extends CI_Controller {
   public function login()
   {
     if ($this->session->userdata('nik')) {
-        redirect('users');
+        redirect('auth/login');
     }
         $this->form_validation->set_rules('nik', 'nik', 'trim|required');//|valid_nik
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -45,7 +45,7 @@ class Auth extends CI_Controller {
         $nik = $this->input->post('nik');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['nik' => $nik])->row_array();
+        $user = $this->db->get_where('t_users', ['nik' => $nik])->row_array();
 
 
         if($user) {
@@ -72,7 +72,7 @@ class Auth extends CI_Controller {
                     }elseif($user ['role_id'] == 3) {
                         redirect('departement');
                     }elseif($user ['role_id'] == 4) {
-                        redirect('division');
+                        redirect('divisi');
                     }elseif($user ['role_id'] == 5) {
                         redirect('keuangan');
                     }else{
@@ -126,7 +126,7 @@ class Auth extends CI_Controller {
                 'date_created' => time()
             ];
 
-            $this->db->insert('user', $data);
+            $this->db->insert('t_users', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
               Selamat Anda sudah terdaftar
               </div>');
@@ -142,7 +142,7 @@ class Auth extends CI_Controller {
         $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">
             Terimakasih sudah berkunjung, <br> berhasil Logout!
             </div>');
-        redirect('auth');
+        redirect('auth/loginIndex');
     }
 
     public function blocked()
