@@ -15,10 +15,10 @@
                             Jumlah Request</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php
-                                $this->db->select('*')->from('t_request')->like('a_departement', 0)->like('t_approve', '0');
+                                $this->db->select('*')->from('t_request');
                                 echo $this->db->count_all_results();
                                 ?>
-                                <span>Pending Request</span>
+                                <span> Request</span>
                             </div>
                         </div>
                         <div class="col-auto">

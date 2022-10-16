@@ -10,7 +10,6 @@
         <div class="card-body">
             <div class="table-responsive">
                 <?php echo form_open_multipart('request/process')?>
-                <!-- <form role="form"  method="post" action="<?//= site_url('request/process')?>"> -->
                     <!-- cardbody input A dan B -->
                     <div class="card-body">
                         <div class="row">
@@ -59,12 +58,12 @@
                                     <label for="ket">PISA</label>
                                     <input type="text" class="form-control" name="pisa" placeholder="PISA" value="<?=$row->pisa?>" required>
                                 </div>
-                              </div>
-                          </div>
-                      </div><!-- /.card-body -->
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
 
-                      <!-- Card body input C dan D -->
-                      <div class="card-body">
+                    <!-- Card body input C dan D -->
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="">C. Diagnosa Sakit : </label>
@@ -122,44 +121,52 @@
                                 <input type="hidden" name="id_unit" value="<?= $record['cabang_unit_id'];?>">
                                 <input type="hidden" name="id_atasan" value="<?= $user['atasan_id'];?>">
                                 
-
-                                <!-- Upload 1 -->
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Bukti Kuitansi / Resep</label>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01" >
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div> 
-
-                                <!-- Upload 2 -->
+                                <!-- Upload -->
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Bukti Kuitansi / Resep / dll</label>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Upload</span>
+                                <!-- HIDDEN DYNAMIC ELEMENT TO CLONE -->
+                                <!-- you can replace it with any other elements -->
+                                <div class="form-group dynamic-element" style="display:none">
+                                  <div class="row">
+                                      <div class=""></div>
+
+                                      <!-- Replace these fields -->
+                                      <div class="col-md-4 mt-4">
+                                        <input type="file" id="image" name="image[]" class="form-control">
                                     </div>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
+                                    <!-- End of fields-->
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger btn-del" type="button">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
-                        </div><!-- /.card-body -->
-                        <div class="form-group mt-4">
-                            <button type="reset" name="reset" class="btn btn-danger float-right ml-2">Reset</button>
-                            <button type="submit" name="<?= $page?>" class="btn btn-success float-right">Simpan</button>
-                        </div>
-                    <?php echo form_close()?>
+                            <!-- END OF HIDDEN ELEMENT -->
+
+                            <div class="dynamic-stuff">
+                                <!-- Dynamic element will be cloned here -->
+                                <!-- You can call clone function once if you want it to show it a first element-->
+                            </div>
+
+                            <!-- Button -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="">
+                                      <p class="add-one">+ Tambah Form Upload</p>
+                                  </div>
+                              </div>
+                          </div><!-- End Upload -->
+                      </div>
+                  </div><!-- /.card-body -->
+                  <div class="form-group mt-4">
+                    <button type="reset" name="reset" class="btn btn-danger float-right ml-2">Reset</button>
+                    <button type="submit" name="<?= $page?>" class="btn btn-success float-right">Simpan</button>
                 </div>
+                <?php echo form_close()?>
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
- 
+</div>
+<!-- /.container-fluid -->

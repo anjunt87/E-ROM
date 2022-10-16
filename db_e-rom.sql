@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 13 Okt 2022 pada 09.56
+-- Generation Time: 02 Okt 2022 pada 15.37
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -23,51 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_cabang`
---
-
-CREATE TABLE IF NOT EXISTS `t_cabang` (
-  `id_cabang` int(11) NOT NULL AUTO_INCREMENT,
-  `korwil_id` int(11) NOT NULL,
-  `n_cabang` varchar(128) NOT NULL,
-  `alamat` varchar(128) NOT NULL,
-  `telp_cabang` varchar(13) NOT NULL,
-  `hp_cabang` varchar(13) NOT NULL,
-  PRIMARY KEY (`id_cabang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
---
--- Dumping data untuk tabel `t_cabang`
---
-
-INSERT INTO `t_cabang` (`id_cabang`, `korwil_id`, `n_cabang`, `alamat`, `telp_cabang`, `hp_cabang`) VALUES
-(1, 9, 'Pusat Wilayah 8 Jakarta I', 'JL SENEN RAYA NO.36 Senen  Senen Jakarta Pusat  DKI Jakarta', '0213505151', ''),
-(2, 9, 'CP PETAMBURAN', 'JALAN KS TUBUN RAYA NO.19 Petamburan Tanah Abang Jakarta Pusat DKI Jakarta', '02153676970', '081110688555'),
-(3, 9, 'CP SALEMBA', 'JALAN SALEMBA RAYA NO 2 Kenari Senen Jakarta Pusat DKI Jakarta', '02131930168', '081110689222'),
-(4, 9, 'CP PASAR SENEN', 'JALAN SENEN RAYA NO.36 Senen Senen Jakarta Pusat DKI Jakarta', '0213851880', '081119513555'),
-(5, 9, 'CP PASAR BARU', 'JALAN KH SAMANHUDI NO 133 Pasar Baru Sawah Besar Jakarta Pusat DKI Jakarta', '0213447305', '081110689555'),
-(6, 9, 'CP ITC CEMPAKA MAS', 'ITC CEMPAKA MAS LT. LG NO.102-103 Sumur Batu Kemayoran Jakarta Pusat DKI Jakarta', '02142800714', '081119305333'),
-(7, 9, 'CP KEMAYORAN', 'JALAN SERDANG RAYA NO 8 SERDANG Serdang Kemayoran Jakarta Pusat DKI Jakarta', '0214243217', '081110691222'),
-(8, 9, 'CP CEMPAKA PUTIH', 'JALAN CEMPAKA PUTIH TENGAH II BLOK B.5 Cempaka Putih Timur Cempaka Putih Jakarta Pusat DKI Jakarta', '02121479607', '081110694333'),
-(9, 9, 'CP SUDIRMAN', 'JALAN BENDUNGAN HILIR RAYA NO. 86 Bendungan Hilir Tanah Abang Jakarta Pusat DKI Jakarta', '02157905744', '081110698333');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `t_departement`
 --
 
 CREATE TABLE IF NOT EXISTS `t_departement` (
-  `id_departement` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `n_departement` varchar(128) NOT NULL,
-  PRIMARY KEY (`id_departement`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data untuk tabel `t_departement`
 --
 
-INSERT INTO `t_departement` (`id_departement`, `n_departement`) VALUES
+INSERT INTO `t_departement` (`id`, `n_departement`) VALUES
 (1, 'Pemasaran & Pengembangan Produk'),
 (2, 'Jaringan Operasi & Penjualan'),
 (3, 'Keuangan & Menejemen Risiko'),
@@ -85,17 +54,17 @@ INSERT INTO `t_departement` (`id_departement`, `n_departement`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `t_divisi` (
-  `id_divisi` int(11) NOT NULL AUTO_INCREMENT,
-  `departement_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_departement` int(11) NOT NULL,
   `n_divisi` varchar(128) NOT NULL,
-  PRIMARY KEY (`id_divisi`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data untuk tabel `t_divisi`
 --
 
-INSERT INTO `t_divisi` (`id_divisi`, `departement_id`, `n_divisi`) VALUES
+INSERT INTO `t_divisi` (`id`, `id_departement`, `n_divisi`) VALUES
 (1, 1, 'Kantor Wilayah'),
 (2, 1, 'Produk Gadai'),
 (3, 1, 'Produk Emas'),
@@ -138,83 +107,23 @@ INSERT INTO `t_divisi` (`id_divisi`, `departement_id`, `n_divisi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_image`
---
-
-CREATE TABLE IF NOT EXISTS `t_image` (
-  `id_mage` int(12) NOT NULL AUTO_INCREMENT,
-  `request_id` int(12) NOT NULL,
-  `n_image` varchar(255) NOT NULL,
-  `ket_image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_mage`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `t_jabatan`
 --
 
 CREATE TABLE IF NOT EXISTS `t_jabatan` (
-  `id_jabatan` int(12) NOT NULL AUTO_INCREMENT,
+  `id` int(12) NOT NULL AUTO_INCREMENT,
   `n_jabatan` varchar(128) NOT NULL,
-  PRIMARY KEY (`id_jabatan`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data untuk tabel `t_jabatan`
 --
 
-INSERT INTO `t_jabatan` (`id_jabatan`, `n_jabatan`) VALUES
+INSERT INTO `t_jabatan` (`id`, `n_jabatan`) VALUES
 (1, 'Admin'),
 (2, 'Kepala'),
 (3, 'Staff');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `t_korwil`
---
-
-CREATE TABLE IF NOT EXISTS `t_korwil` (
-  `id_korwil` int(11) NOT NULL AUTO_INCREMENT,
-  `n_korwil` varchar(128) NOT NULL,
-  `n_korwil2` varchar(128) NOT NULL,
-  `alamat` varchar(128) NOT NULL,
-  `telp_korwil` varchar(13) NOT NULL,
-  `hp_korwil` varchar(13) NOT NULL,
-  PRIMARY KEY (`id_korwil`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
-
---
--- Dumping data untuk tabel `t_korwil`
---
-
-INSERT INTO `t_korwil` (`id_korwil`, `n_korwil`, `n_korwil2`, `alamat`, `telp_korwil`, `hp_korwil`) VALUES
-(1, 'Kantor Pusat (Konvensional)', 'N/A', 'JALAN KRAMAT RAYA NO 162 Kenari Senen Jakarta Pusat DKI Jakarta', '0213155550', ''),
-(2, 'Wilayah 1 Medan', 'Kantor Pusat (Konvensional)', 'JALAN PEGADAIAN NO 112 Polonia Medan Polonia Medan Sumatera Utara', '0614567247', ''),
-(3, 'Wilayah 2 Pekanbaru', 'Kantor Pusat (Konvensional)', 'The Gade Tower Pekanbaru Jl. Tuanku Tambusai No. 821 Simpang Empat Pekanbaru Kota Pekanbaru Riau', '076139195', ''),
-(4, 'Wilayah 3 Palembang', 'Kantor Pusat (Konvensional)', 'JL.MERDEKA NO.11 19 Ilir Bukit Kecil Palembang Sumatera Selatan', '0711361529', ''),
-(5, 'Wilayah 4 Balikpapan', 'Kantor Pusat (Konvensional)', 'JALAN JENDERAL SUDIRMAN STALKUDA Klandasan Ulu Balikpapan Selatan Balikpapan Kalimantan Timur', '0542762002', ''),
-(6, 'Wilayah 5 Manado', 'Kantor Pusat (Konvensional)', 'JL.DR.SOETOMO NO.199 Pinaesaan Wenang Manado Sulawesi Utara', '0431869262', ''),
-(7, 'Wilayah 6 Makasar', 'Kantor Pusat (Konvensional)', 'JALAN Maricaya  Makassar Makassar  Sulawesi Selatan', '0431869262', ''),
-(8, 'Wilayah 7 Denpasar', 'Kantor Pusat (Konvensional)', 'JL RAYA PUPUTAN NO 23.C Dangin Puri  Denpasar Timur Denpasar  Bali', '0361242011', ''),
-(9, 'Wilayah 8 Jakarta I', 'Kantor Pusat (Konvensional)', 'JL SENEN RAYA NO.36 Senen  Senen Jakarta Pusat  DKI Jakarta', '0213505151', ''),
-(10, 'Wilayah 9 Jakarta II', 'Kantor Pusat (Konvensional)', 'JALAN PASAR SENEN Senen  Senen Jakarta Pusat  DKI Jakarta', '0213450759', ''),
-(11, 'Wilayah 10 Bandung', 'Kantor Pusat (Konvensional)', 'JL.PUGKUR NO 125 Balong Gede  Regol Bandung  Jawa Barat', '0224262280', ''),
-(12, 'Wilayah 11 Semarang', 'Kantor Pusat (Konvensional)', 'JALAN KIMANGUN SARKORO NO. 7 Kranggan  Semarang Tengah Semarang  Jawa Tengah', '0248415896', ''),
-(13, 'Wilayah 12 Surabaya', 'Kantor Pusat (Konvensional)', 'JALAN DINOYOTANGSI Keputran  Tegalsari Surabaya  Jawa Timur', '0315675294', ''),
-(14, 'Wilayah 1 Syariah Medan', 'Kantor Pusat (Syariah)', 'JALAN PEGADAIAN NO 112 Polonia  Medan Polonia Medan  Sumatera Utara', '0614567247', ''),
-(15, 'Wilayah 2 Syariah Pekanbaru', 'Kantor Pusat (Syariah)', 'The Gade Tower Pekanbaru Jl. Tuanku Tambusai No. 821 Simpang Empat  Pekanbaru Kota Pekanbaru  Riau', '076126065', ''),
-(16, 'Wilayah 3 Syariah Palembang', 'Kantor Pusat (Syariah)', 'JL.MERDEKA NO.11 19 Ilir  Bukit Kecil Palembang  Sumatera Selatan', '0711361529', ''),
-(17, 'Wilayah 4 Syariah Balikpapan', 'Kantor Pusat (Syariah)', 'JALAN JENDERAL SUDIRMAN STALKUDA Klandasan Ulu  Balikpapan Selatan Balikpapan  Kalimantan Timur', '0542762002', ''),
-(18, 'Wilayah 5 Syariah Manado', 'Kantor Pusat (Syariah)', 'JL.DR.SOETOMO NO.199 Pinaesaan  Wenang Manado  Sulawesi Utara', '0411856613', ''),
-(19, 'Wilayah 6 Syariah Makasar', 'Kantor Pusat (Syariah)', 'JALAN Maricaya Baru  Makassar Makassar  Sulawesi Selatan', '0431869262', ''),
-(20, 'Wilayah 7 Syariah Denpasar', 'Kantor Pusat (Syariah)', 'JL RAYA PUPUTAN NO 23.C Dangin Puri  Denpasar Timur Denpasar  Bali', '0361242011', ''),
-(21, 'Wilayah 8 Syariah Jakarta I', 'Kantor Pusat (Syariah)', 'JL SENEN RAYA NO.36 Senen  Senen Jakarta Pusat  DKI Jakarta', '0213505151', ''),
-(22, 'Wilayah 9 Syariah Jakarta II', 'Kantor Pusat (Syariah)', 'JL. PASAR SENEN Senen  Senen Jakarta Pusat  DKI Jakarta', '0213450759', ''),
-(23, 'Wilayah 10 Syariah Bandung', 'Kantor Pusat (Syariah)', 'JL.PUGKUR NO 125 Balong Gede  Regol Bandung  Jawa Barat', '0224262280', ''),
-(24, 'Wilayah 12 Syariah Surabaya', 'Kantor Pusat (Syariah)', 'JALAN DINOYOTANGSI Keputran  Tegalsari Surabaya  Jawa Timur', '0315665214', '');
 
 -- --------------------------------------------------------
 
@@ -224,13 +133,10 @@ INSERT INTO `t_korwil` (`id_korwil`, `n_korwil`, `n_korwil2`, `alamat`, `telp_ko
 
 CREATE TABLE IF NOT EXISTS `t_profile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `departement_id` int(11) NOT NULL,
-  `divisi_id` int(11) NOT NULL,
-  `jabatan_id` int(11) NOT NULL,
-  `atasan_id` int(11) NOT NULL,
-  `korwil_id` int(12) DEFAULT NULL,
-  `cabang_id` int(12) DEFAULT NULL,
-  `cabang_unit_id` int(12) DEFAULT NULL,
+  `id_departement` int(11) NOT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `id_jabatan` int(11) NOT NULL,
+  `id_atasan` int(11) NOT NULL,
   `n_lengkap` varchar(128) NOT NULL,
   `nik_profile` varchar(128) NOT NULL,
   `alamat` varchar(128) NOT NULL,
@@ -239,65 +145,64 @@ CREATE TABLE IF NOT EXISTS `t_profile` (
   `qr_code_profile` varchar(128) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik` (`nik_profile`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data untuk tabel `t_profile`
 --
 
-INSERT INTO `t_profile` (`id`, `departement_id`, `divisi_id`, `jabatan_id`, `atasan_id`, `korwil_id`, `cabang_id`, `cabang_unit_id`, `n_lengkap`, `nik_profile`, `alamat`, `no_hp`, `img_profile`, `qr_code_profile`) VALUES
-(1, 1, 1, 1, 1, 9, 1, 1, 'ADMINISTATOR', '3215010807960001', '65446464164', '6666233', 'Profile-111022-4fd5a0fcb8.jpg', 'b.jpg'),
-(2, 6, 21, 1, 1, 9, 1, 1, 'Sutriso', '3215010807960002', 'aaaa', '1121', '', ''),
-(3, 1, 1, 2, 1, 9, 2, 2, 'Athena Blackwell', '3215010807960003', '', '', '', ''),
-(4, 3, 12, 1, 1, NULL, NULL, NULL, 'Aurelia Garza', '3215010807960051', '', '', '785db1990bd459aed51e4e0fcf4ffd0b.jpg', ''),
-(11, 2, 7, 2, 1, NULL, NULL, NULL, 'Christen Garner', '3215010807960004', '', '', '', ''),
-(12, 3, 11, 2, 1, NULL, NULL, NULL, 'Rahim Mcmahon', '3215010807960005', '', '', '', ''),
-(13, 4, 15, 2, 1, NULL, NULL, NULL, 'Ira Hardin', '3215010807960006', '', '', '', ''),
-(14, 5, 17, 2, 1, NULL, NULL, NULL, 'Jael Snider', '3215010807960007', '', '', '', ''),
-(15, 6, 21, 2, 1, NULL, NULL, NULL, 'Stephanie May', '3215010807960008', '', '', '', ''),
-(16, 7, 26, 2, 1, NULL, NULL, NULL, 'Shafira Allison', '3215010807960009', '', '', '', ''),
-(17, 8, 28, 2, 1, NULL, NULL, NULL, 'Ian Thornton', '3215010807960010', '', '', '', ''),
-(18, 9, 33, 2, 1, NULL, NULL, NULL, 'Isadora Tanner', '3215010807960011', '', '', '', ''),
-(19, 1, 1, 2, 3, 9, 2, 2, 'Mikayla Collier', '3215010807960012', '', '', '', ''),
-(20, 1, 2, 2, 3, NULL, NULL, NULL, 'Quemby Francis', '3215010807960013', '', '', '', ''),
-(21, 1, 3, 2, 3, NULL, NULL, NULL, 'Heidi Horne', '3215010807960014', '', '', '', ''),
-(22, 1, 4, 2, 3, NULL, NULL, NULL, 'Nayda Lopez', '3215010807960015', '', '', '', ''),
-(23, 1, 5, 2, 3, NULL, NULL, NULL, 'Lucius Cabrera', '3215010807960016', '', '', '', ''),
-(24, 1, 6, 2, 3, NULL, NULL, NULL, 'Cedric Hardin', '3215010807960017', '', '', '', ''),
-(25, 2, 7, 2, 11, NULL, NULL, NULL, 'Lacey Brennan', '3215010807960018', '', '', '', ''),
-(26, 2, 8, 2, 11, NULL, NULL, NULL, 'Alice Carney', '3215010807960019', '', '', '', ''),
-(27, 2, 9, 2, 11, NULL, NULL, NULL, 'Kenneth Chavez', '3215010807960020', '', '', '', ''),
-(28, 2, 10, 2, 11, NULL, NULL, NULL, 'Ina Macias', '3215010807960021', '', '', '', ''),
-(29, 3, 11, 2, 12, NULL, NULL, NULL, 'Keaton Wilkerson', '3215010807960022', '', '', '', ''),
-(30, 3, 12, 2, 12, NULL, NULL, NULL, 'Amos Wells', '3215010807960023', '', '', '', ''),
-(31, 3, 13, 2, 12, NULL, NULL, NULL, 'Connor Allison', '3215010807960024', '', '', '', ''),
-(32, 3, 14, 2, 12, NULL, NULL, NULL, 'Gregory Hays', '3215010807960025', '', '', '', ''),
-(33, 4, 15, 2, 13, NULL, NULL, NULL, 'Omar Fuentes', '3215010807960026', '', '', '', ''),
-(34, 4, 16, 2, 13, NULL, NULL, NULL, 'Linus Rodgers', '3215010807960027', '', '', '', ''),
-(35, 5, 17, 2, 14, NULL, NULL, NULL, 'Shafira Cooper', '3215010807960029', '', '', '', ''),
-(36, 5, 18, 2, 14, NULL, NULL, NULL, 'Sybil Gomez', '3215010807960030', '', '', '', ''),
-(37, 5, 19, 2, 14, NULL, NULL, NULL, 'Noah Padilla', '3215010807960031', '', '', '', ''),
-(38, 5, 20, 2, 14, NULL, NULL, NULL, 'Magee Meadows', '3215010807960032', '', '', '', ''),
-(39, 6, 21, 2, 15, NULL, NULL, NULL, 'Kirk Pollard', '3215010807960033', '', '', '', ''),
-(40, 6, 22, 2, 15, NULL, NULL, NULL, 'Kiona Mathis', '3215010807960034', '', '', '', ''),
-(41, 6, 23, 2, 15, NULL, NULL, NULL, 'Benedict Nguyen', '3215010807960035', '', '', '', ''),
-(42, 6, 24, 2, 15, NULL, NULL, NULL, 'Mallory Holmes', '3215010807960036', '', '', '', ''),
-(43, 6, 25, 2, 15, NULL, NULL, NULL, 'Reuben Bell', '3215010807960037', '', '', '', ''),
-(44, 7, 26, 2, 16, NULL, NULL, NULL, 'Lacey Hale', '3215010807960038', '', '', '', ''),
-(45, 7, 27, 2, 16, NULL, NULL, NULL, 'Emery Reilly', '3215010807960039', '', '', '', ''),
-(46, 8, 28, 2, 17, NULL, NULL, NULL, 'Magee Neal', '3215010807960040', '', '', '', ''),
-(47, 8, 29, 2, 17, NULL, NULL, NULL, 'Marvin Walls', '3215010807960041', '', '', '', ''),
-(48, 8, 30, 2, 17, NULL, NULL, NULL, 'Pascale Clayton', '3215010807960042', '', '', '', ''),
-(49, 8, 31, 2, 17, NULL, NULL, NULL, 'Rajah Landry', '3215010807960043', '', '', '', ''),
-(50, 8, 32, 2, 17, NULL, NULL, NULL, 'Perry Mclaughlin', '3215010807960044', '', '', '', ''),
-(51, 9, 33, 2, 18, NULL, NULL, NULL, 'Cora Reid', '3215010807960045', '', '', '', ''),
-(52, 9, 34, 2, 18, NULL, NULL, NULL, 'MacKenzie Knapp', '3215010807960046', '', '', '', ''),
-(53, 9, 35, 2, 18, NULL, NULL, NULL, 'Malik Oliver', '3215010807960047', '', '', '', ''),
-(54, 9, 36, 2, 18, NULL, NULL, NULL, 'William Barr', '3215010807960048', '', '', '', ''),
-(55, 9, 37, 2, 18, NULL, NULL, NULL, 'Lawrence Roach', '3215010807960049', '', '', '', ''),
-(56, 9, 38, 2, 18, NULL, NULL, NULL, 'Judith Manning', '3215010807960050', '', '', '', ''),
-(58, 1, 1, 3, 19, 9, 2, 2, 'Nevada Hebert', '3215010807960052', '', '', '', ''),
-(59, 1, 1, 3, 3, 9, 2, 2, 'Kelsey Andrews', '3215010807960059', '', '', 'Profile-121022-8e1da93be9.jpg', '');
+INSERT INTO `t_profile` (`id`, `id_departement`, `id_divisi`, `id_jabatan`, `id_atasan`, `n_lengkap`, `nik_profile`, `alamat`, `no_hp`, `img_profile`, `qr_code_profile`) VALUES
+(1, 1, 1, 1, 1, 'ADMINISTATOR', '3215010807960001', '65446464164', '6666233', '866f3f7526c9d74cf5795b62187dfd19.jpg', 'b.jpg'),
+(2, 6, 21, 1, 1, 'Sutriso', '3215010807960002', 'aaaa', '1121', '', ''),
+(3, 1, 1, 2, 1, 'Athena Blackwell', '3215010807960003', '', '', '', ''),
+(4, 3, 12, 1, 1, 'Aurelia Garza', '3215010807960051', '', '', '785db1990bd459aed51e4e0fcf4ffd0b.jpg', ''),
+(11, 2, 7, 2, 1, 'Christen Garner', '3215010807960004', '', '', '', ''),
+(12, 3, 11, 2, 1, 'Rahim Mcmahon', '3215010807960005', '', '', '', ''),
+(13, 4, 15, 2, 1, 'Ira Hardin', '3215010807960006', '', '', '', ''),
+(14, 5, 17, 2, 1, 'Jael Snider', '3215010807960007', '', '', '', ''),
+(15, 6, 21, 2, 1, 'Stephanie May', '3215010807960008', '', '', '', ''),
+(16, 7, 26, 2, 1, 'Shafira Allison', '3215010807960009', '', '', '', ''),
+(17, 8, 28, 2, 1, 'Ian Thornton', '3215010807960010', '', '', '', ''),
+(18, 9, 33, 2, 1, 'Isadora Tanner', '3215010807960011', '', '', '', ''),
+(19, 1, 1, 2, 3, 'Mikayla Collier', '3215010807960012', '', '', '', ''),
+(20, 1, 2, 2, 3, 'Quemby Francis', '3215010807960013', '', '', '', ''),
+(21, 1, 3, 2, 3, 'Heidi Horne', '3215010807960014', '', '', '', ''),
+(22, 1, 4, 2, 3, 'Nayda Lopez', '3215010807960015', '', '', '', ''),
+(23, 1, 5, 2, 3, 'Lucius Cabrera', '3215010807960016', '', '', '', ''),
+(24, 1, 6, 2, 3, 'Cedric Hardin', '3215010807960017', '', '', '', ''),
+(25, 2, 7, 2, 11, 'Lacey Brennan', '3215010807960018', '', '', '', ''),
+(26, 2, 8, 2, 11, 'Alice Carney', '3215010807960019', '', '', '', ''),
+(27, 2, 9, 2, 11, 'Kenneth Chavez', '3215010807960020', '', '', '', ''),
+(28, 2, 10, 2, 11, 'Ina Macias', '3215010807960021', '', '', '', ''),
+(29, 3, 11, 2, 12, 'Keaton Wilkerson', '3215010807960022', '', '', '', ''),
+(30, 3, 12, 2, 12, 'Amos Wells', '3215010807960023', '', '', '', ''),
+(31, 3, 13, 2, 12, 'Connor Allison', '3215010807960024', '', '', '', ''),
+(32, 3, 14, 2, 12, 'Gregory Hays', '3215010807960025', '', '', '', ''),
+(33, 4, 15, 2, 13, 'Omar Fuentes', '3215010807960026', '', '', '', ''),
+(34, 4, 16, 2, 13, 'Linus Rodgers', '3215010807960027', '', '', '', ''),
+(35, 5, 17, 2, 14, 'Shafira Cooper', '3215010807960029', '', '', '', ''),
+(36, 5, 18, 2, 14, 'Sybil Gomez', '3215010807960030', '', '', '', ''),
+(37, 5, 19, 2, 14, 'Noah Padilla', '3215010807960031', '', '', '', ''),
+(38, 5, 20, 2, 14, 'Magee Meadows', '3215010807960032', '', '', '', ''),
+(39, 6, 21, 2, 15, 'Kirk Pollard', '3215010807960033', '', '', '', ''),
+(40, 6, 22, 2, 15, 'Kiona Mathis', '3215010807960034', '', '', '', ''),
+(41, 6, 23, 2, 15, 'Benedict Nguyen', '3215010807960035', '', '', '', ''),
+(42, 6, 24, 2, 15, 'Mallory Holmes', '3215010807960036', '', '', '', ''),
+(43, 6, 25, 2, 15, 'Reuben Bell', '3215010807960037', '', '', '', ''),
+(44, 7, 26, 2, 16, 'Lacey Hale', '3215010807960038', '', '', '', ''),
+(45, 7, 27, 2, 16, 'Emery Reilly', '3215010807960039', '', '', '', ''),
+(46, 8, 28, 2, 17, 'Magee Neal', '3215010807960040', '', '', '', ''),
+(47, 8, 29, 2, 17, 'Marvin Walls', '3215010807960041', '', '', '', ''),
+(48, 8, 30, 2, 17, 'Pascale Clayton', '3215010807960042', '', '', '', ''),
+(49, 8, 31, 2, 17, 'Rajah Landry', '3215010807960043', '', '', '', ''),
+(50, 8, 32, 2, 17, 'Perry Mclaughlin', '3215010807960044', '', '', '', ''),
+(51, 9, 33, 2, 18, 'Cora Reid', '3215010807960045', '', '', '', ''),
+(52, 9, 34, 2, 18, 'MacKenzie Knapp', '3215010807960046', '', '', '', ''),
+(53, 9, 35, 2, 18, 'Malik Oliver', '3215010807960047', '', '', '', ''),
+(54, 9, 36, 2, 18, 'William Barr', '3215010807960048', '', '', '', ''),
+(55, 9, 37, 2, 18, 'Lawrence Roach', '3215010807960049', '', '', '', ''),
+(56, 9, 38, 2, 18, 'Judith Manning', '3215010807960050', '', '', '', ''),
+(58, 1, 1, 3, 19, 'Nevada Hebert', '3215010807960052', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -307,16 +212,13 @@ INSERT INTO `t_profile` (`id`, `departement_id`, `divisi_id`, `jabatan_id`, `ata
 
 CREATE TABLE IF NOT EXISTS `t_request` (
   `id_request` int(11) NOT NULL AUTO_INCREMENT,
-  `departement_id` int(11) NOT NULL,
-  `divisi_id` int(11) NOT NULL,
-  `jabatan_id` int(11) NOT NULL,
-  `atasan_id` int(11) NOT NULL,
-  `korwil_id` int(12) DEFAULT NULL,
-  `cabang_id` int(12) DEFAULT NULL,
-  `cabang_unit_id` int(12) DEFAULT NULL,
+  `id_departement` int(11) NOT NULL,
+  `id_divisi` int(11) NOT NULL,
+  `id_jabatan` int(11) NOT NULL,
+  `id_atasan` int(11) NOT NULL,
   `n_pegawai` varchar(128) NOT NULL,
   `nik_request` varchar(128) NOT NULL,
-  `k_healt` varchar(17) NOT NULL,
+  `k_healt` int(17) NOT NULL,
   `rs_dokter` varchar(128) NOT NULL,
   `n_pasien` varchar(128) NOT NULL,
   `ttl_pasien` date NOT NULL,
@@ -331,76 +233,37 @@ CREATE TABLE IF NOT EXISTS `t_request` (
   `t_pengajuan` int(11) NOT NULL,
   `bukti1` varchar(128) NOT NULL,
   `bukti2` varchar(128) NOT NULL,
+  `kep_divisi` varchar(128) NOT NULL,
+  `n_kep_divisi` varchar(128) NOT NULL,
+  `nik_kep_divisi` int(11) NOT NULL,
   `tgl_pengajuan` date NOT NULL,
   `tgl_exp` date NOT NULL,
-  `a_departement` int(11) NOT NULL,
   `a_divisi` int(11) NOT NULL,
+  `a_departement` int(11) NOT NULL,
   `a_ohc` int(11) NOT NULL,
   `a_keuangan` int(11) NOT NULL,
   `t_approve` int(11) NOT NULL,
-  `t_ket` varchar(255) NOT NULL,
-  `w_departement` date DEFAULT NULL,
-  `w_divisi` date DEFAULT NULL,
-  `w_ohc` date DEFAULT NULL,
-  `w_keuangan` date DEFAULT NULL,
+  `t_ket` varchar(128) NOT NULL,
   PRIMARY KEY (`id_request`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `t_request`
 --
 
-INSERT INTO `t_request` (`id_request`, `departement_id`, `divisi_id`, `jabatan_id`, `atasan_id`, `korwil_id`, `cabang_id`, `cabang_unit_id`, `n_pegawai`, `nik_request`, `k_healt`, `rs_dokter`, `n_pasien`, `ttl_pasien`, `ket`, `pisa`, `d_sakit`, `kronologi`, `kuitansi`, `tgl_kuitansi`, `u_berobat`, `nominal`, `t_pengajuan`, `bukti1`, `bukti2`, `tgl_pengajuan`, `tgl_exp`, `a_departement`, `a_divisi`, `a_ohc`, `a_keuangan`, `t_approve`, `t_ket`, `w_departement`, `w_divisi`, `w_ohc`, `w_keuangan`) VALUES
-(1, 1, 1, 3, 19, 9, 2, 2, 'Kelsey Andrews', '3215010807960059', 'Voluptates quos d', 'Distinctio Est volu', 'Ea dolor adipisci na', '2008-09-26', 'Quo perferendis dolo', 'Nulla esse ', 'Eveniet doloremque ', 'Atque cum quibusdam ', 'Aut quia occaecat et', '2022-07-25', 'Excepturi quibusdam ', 19, 19, '', '', '2022-10-12', '2022-12-11', 2, 0, 0, 0, 1, 'Request Telah Kadaluarsa', '2022-12-13', NULL, NULL, NULL),
-(3, 1, 1, 3, 3, 9, 2, 2, 'Kelsey Andrews', '3215010807960059', 'Sint dolor quis v', 'Dolorem alias facili', 'Tenetur aut repudian', '2021-11-22', 'Sed nulla dicta sed ', 'Est nihil e', 'Ab consectetur velit', 'Corrupti aut nisi m', 'Iusto voluptate qui ', '2022-06-25', 'Reprehenderit aliqu', 100, 100, '', '', '2022-10-12', '2022-12-11', 0, 0, 0, 0, 1, 'Kuitansi telah melebihi batas waktu pengajuan, batas pengajuan hanya berlaku selama 3 bulan dari tanggal kuitansi ke tanggal pengajuan', '2022-10-13', '2022-10-13', '2022-10-13', '2022-10-13'),
-(4, 1, 1, 1, 1, 9, 1, 1, 'ADMINISTATOR', '3215010807960001', 'Voluptatem Odio e', 'Ad est hic cum et se', 'Eiusmod et voluptate', '2005-11-28', 'Voluptas illum odit', 'Enim dolore', 'Soluta qui cupiditat', 'Laborum in alias rei', 'Aut laboriosam in d', '2022-10-11', 'Et aut possimus est', 61, 61, '', '', '2022-10-13', '2022-12-12', 0, 0, 0, 0, 0, '', NULL, NULL, NULL, NULL);
+INSERT INTO `t_request` (`id_request`, `id_departement`, `id_divisi`, `id_jabatan`, `id_atasan`, `n_pegawai`, `nik_request`, `k_healt`, `rs_dokter`, `n_pasien`, `ttl_pasien`, `ket`, `pisa`, `d_sakit`, `kronologi`, `kuitansi`, `tgl_kuitansi`, `u_berobat`, `nominal`, `t_pengajuan`, `bukti1`, `bukti2`, `kep_divisi`, `n_kep_divisi`, `nik_kep_divisi`, `tgl_pengajuan`, `tgl_exp`, `a_divisi`, `a_departement`, `a_ohc`, `a_keuangan`, `t_approve`, `t_ket`) VALUES
+(1, 1, 1, 3, 19, 'Nevada Hebert', '3215010807960052', 0, 'Labore perspiciatis', 'Dolore Nam excepteur', '2022-07-25', 'Ut ipsam voluptas qu', 'Duis labore', 'Quia est eum deserun', 'Tempor error magna m', 'Commodo ea aspernatu', '2022-07-14', 'Enim sed non deserun', 71, 71, '', '', '', '', 0, '2022-10-01', '2022-11-30', 1, 1, 1, 2, 1, 'wgdwadgagqegae'),
+(2, 1, 1, 3, 19, 'Nevada Hebert', '3215010807960052', 0, 'Cum labore aut paria', 'Est praesentium cons', '2002-07-08', 'Hic eligendi assumen', 'Non quas qu', 'Non nisi minim fugia', 'Optio esse aut faci', 'Non esse nulla dolor', '1979-09-28', 'Rem ipsam aliqua Et', 50, 50, '', '', '', '', 0, '2022-10-02', '2022-12-01', 2, 0, 0, 0, 1, 'data tidak legkap\r\n');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_unit_cabang`
+-- Struktur dari tabel `user`
 --
 
-CREATE TABLE IF NOT EXISTS `t_unit_cabang` (
-  `id_unit` int(11) NOT NULL AUTO_INCREMENT,
-  `cabang_id` int(11) NOT NULL,
-  `korwil_id` int(11) NOT NULL,
-  `n_unit` varchar(128) NOT NULL,
-  `alamat` varchar(128) NOT NULL,
-  `telp_unit` varchar(13) NOT NULL,
-  `hp_unit` varchar(13) NOT NULL,
-  PRIMARY KEY (`id_unit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
-
---
--- Dumping data untuk tabel `t_unit_cabang`
---
-
-INSERT INTO `t_unit_cabang` (`id_unit`, `cabang_id`, `korwil_id`, `n_unit`, `alamat`, `telp_unit`, `hp_unit`) VALUES
-(1, 1, 9, 'Pusat Wilayah 8 Jakarta I', 'JALAN PASAR SENEN Senen  Senen Jakarta Pusat DKI Jakarta', '0213505151', '0'),
-(2, 2, 9, 'UPC GANG LONTAR', 'JALAN LONTAR BAWAH NO.179 Kebon Melati  Tanah Abang Jakarta Pusat  DKI Jakarta', '02131907233', '0'),
-(3, 2, 9, 'UPC BIAK', 'PERTOKOAN METRO BIAK JL.BIAK NO.5J Cideng  Gambir Jakarta Pusat  DKI Jakarta', '0216327231', '0'),
-(4, 2, 9, 'UPC BLOK B TANAH ABANG', 'BLOK B TANAH ABANG LT.5  ZONA 2 Kebon Melati  Tanah Abang Jakarta Pusat  DKI Jakarta', '02123574211', '0'),
-(5, 3, 9, 'UPC THAMRIN', 'JL. H AGUS SALIM NO 60A Gondangdia  Menteng Jakarta Pusat  DKI Jakarta', '0213144938', '0'),
-(6, 3, 9, 'UPC CIKINI', 'CIKINI GOLD CENTRE LT.UG NO.AKS076 Cikini  Menteng Jakarta Pusat  DKI Jakarta', '02129578277', '0'),
-(7, 3, 9, 'UPC TAMBAK', 'JALAN TAMBAK NO.2 INKOPOL Pegangsaan  Menteng Jakarta Pusat  DKI Jakarta', '0213100699', '0'),
-(8, 3, 9, 'UPC PASAR GENJING', 'JALAN RAWAMANGUN NO 41 Rawasari  Cempaka Putih Jakarta Pusat  DKI Jakarta', '0214250245', '0'),
-(9, 3, 9, 'UPC PASAR JANGKRIK II', 'JALAN KELAPA SAWIT RAYA 30 Kayu Manis  Matraman Jakarta Timur  DKI Jakarta', '02147483647', '0'),
-(10, 3, 9, 'UPC MATRAMAN', 'JALAN MATRAMAN RAYA NO 64 Kebon Manggis  Matraman Jakarta Timur  DKI Jakarta', '02147483647', '0'),
-(11, 3, 9, 'UPC PASAR JOHAR', 'JALAN PERCETAKAN NEGARA II / 14 Johar Baru  Johar Baru Jakarta Pusat  DKI Jakarta', '0214205816', '0'),
-(12, 3, 9, 'UPC SABANG', 'JALAN H.AGUS SALIM NO 42 Kebon Sirih  Menteng Jakarta Pusat  DKI Jakarta', '02131923566', '0'),
-(13, 3, 9, 'UPC UTAN KAYU', 'JALAN UTAN KAYU RAYA NO 76 Utan Kayu Selatan  Matraman Jakarta Timur  DKI Jakarta', '02122856143', '0'),
-(14, 3, 9, 'UPC SABANG', 'JALAN H.AGUS SALIM NO 42 Kebon Sirih  Menteng Jakarta Pusat  DKI Jakarta', '02131923566', '0');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `t_users`
---
-
-CREATE TABLE IF NOT EXISTS `t_users` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `atasan_id` int(11) NOT NULL,
+  `id_atasan` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `nik` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
@@ -412,13 +275,13 @@ CREATE TABLE IF NOT EXISTS `t_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nik` (`nik`),
   UNIQUE KEY `nik_2` (`nik`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
 
 --
--- Dumping data untuk tabel `t_users`
+-- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `t_users` (`id`, `atasan_id`, `name`, `nik`, `image`, `qr_code`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+INSERT INTO `user` (`id`, `id_atasan`, `name`, `nik`, `image`, `qr_code`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 1, 'ADMINISTATOR', '3215010807960001', '', '', '$2y$10$hw4ugnheQ7kj5qqjHdprX.dLnwT.WUb0qRURtOOyfip4bZYuXfIey', 1, 1, 2022),
 (2, 1, 'Sutriso', '3215010807960002', '', '', '$2y$10$jujDuHabyQLJEX4BVJpnJu3iQ25S9SOyU3uKtiAljDv1DeqG0QaO2', 2, 1, 2022),
 (3, 1, 'Athena Blackwell', '3215010807960003', '', '', '$2y$10$yRR69I0bg3XhnQLkYE3QJeOth1iXmOkqKWJpJNSuG4Ww.L3Who1Ci', 3, 1, 2022),
@@ -469,8 +332,7 @@ INSERT INTO `t_users` (`id`, `atasan_id`, `name`, `nik`, `image`, `qr_code`, `pa
 (59, 18, 'William Barr', '3215010807960048', '', '', '$2y$10$JhLew2M29WwPrvZoc0d1Kub0BpUPSNVS9ISlSD2.Onkr738jHdyDe', 4, 1, 2022),
 (60, 18, 'Lawrence Roach', '3215010807960049', '', '', '$2y$10$Vfpe/qpVo7EOJkV/aNq6Ye.aa1UZaFpFm1IGMTfM7tcuBL5eQohr.', 4, 1, 2022),
 (61, 18, 'Judith Manning', '3215010807960050', '', '', '$2y$10$yZY4Ek2ERxqayY8w0IhV3etwuvwIIhd16oPPYRn.hHjgSLDru7zdu', 4, 1, 2022),
-(63, 19, 'Nevada Hebert', '3215010807960052', '', '', '$2y$10$rxv5DQY7h8fhe8tThs65.u4wOd6BCYcnZxZXO.CHLIrimh5RakSu2', 6, 1, 2022),
-(64, 3, 'Kelsey Andrews', '3215010807960059', '', '', '$2y$10$ZM54fXNM06OLgFCEvCPKOecw2tZURoGyHRkS/EHQ1nNUSrVvxYV22', 6, 1, 2022);
+(63, 19, 'Nevada Hebert', '3215010807960052', '', '', '$2y$10$GtMiz9rYgPMZ6185u1gVB.b8cD.CSs5XHiVubJ.UOSepXMROE/Yw2', 6, 1, 2022);
 
 -- --------------------------------------------------------
 
@@ -483,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `user_acces_menu` (
   `role_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data untuk tabel `user_acces_menu`
@@ -509,8 +371,7 @@ INSERT INTO `user_acces_menu` (`id`, `role_id`, `menu_id`) VALUES
 (17, 5, 8),
 (18, 5, 7),
 (20, 6, 6),
-(21, 6, 8),
-(22, 1, 12);
+(21, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -522,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `user_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data untuk tabel `user_menu`
@@ -539,8 +400,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (8, 'Request'),
 (9, 'Menu'),
 (10, 'Users Setting'),
-(11, 'Position Setting'),
-(12, 'Area Setting');
+(11, 'Position Setting');
 
 -- --------------------------------------------------------
 
@@ -580,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `user_sub_menu` (
   `icon` varchar(128) NOT NULL,
   `is_active` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data untuk tabel `user_sub_menu`
@@ -590,10 +450,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
 (2, 2, 'Dashboard', 'admin_OHC', 'fas fa-fw fa-tachometer-alt', 1),
 (3, 3, 'Dashboard', 'departement', 'fas fa-fw fa-clipboard-list', 1),
-(4, 4, 'Dashboard', 'divisi', 'fas fa-fw fa-clipboard-list', 1),
+(4, 4, 'Dashboard', 'division', 'fas fa-fw fa-clipboard-list', 1),
 (5, 5, 'Dashboard', 'keuangan', 'fas fa-fw fa-clipboard-list', 1),
 (6, 6, 'Dashboard', 'users', 'fas fa-fw fa-clipboard-list', 1),
-(7, 7, 'Request Users', 'request/requestUsers', 'fas fa-fw fa-clipboard-list', 1),
+(7, 7, 'Request Users', 'request/requestUsers', 'fas fa-fw fa-tachometer-alt', 1),
 (8, 7, 'Request History', 'request/historyRequestApp', 'fas fa-fw fa-book', 1),
 (9, 8, 'Forms Request', 'request/Tambah', 'fas fa-fw fa-clipboard-list', 1),
 (10, 8, 'History Request', 'request/usersRequestHistory', 'fas fa-fw fa-book', 1),
@@ -602,11 +462,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (13, 10, 'Users Role', 'admin/usersRole', 'fas fa-fw fa-user-tie', 1),
 (14, 10, 'Users Management', 'admin/usersManagement', 'fas fa-fw fa-user-tie', 1),
 (15, 11, 'Departement Setting', 'departement/positionIndex', 'fas fa-fw fa-user', 1),
-(16, 11, 'Divisi Setting', 'divisi/positionIndex', 'fas fa-fw fa-user', 1),
-(17, 11, 'Jabatan Setting', 'jabatan/positionIndex', 'fas fa-fw fa-user', 1),
-(18, 12, 'Korwil Setting', 'korwil', 'fa fa-map-marker', 1),
-(19, 12, 'Cabang Setting', 'cabang', 'fa fa-map-marker', 1),
-(20, 12, 'Unit Cabang Setting', 'unit', 'fa fa-map-marker', 1);
+(16, 11, 'Division Setting', 'division/positionIndex', 'fas fa-fw fa-user', 1),
+(17, 11, 'Jabatan Setting', 'jabatan/positionIndex', 'fas fa-fw fa-user', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

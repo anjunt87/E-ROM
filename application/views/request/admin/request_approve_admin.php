@@ -33,7 +33,7 @@
                     </tr>
                 </tfoot>
                 <?php $no=1; foreach ($request->result() as $r) { ?>
-                    <?php if($r->a_departement == 1 && $r->a_divisi == 0 || $r->a_departement == 2 ){ 
+                    <?php if($r->a_departement == 1 && $r->a_divisi == 0 || $r->a_departement == 2 || $r->a_departement == 2 && $r->t_approve == 1){ 
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>".$no;
@@ -44,12 +44,14 @@
                         echo "<td>".$r->tgl_pengajuan;
                         echo "<td>".$r->ket;
                         echo "<td>";
-                        if($r->a_departement == 0 ){ 
+                        if($r->a_departement == 0 && $r->t_approve == 0 ){ 
                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                         }elseif ($r->a_departement == 1 ){ 
                             echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
-                        }elseif ($r->a_departement == 2 ){ 
+                        }elseif ($r->a_departement == 2 && $r->a_divisi == 0){ 
                             echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                        }elseif ($r->a_departement == 2 && $r->a_divisi == 2 && $r->t_approve == 1 ){ 
+                            echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                         }
                             echo "<td>";
                         if($r->a_departement == 0 ){ 
@@ -101,7 +103,7 @@
                     </tr>
                 </tfoot>
                 <?php $no=1; foreach ($request->result() as $r) { ?>
-                    <?php if($r->a_divisi == 1 && $r->a_ohc == 0 || $r->a_divisi == 2){ 
+                    <?php if($r->a_divisi == 1 && $r->a_ohc == 0 || $r->a_divisi == 2 || $r->a_divisi == 2 && $r->t_approve == 1){ 
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>".$no;
@@ -112,12 +114,14 @@
                         echo "<td>".$r->tgl_pengajuan;
                         echo "<td>".$r->ket;
                         echo "<td>";
-                        if($r->a_divisi == 0 ){ 
+                        if($r->a_divisi == 0 && $r->t_approve == 0){ 
                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                         }elseif ($r->a_divisi == 1 ){ 
                             echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
-                        }elseif ($r->a_divisi == 2 ){ 
+                        }elseif ($r->a_divisi == 2 && $r->a_ohc == 0 ){ 
                             echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                        }elseif ($r->a_divisi == 2 && $r->a_ohc == 2 && $r->t_approve == 1 ){ 
+                            echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                         }
                             echo "<td>";
                         if($r->a_divisi == 0 ){ 
@@ -169,7 +173,7 @@
                     </tr>
                 </tfoot>
                 <?php $no=1; foreach ($request->result() as $r) { ?>
-                    <?php if($r->a_ohc == 1 && $r->a_keuangan == 0 || $r->a_ohc == 2 ){ 
+                    <?php if($r->a_ohc == 1 && $r->a_keuangan == 0 || $r->a_ohc == 2 || $r->a_ohc == 2 && $r->t_approve == 1){ 
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>".$no;
@@ -180,12 +184,14 @@
                         echo "<td>".$r->tgl_pengajuan;
                         echo "<td>".$r->ket;
                         echo "<td>";
-                        if($r->a_ohc == 0 ){ 
+                        if($r->a_ohc == 0 && $r->t_approve == 1){ 
                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                         }elseif ($r->a_ohc == 1 ){ 
                             echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
-                        }elseif ($r->a_ohc == 2 ){ 
+                        }elseif ($r->a_ohc == 2 && $r->a_keuangan == 0 ){ 
                             echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                        }elseif ($r->a_ohc == 2 && $r->a_keuangan == 2 && $r->t_approve == 1 ){ 
+                            echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                         }
                         echo "<td>";
                         if($r->a_ohc == 0 ){ 
@@ -248,12 +254,14 @@
                         echo "<td>".$r->tgl_pengajuan;
                         echo "<td>".$r->ket;
                         echo "<td>";
-                        if($r->a_keuangan == 0 ){ 
+                        if($r->a_keuangan == 0 && $r->t_approve == 0){ 
                             echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                         }elseif ($r->a_keuangan == 1 ){ 
                             echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
-                        }elseif ($r->a_keuangan == 2 ){ 
+                        }elseif ($r->a_keuangan == 2 && $r->a_ohc == 1 ){ 
                             echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                        }elseif ($r->a_ohc == 2 && $r->a_keuangan == 2 && $r->t_approve == 1 ){ 
+                            echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                         }
                             echo "<td>";
                         if($r->a_keuangan == 0 ){ 
@@ -305,7 +313,7 @@
                     </tr>
                 </tfoot>
                 <?php $no=1; foreach ($request->result() as $r) { ?>
-                    <?php if($r->t_approve == 1  ){ 
+                    <?php if($r->t_approve == 1){ 
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>".$no;
@@ -316,7 +324,9 @@
                         echo "<td>".$r->tgl_pengajuan;
                         echo "<td>".$r->ket;
                         echo "<td>";
-                        if($r->t_approve == 1 ){ 
+                        if($r->a_departement == 2 && $r->a_divisi == 2 && $r->a_ohc == 2 && $r->a_keuangan == 2 && $r->t_approve == 1 ){ 
+                            echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
+                        }elseif ($r->a_departement == 2 && $r->t_approve == 1 || $r->a_divisi == 2 && $r->t_approve == 1 || $r->a_ohc == 2 && $r->t_approve == 1 || $r->a_keuangan == 2 && $r->t_approve == 1){ 
                             echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
                         }
                             echo "<td>";

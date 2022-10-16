@@ -11,7 +11,7 @@
                     <th>Nama Pegawai</th>
                     <th>Nama Pasien</th>
                     <th>NIK</th>
-                    <th>Personal Grade / Jabatan</th>
+                    <!-- <th>Personal Grade / Jabatan</th> -->
                     <th>PISA</th>
                     <th>Tgl Pengajuan</th>
                     <th>Ket</th>
@@ -25,7 +25,7 @@
                     <th>Nama Pegawai</th>
                     <th>Nama Pasien</th>
                     <th>NIK</th>
-                    <th>Personal Grade / Jabatan</th>
+                    <!-- <th>Personal Grade / Jabatan</th> -->
                     <th>PISA</th>
                     <th>Tgl Pengajuan</th>
                     <th>Ket</th>
@@ -34,14 +34,14 @@
                 </tr>
             </tfoot>
             <?php $no=1; foreach ($request->result() as $r) { ?>
-                <?php if($r->a_ohc == 0 && $r->a_divisi == 1) {
+                <?php if($r->a_ohc == 0 && $r->a_divisi == 1 && $r->t_approve == 0) {
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;
                     echo "<td>".$r->n_pegawai;
                     echo "<td>".$r->n_pasien;
                     echo "<td>".$r->nik_request;
-                    echo "<td>".$r->id_jabatan;
+                    // echo "<td>".$r->id_jabatan;
                     echo "<td>".$r->pisa;
                     echo "<td>".$r->tgl_pengajuan;
                     echo "<td>".$r->ket;

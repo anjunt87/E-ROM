@@ -2,22 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Request_model extends CI_Model {
-
-    // function tampildata()
-    // {
-    //     return $this->db->get('t_request');
-    // }
-    
-    // function get($id)
-    // {
-    //     $param  =   array('id_request'=>$id);
-    //     return $this->db->get_where('t_request',$param);
-    // }
-
-    // public function find_data($where, $table){
-    //     return $this->db->get_where($table,$where);
-    // } 
-
     public function tambah($post){
         $params = [
             'n_pegawai' => $post['n_pegawai'],

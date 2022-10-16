@@ -32,7 +32,7 @@
                 </tr>
             </tfoot>
             <?php $no=1; foreach ($request->result() as $r) { ?>
-                <?php if($r->a_departement == 0 ) {
+                <?php if($r->a_departement == 0 && $r->t_approve == 0) {
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;
@@ -95,7 +95,7 @@
                 </tr>
             </tfoot>
             <?php $no=0; foreach ($request->result() as $r) { ?>
-                <?php if($r->a_departement == 1 && $r->a_divisi == 0) {
+                <?php if($r->a_departement == 1 && $r->a_divisi == 0 && $r->t_approve == 0 ) {
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;
@@ -160,7 +160,7 @@
                     </tr>
                 </tfoot>
                 <?php $no=1; foreach ($request->result() as $r) { ?>
-                    <?php if($r->a_divisi == 1  && $r->a_ohc == 0) {
+                    <?php if($r->a_divisi == 1  && $r->a_ohc == 0 && $r->t_approve == 0) {
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<td>".$no;
@@ -224,7 +224,7 @@
                         </tr>
                     </tfoot>
                     <?php $no=1; foreach ($request->result() as $r) { ?>
-                        <?php if($r->a_ohc == 1 && $r->a_keuangan == 0) {
+                        <?php if($r->a_ohc == 1 && $r->a_keuangan == 0 && $r->t_approve == 0) {
                             echo "<tbody>";
                             echo "<tr>";
                             echo "<td>".$no;

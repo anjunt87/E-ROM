@@ -1,9 +1,16 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="h3 mb-0 text-gray-800 mb-4">Request Details</h1>
+    <?= $this->session->flashdata('message'); ?>
+    <table class="table table-striped">
+        <tr>
+            <th class="col-md-4">
+                <h1 class="h3 mb-0 text-gray-800 mb-4">Request Details</h1>
+                <?php $this->load->view('request/detail_request_component/waktu');?>
+            </th>
+            <th><?php $this->load->view('request/detail_request_component/print');?></th>
+        </tr>
+    </table>
     <?php $this->load->view('request/detail_request_component/kuitansi');?>
-    <?php $this->load->view('request/detail_request_component/waktu');?>
-    <?php $this->load->view('request/detail_request_component/print');?>
     <?php $this->load->view('request/detail_request_component/tracking');?>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -208,32 +215,7 @@
             <h6 class="m-0 font-weight-bold text-gray-900 text-success ">Lampiran</h6>
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Lampiran 1 :</th>
-                        <th>Lampiran 2 :</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <?php if($request['bukti1'] == ''){ ?>
-                                <img src="<?= base_url('assets/'); ?>img/lampiran/no-image.jpg" class="" data-lity>
-                            <?php } else { ?>
-                                <img style="height: 200px; width: 200px;" src="<?php echo base_url('assets/').'img/lampiran/'.$request['bukti1']  ?>" class="" data-lity>
-                            <?php } ?>
-                        </td>
-                        <td>
-                            <?php if($request['bukti2'] == ''){ ?>
-                                <img src="<?= base_url('assets/'); ?>img/lampiran/no-image.jpg" class="" data-lity>
-                            <?php } else { ?>
-                                <img style="height: 200px; width: 200px;" src="<?php echo base_url('assets/').'img/lampiran/'.$request['bukti2']  ?>" class="" data-lity>
-                            <?php } ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <?php $this->load->view('request/detail_request_component/lampiran');?>
             <?php $this->load->view('request/detail_request_component/approve');?>
         </div>
     </div>

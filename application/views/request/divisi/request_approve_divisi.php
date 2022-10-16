@@ -44,29 +44,31 @@
                 if($r->korwil_id ===  $dk ){ 
                     if($r->cabang_id ===  $cp ){ 
                         if($r->cabang_unit_id ===  $ucp ){ 
-                            if($r->a_divisi == 1 || $r->a_divisi == 2  ) {
+                            if($r->a_divisi == 1 || $r->a_divisi == 2 || $r->a_divisi == 2 && $r->t_approve == 1) {
                                 echo "<tbody>";
                                 echo "<tr>";
                                 echo "<td>".$no;
                                 echo "<td>".$r->n_pegawai;
                                 echo "<td>".$r->n_pasien;
                                 echo "<td>".$r->nik_request;
-                                            // echo "<td>".$r->jabatan_id;
+                                // echo "<td>".$r->jabatan_id;
                                 echo "<td>".$r->pisa;
                                 echo "<td>".$r->tgl_pengajuan;
                                 echo "<td>".$r->ket;
                                 echo "<td>";
-                                if($r->a_divisi == 0 ){ 
+                                if($r->a_divisi == 0 && $r->t_approve == 0){ 
                                     echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                                 }elseif ($r->a_divisi == 1 ){ 
                                     echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';
-                                }elseif ($r->a_divisi == 2 ){ 
+                                }elseif ($r->a_divisi == 2  && $r->a_ohc == 0){ 
                                     echo '<div style="color: red;"><i class="fas fa-window-close"></i> Not Approve</div>';
+                                }elseif ($r->a_divisi == 2 && $r->a_ohc == 2 && $r->t_approve == 1 ){ 
+                                    echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                                 }
                                 echo "<td>";
                                 if($r->a_divisi == 0 ){ 
                                     echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
-                                }elseif ($r->a_divisi == 1 || $r->a_divisi == 2 ){ 
+                                }elseif ($r->a_divisi == 1 || $r->a_divisi == 2 || $r->t_approve == 1){ 
                                     echo "<a class=\"badge badge-sm badge-success mr-2\"  href=".site_url('request/detailRequestUser/'.$r->id_request).">Lihat</a>";
                                 }
                             }

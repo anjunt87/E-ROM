@@ -44,7 +44,7 @@
                     if($r->korwil_id ===  $dk ){ 
                         if($r->cabang_id ===  $cp ){ 
                             if($r->cabang_unit_id ===  $ucp ){ 
-                                if($r->a_departement == 0 ) 
+                                if($r->a_departement == 0 && $r->t_approve == 0) 
                                 {
                                     echo "<tbody>";
                                     echo "<tr>";
@@ -57,7 +57,7 @@
                                     echo "<td>".$r->tgl_pengajuan;
                                     echo "<td>".$r->ket;
                                     echo "<td>";
-                                    if($r->a_departement == 0 ){ 
+                                    if($r->a_departement == 0 && $r->t_approve == 0){ 
                                         echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                                     }elseif ($r->a_departement == 1 ){ 
                                         echo '<div style="color: green;"><i class="fas fa-check"></i> Approve</div>';}

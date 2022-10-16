@@ -17,7 +17,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            <?php if($request['a_departement'] == 0 && $request['a_divisi'] == 0 && $request['a_ohc'] == 0 && $request['a_keuangan'] == 0 && $request['t_approve'] == 1){
+                            <?php if($request['a_departement'] == 2 && $request['a_divisi'] == 2 && $request['a_ohc'] == 2 && $request['a_keuangan'] == 2 && $request['t_approve'] == 1){
                                     echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                                 }elseif ($request['a_departement'] == 0 ){
                                     echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
@@ -30,7 +30,7 @@
                             <?= $request['w_departement']?>
                         </td>
                         <td>
-                           <?php if($request['a_departement'] == 0 && $request['a_divisi'] == 0 && $request['a_ohc'] == 0 && $request['a_keuangan'] == 0 && $request['t_approve'] == 1){
+                           <?php if($request['a_departement'] == 2 && $request['a_divisi'] == 2 && $request['a_ohc'] == 2 && $request['a_keuangan'] == 2 && $request['t_approve'] == 1){
                                     echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                                 }elseif ($request['a_divisi'] == 0) {
                                    if ($request['a_departement'] == 2) {
@@ -46,7 +46,7 @@
                             <?= $request['w_divisi']?>
                         </td>
                         <td>
-                            <?php if($request['a_departement'] == 0 && $request['a_divisi'] == 0 && $request['a_ohc'] == 0 && $request['a_keuangan'] == 0 && $request['t_approve'] == 1){
+                            <?php if($request['a_departement'] == 2 && $request['a_divisi'] == 2 && $request['a_ohc'] == 2 && $request['a_keuangan'] == 2 && $request['t_approve'] == 1){
                                     echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                                 }elseif ($request['a_ohc'] == 0) {
                                     if ($request['a_divisi'] == 2) {
@@ -65,7 +65,7 @@
                             <?= $request['w_ohc']?>
                         </td>
                         <td>
-                            <?php if($request['a_departement'] == 0 && $request['a_divisi'] == 0 && $request['a_ohc'] == 0 && $request['a_keuangan'] == 0 && $request['t_approve'] == 1){
+                            <?php if($request['a_departement'] == 2 && $request['a_divisi'] == 2 && $request['a_ohc'] == 2 && $request['a_keuangan'] == 2 && $request['t_approve'] == 1){
                                     echo '<div style="color: red;"><i class="fas fa-window-close"></i> Cancel Request</div>';
                                 }elseif ($request['a_keuangan'] == 0) {
                                     if ($request['a_divisi'] == 2) {
@@ -89,7 +89,7 @@
                 </tbody>
             </table>
             <!-- Not Approve -->
-            <?php if($request['a_departement'] == 0 && $request['a_divisi'] == 0 && $request['a_ohc'] == 0 && $request['a_keuangan'] == 0 && $request['t_approve'] == 1){
+            <?php if($request['a_departement'] == 2 && $request['a_divisi'] == 2 && $request['a_ohc'] == 2 && $request['a_keuangan'] == 2 && $request['t_approve'] == 1){
                 echo '<div class="card shadow mb-4 mt-4">
                         <div class="card-header py-3 bg-danger">
                             <h6 class="m-0 font-weight-bold">Keteragan Cancel Request</h6>

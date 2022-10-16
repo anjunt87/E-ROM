@@ -5,35 +5,36 @@ class Rom_Model extends CI_Model {
 
     // Operasi Dasar CRUD
         // Ambil data di Databse
-    public function get_data($table)
-    {
-        return $this->db->get($table);
-    }
+        public function get_data($table)
+        {
+            return $this->db->get($table);
+        }
 
         // Cari data di database
-    public function find_data($where, $table)
-    {
-        return $this->db->get_where($table,$where);
-    }
+        public function find_data($where, $table)
+        {
+            return $this->db->get_where($table,$where);
+        }
 
         // Update data table database
-    public function update_data($table, $data, $where)
-    {
-        $this->db->update($table, $data, $where);
-    }
+        public function update_data($table, $data, $where)
+        {
+            $this->db->update($table, $data, $where);
+        }
 
         // Input data
-    public function insert_data($data, $table, $id)
-    {
-        $this->db->insert($table, $data);
-    }
+        public function insert_data($data, $table, $id)
+        {
+            $this->db->insert($table, $data);
+        }
 
         // delete data
-    public function delete_data($where, $table)
-    {
-        $this->db->where($where);
-        $this->db->delete($table, $where);
-    }// End Operasi Dasar CRUD
+        public function delete_data($where, $table)
+        {
+            $this->db->where($where);
+            $this->db->delete($table, $where);
+        }
+    // End Operasi Dasar CRUD
 
     public function queryDivisiDepartement(){
         $query = "SELECT `t_divisi`.*, `t_departement`.`n_departement`
@@ -72,7 +73,6 @@ class Rom_Model extends CI_Model {
     }
 
     public function queryEditUserProfile($nik){
-        $id =  $this->session->userdata('nik');
         $this->db->select('*');
         $this->db->from('t_users');
         $this->db->join('t_profile','t_users.nik = t_profile.nik_profile', $nik);
@@ -90,7 +90,6 @@ class Rom_Model extends CI_Model {
 
     public function queryRequest($id){
         $id=  $this->uri->segment(3);
-        // $param  =   array('id'=>$id);
         $this->db->select('*');
         $this->db->from('t_request');
         $this->db->join('t_profile','t_request.atasan_id = t_profile.id');
@@ -102,6 +101,15 @@ class Rom_Model extends CI_Model {
         return $query->row_array();
     }
 
+     public function queryGetRequestImage($id){
+       $id=  $this->uri->segment(3);
+        $this->db->select('*');
+        $this->db->from('t_image');
+        $this->db->join('t_request', 't_request.id_request = t_image.request_id');
+        $this->db->where('t_image.request_id' , $id);
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     public function dataAccount1()
     {

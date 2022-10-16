@@ -22,47 +22,6 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-
-<!-- Delete Modal-->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="deleteModal">Apakah kamu yakin menghapus data ini ?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">Pilih "Delete" untuk menghapus data ini.</div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-danger" href="#">Delete</a>
-        </div>
-    </div>
-</div>
-</div>
-
-<!-- notApprove Modal-->
-<div class="modal fade" id="notApproveModal" tabindex="-1" role="dialog" aria-labelledby="notApproveModal"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="notApproveModal">Apakah kamu yakin menolak request ini ?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-        <div class="modal-body">Pilih "Tolak" untuk menolak data ini.</div>
-        <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-            <a class="btn btn-danger" href="#">Tolak</a>
-        </div>
-    </div>
-</div>
-</div>
-
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModal"
 aria-hidden="true">
@@ -137,12 +96,27 @@ aria-hidden="true">
   {
     $("#title").autocomplete({
       source : "<?php echo site_url('penilaian/get_autonama') ?>",
+        select: function(event, ui){
+            $('[name="title"]').val(ui.item.label);
+            $('[name="nip"]').val(ui.item.nip);
+        }
+    }); 
 
-      select: function(event, ui){
-        $('[name="title"]').val(ui.item.label);
-        $('[name="nip"]').val(ui.item.nip);
+    //Clone the hidden element and shows it
+        $('.add-one').click(function(){
+        $('.dynamic-element').first().clone().appendTo('.dynamic-stuff').show();
+            attach_delete();
+        });
+
+
+    //Attach functionality to delete buttons
+    function attach_delete(){
+          $('.btn-del').off();
+          $('.btn-del').click(function(){
+            console.log("click");
+            $(this).closest('.form-group').remove();
+        });
     }
-}); 
 });
 </script>
 </body>

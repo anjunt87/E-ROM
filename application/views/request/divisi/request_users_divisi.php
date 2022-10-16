@@ -44,7 +44,7 @@
                     if($r->korwil_id ===  $dk ){ 
                         if($r->cabang_id ===  $cp ){ 
                             if($r->cabang_unit_id ===  $ucp ){ 
-                                if($r->a_divisi == 0 && $r->a_departement == 1) {
+                                if($r->a_divisi == 0 && $r->a_departement == 1 && $r->t_approve == 0) {
                                     echo "<tbody>";
                                     echo "<tr>";
                                     echo "<td>".$no;

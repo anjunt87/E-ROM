@@ -104,7 +104,6 @@ class Request extends CI_Controller {
 			$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">
 				Data Berhasil di input</div>');
 		}
-		// var_dump($post);
 		redirect ('request/usersRequestHistory');
 	}
 
@@ -136,7 +135,8 @@ class Request extends CI_Controller {
 		$id=  $this->uri->segment(3);
 		$param  =   array('id'=>$id);
 
-		$data['request'] = $this->Rom_model->queryRequest($id);            
+		$data['request'] = $this->Rom_model->queryRequest($id);
+		$data['lampiran'] = $this->Rom_model->queryGetRequestImage($id);                        
 		// $data['request']= $this->Rom_model->find_data($param, "t_request")->row_array();
 
 		$this->load->view('template/dashboard/header', $data);
@@ -324,6 +324,10 @@ class Request extends CI_Controller {
 
 	public function requestTolakKuitansi($id){
 			$edit_request =  array(
+				'a_departement' => '2',
+				'a_divisi' => '2',
+				'a_ohc' => '2',
+				'a_keuangan' => '2',
 				't_approve' => '1',
 				'w_departement' => date('Y-m-d'),
 				'w_divisi' => date('Y-m-d'),

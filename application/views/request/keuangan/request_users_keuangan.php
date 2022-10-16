@@ -4,14 +4,14 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="dataTable-2" width="100%" cellspacing="0" style="font-size:13px;">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0" style="font-size:13px;">
              <thead class="bg-gray-200">
                 <tr>
                     <th>No.</th>
                     <th>Nama Pegawai</th>
                     <th>Nama Pasien</th>
                     <th>NIK</th>
-                    <th>Personal Grade / Jabatan</th>
+                    <!-- <th>Personal Grade / Jabatan</th> -->
                     <th>PISA</th>
                     <th>Tgl Pengajuan</th>
                     <th>Ket</th>
@@ -25,7 +25,7 @@
                     <th>Nama Pegawai</th>
                     <th>Nama Pasien</th>
                     <th>NIK</th>
-                    <th>Personal Grade / Jabatan</th>
+                    <!-- <th>Personal Grade / Jabatan</th> -->
                     <th>PISA</th>
                     <th>Tgl Pengajuan</th>
                     <th>Ket</th>
@@ -34,15 +34,15 @@
                 </tr>
             </tfoot>
             <?php $no=1; foreach ($request->result() as $r) { ?>
-                <?php $data = $record['id_departement']; ?>
-                <?php if($r->a_ohc == 1 && $r->a_keuangan == 0) {
+                <?php $data = $record['departement_id']; ?>
+                <?php if($r->a_ohc == 1 && $r->a_keuangan == 0 && $r->t_approve == 0) {
                     echo "<tbody>";
                     echo "<tr>";
                     echo "<td>".$no;
                     echo "<td>".$r->n_pegawai;
                     echo "<td>".$r->n_pasien;
                     echo "<td>".$r->nik_request;
-                    echo "<td>".$r->id_jabatan;
+                    // echo "<td>".$r->id_jabatan;
                     echo "<td>".$r->pisa;
                     echo "<td>".$r->tgl_pengajuan;
                     echo "<td>".$r->ket;

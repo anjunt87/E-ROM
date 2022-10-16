@@ -11,11 +11,13 @@ button approve OK
 Edit Password Profile OK
 Edit Profile Gambar OK
 QRcode generator User NO
+hitung tanggal OK
+dashboard semua role OK
+kadep kadip kebalik OK
+
 Input Request Gambar
 Edit Request Gambar
-hitung tanggal OK
-dashboard semua role 
-kadep kadip kebalik OK
+
 
 
 Bug

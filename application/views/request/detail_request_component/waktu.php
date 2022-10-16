@@ -1,6 +1,5 @@
 <!-- Waktu Pengajuan -->
-<?php if($request['a_departement'] == 0 || $request['a_departement'] == 1 && $request['a_divisi'] == 0 || $request['a_divisi'] == 1 && $request['a_ohc'] == 0 || $request['a_ohc'] == 1 && $request['a_keuangan'] == 0 || $request['a_keuangan'] == 1){
-    echo '<div class="float-right">';
+<?php if($request['a_departement'] == 0 || $request['a_departement'] == 1 && $request['a_divisi'] == 0 || $request['a_divisi'] == 1 && $request['a_ohc'] == 0 || $request['a_ohc'] == 1 && $request['a_keuangan'] == 0 || $request['a_keuangan'] == 1 ){
     $tgl_exp = new DateTime($request['tgl_exp']);
     $tgl_now = new DateTime(date('Y-m-d'));
     $jarak = $tgl_exp -> diff($tgl_now);
@@ -34,9 +33,8 @@
     }else{
         if ($request['t_approve'] == 0 ) {
             echo "<p class=''> Batas pegajuan sisa $jarak->days hari lagi<p>";
-            echo '</div><br><br>';
+           
         }elseif ($request['t_approve'] == 1 ) {
-            echo '</div><br><br>';
         }
     }
 }?><!-- End Waktu Pengajuan -->

@@ -87,6 +87,24 @@
     position: absolute;
     margin-left: 7px;
 }
+
+ .add-one{
+  color:green;
+  text-align:center;
+  font-weigth:bolder;
+  cursor:pointer;
+  margin-top:5px;
+  margin-left: 10px;
+}
+
+.btn-del{
+  margin-top:23px;
+  margin-left: -10px;
+}
+
+.dynamic-element{
+  margin-bottom:0px;
+}
 </style>
 
 </head>

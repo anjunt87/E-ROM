@@ -45,12 +45,12 @@
                 </thead>
                 <tbody>
                     <tr>
-                     <td></td>
-                     <td>Nama</td>
-                     <td>:</td>
-                     <td><?= $record['n_pegawai']?></td>
-                 </tr>
-                 <tr>
+                       <td></td>
+                       <td>Nama</td>
+                       <td>:</td>
+                       <td><?= $record['n_pegawai']?></td>
+                   </tr>
+                   <tr>
                     <td></td>
                     <td>NIK</td>
                     <td>:</td>
@@ -95,14 +95,14 @@
         <table id="" width="95%" border="1">
             <thead style="background: lightgray;">
                 <tr>
-                 <th>No.</th>
-                 <th>Nama Pasien</th>
-                 <th>Tanggal Lahir</th>
-                 <th>keterangan</th>
-                 <th>PISA</th>
-             </tr>
-         </thead>
-         <tbody style="text-align: center;">
+                   <th>No.</th>
+                   <th>Nama Pasien</th>
+                   <th>Tanggal Lahir</th>
+                   <th>keterangan</th>
+                   <th>PISA</th>
+               </tr>
+           </thead>
+           <tbody style="text-align: center;">
             <tr>
                 <td>1.</td>
                 <td><?= $record['n_pasien']?></td>
@@ -200,10 +200,9 @@
     </table>
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
-            <td width="40%" style="text-align: center;">Kepada Divisi <?= $record['kep_divisi']?></td>
+            <td width="40%" style="text-align: center;">Kepada Divisi <?= $record['n_divisi']?></td>
             <td width="25%"></td>
             <td style="text-align: center;">Pemohon,</td>
-            <td></td>
         </tr>
     </table>
     <table style="margin-left:2%;" class="" id="" width="95%">
@@ -211,59 +210,57 @@
             <td width="40%" style="text-align: center;"><span><img src="<?= base_url('assets/'); ?>img/qrcode/QRcode.jpg" alt="logo" width="100"></span></td>
             <td width="25%"></td>
             <td style="text-align: center;"><span><img src="<?= base_url('assets/'); ?>img/qrcode/QRcode.jpg" alt="logo" width="100"></span></td>
-            <td></td>
         </tr>
     </table>
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
             <td width="40%" style="text-align: center; font-weight: bold; text-decoration: underline;"><?= $record['n_lengkap']?></td>
-            <td width="23%"></td>
+            <td width="25%"></td>
             <td style="text-align: center; font-weight: bold; text-decoration: underline;"><?= $record['n_pegawai']?></td>
         </tr>
         <tr>
             <td width="40%" style="text-align: center;">NIK. <?= $record['nik_profile']?>5</td>
-            <td width="23%"></td>
+            <td width="25%"></td>
             <td style="text-align: center; " width="40%">NIK. <?= $record['nik_request']?></td>
         </tr>
     </table>
 </div>
-<!-- Lampiran 1 -->
-<div class="page-break">
-   <table style="margin-left:2%;" class="" id="" width="95%">
-    <tr>
-        <td>Lampiran :</td>
-    </tr>
-</table>
-<table style="margin-left:2%;" class="" id="" width="95%">
-    <tr>
-        <td>
-            <?php if($record['bukti1'] == ''){ ?>
-                <img src="<?= base_url('assets/'); ?>img/lampiran/no-image.jpg" class="">
-            <?php } else { ?>
-                <img style="" src="<?php echo base_url('assets/').'img/lampiran/'.$record['bukti1']  ?>" class="">
-            <?php } ?>
-        </td>
-    </tr>
-</table>
-</div>
-
-<!-- Lampiran 2 -->
-<div class="page-break">
-   <table style="margin-left:2%;" class="" id="" width="95%">
-    <tr>
-        <td>Lampiran :</td>
-    </tr>
-</table>
-<table style="margin-left:2%;" class="" id="" width="95%">
-    <tr>
-     <td>
-        <?php if($record['bukti2'] == ''){ ?>
-            <img src="<?= base_url('assets/'); ?>img/lampiran/no-image.jpg" class="">
-        <?php } else { ?>
-            <img style="" src="<?php echo base_url('assets/').'img/lampiran/'.$record['bukti2']  ?>" class="">
-        <?php } ?>
-    </td>
-</tr>
-</table>
-</div>
+<!-- Lampiran -->
+<?php foreach ($lampiran as $r ) { ?>
+    <?php
+    $data = $record['id_request'];
+    ?>
+    <?php if ($r->request_id == $data) { 
+        if ($r->n_image == null ){
+         echo "<div class=\"page-break\">
+         <table style=\"margin-left:2%;\"  width=\"95%\">
+         <tr>
+         <td>Lampiran :</td>
+         </tr>
+         </table>
+         <table style=\"margin-left:2%;\" width=\"95%\">
+         <tr>
+         <td><img style=\"height: 500px; width: 500px;\" src=".base_url('assets/').'img/lampiran/no-image.jpg'." data-lity></div>
+         </td>
+         </tr>
+         </table>
+         </div>";
+     }else{
+         echo "<div class=\"page-break\">
+         <table style=\"margin-left:2%;\"  width=\"95%\">
+         <tr>
+         <td>Lampiran :</td>
+         </tr>
+         </table>
+         <table style=\"margin-left:2%;\" width=\"95%\">
+         <tr>
+         <td><img style=\"height: 500px; width: 500px;\" src=".base_url('assets/').'img/lampiran/'.$r->n_image." data-lity></div>
+         </td>
+         </tr>
+         </table>
+         </div>";
+     }
+ }
+ ?>
+<?php } ?>
 </div>
