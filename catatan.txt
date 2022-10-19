@@ -15,7 +15,7 @@ hitung tanggal OK
 dashboard semua role OK
 kadep kadip kebalik OK
 
-Input Request Gambar
+Input Request Gambar OK
 Edit Request Gambar
 
 

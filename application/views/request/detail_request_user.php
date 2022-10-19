@@ -160,13 +160,14 @@
                             <td><?= $request['pisa']?></td>
                             <td><?= $request['tgl_kuitansi']?></td>
                             <td><?= $request['u_berobat']?></td>
-                            <td><?= $request['nominal']?></td>
+                            <td><?= "Rp " . number_format($request['nominal'], 2, ",", ".");?></td>
+                            <!-- <td><?= $request['nominal']?></td> -->
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="5">Total Pengajuan</td>
-                            <td><?= $request['t_pengajuan']?></td>
+                            <td><?= "Rp " . number_format($request['t_pengajuan'], 2, ",", ".");?></td>
                         </tr>
                     </tfoot>
                 </table>

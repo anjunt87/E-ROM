@@ -2,6 +2,7 @@
 <div class="container-fluid">
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Request Users</h1>
+    <?= $this->session->flashdata('message'); ?>
     <!-- DataTales Example -->
                     <!-- Admin -->
                     <?php if($this->session->userdata('role_id')=== '1'):?>

@@ -36,11 +36,11 @@
                     <?php
                     $data = $request['id_request'];
                     ?>
-                    <?php if ($r->request_id == $data) { 
-                        if ($r->n_image == null ){
+                    <?php if ($r['request_id'] == $data) { 
+                        if ($r['n_image'] == null ){
                            echo "<img style=\"height: 200px; width: 200px;\" src=".base_url('assets/').'img/lampiran/no-image.jpg'." data-lity>";
                        }else{
-                           echo "<img style=\"height: 200px; width: 200px;\" src=".base_url('assets/').'img/lampiran/'.$r->n_image." data-lity>";
+                           echo "<img style=\"height: 200px; width: 200px;\" src=".base_url('assets/').'img/lampiran/'.$r['n_image']." data-lity>";
                        }
                    }
                    ?>

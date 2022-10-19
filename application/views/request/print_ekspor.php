@@ -177,13 +177,14 @@
                 <td><?= $record['pisa']?></td>
                 <td><?= $record['tgl_kuitansi']?></td>
                 <td><?= $record['u_berobat']?></td>
-                <td><?= $record['nominal']?></td>
+                <td><?= "Rp " . number_format($record['nominal'], 2, ",", ".");?></td>
+
             </tr>
         </tbody>
         <tfoot style="text-align: center;">
             <tr>
                 <td colspan="5" style="font-weight: bold;">Total Pengajuan</td>
-                <td><?= $record['t_pengajuan']?></td>
+                <td><?= "Rp " . number_format($record['t_pengajuan'], 2, ",", ".");?></td>
             </tr>
         </tfoot>
     </table>
@@ -226,12 +227,12 @@
     </table>
 </div>
 <!-- Lampiran -->
-<?php foreach ($lampiran as $r ) { ?>
+<?php foreach ($lampiran as $l ) { ?>
     <?php
     $data = $record['id_request'];
     ?>
-    <?php if ($r->request_id == $data) { 
-        if ($r->n_image == null ){
+    <?php if ($l['request_id'] == $data) { 
+        if ($l['n_image'] == null ){
          echo "<div class=\"page-break\">
          <table style=\"margin-left:2%;\"  width=\"95%\">
          <tr>
@@ -254,7 +255,7 @@
          </table>
          <table style=\"margin-left:2%;\" width=\"95%\">
          <tr>
-         <td><img style=\"height: 500px; width: 500px;\" src=".base_url('assets/').'img/lampiran/'.$r->n_image." data-lity></div>
+         <td><img style=\"height: 500px; width: 500px;\" src=".base_url('assets/').'img/lampiran/'.$l['n_image']." data-lity></div>
          </td>
          </tr>
          </table>

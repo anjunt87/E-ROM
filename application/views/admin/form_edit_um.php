@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form role="form"  method="post" action="<?= site_url('admin/edit_aksi')?>">
+                <?= form_open_multipart('admin/edit_aksi'); ?>
                     <!-- cardbody input A dan B -->
                     <div class="card-body">
                         <div class="row">
@@ -34,10 +34,10 @@
                                         <?php endforeach;?>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                               <!--  <div class="form-group">
                                     <label for="nik">Password</label>
                                     <input type="text" class="form-control" name="password"  value="<?= $record['password'];?>" required>
-                                </div>
+                                </div> -->
                                 <br>
                                 <label for="">Atasan : </label>
                                 <div class="form-group">
@@ -67,59 +67,58 @@
                                     <option value="<?= $record['cabang_id'];?>"><?= $record['n_cabang'];?></option>
                                     <option value="">-- Pilih Cabang Pelayanan --</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tgl_lahir">Unit Cabang Pelayanan</label>
-                                <select  type="option" class="form-control"  name="id_unit" id="id_unit" required>
-                                    <option value="<?= $record['cabang_unit_id'];?>"><?= $record['n_unit'];?></option>
-                                    <option value="">-- Pilih Unit CP --</option>
-                                </select>
-                            </div>
-                            <br>
-                            <label for="bantuan">Departement | Divisi | Jabatan : </label>
-                            <div class="form-group">
-                                <label for="n_pasien">Departement</label>
-                                <select  type="option" class="form-control"  name="id_departement" id="id_departement" required>
-                                    <option value="<?= $record['departement_id'];?>"><?= $record['n_departement'];?></option>
-                                    <?php foreach($departement as $dp):?>
-                                        <option name="id_departement" value="<?= $dp['id_departement'];?>"><?= $dp['n_departement'];?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="tgl_lahir">Divisi</label>
-                                <select  type="option" class="form-control"  name="id_divisi" id="id_divisi" required>
-                                    <option value="<?= $record['divisi_id'];?>"><?= $record['n_divisi'];?></option>
-                                    <option value="">-- Pilih Divisi --</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="ket">Jabatan</label>
-                                <select  type="option" class="form-control"  name="id_jabatan" required>
-                                    <option value="<?= $record['id_jabatan'];?>"><?= $record['n_jabatan'];?></option>
-                                    <?php foreach($jabatan as $j):?>
-                                        <option name="id_jabatan" value="<?= $j['id_jabatan'];?>"><?= $j['n_jabatan'];?></option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                            <br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tgl_lahir">Unit Cabang Pelayanan</label>
+                                    <select  type="option" class="form-control"  name="id_unit" id="id_unit" required>
+                                        <option value="<?= $record['cabang_unit_id'];?>"><?= $record['n_unit'];?></option>
+                                        <option value="">-- Pilih Unit CP --</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <label for="bantuan">Departement | Divisi | Jabatan : </label>
+                                <div class="form-group">
+                                    <label for="n_pasien">Departement</label>
+                                    <select  type="option" class="form-control"  name="id_departement" id="id_departement" required>
+                                        <option value="<?= $record['departement_id'];?>"><?= $record['n_departement'];?></option>
+                                        <option value="">-- Pilih Departement --</option>
+                                        <?php foreach($departement as $dp):?>
+                                            <option name="id_departement" id="id_departement" value="<?= $dp->id_departement;?>"><?= $dp->n_departement;?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tgl_lahir">Divisi</label>
+                                    <select  type="option" class="form-control"  name="id_divisi" id="id_divisi" required>
+                                        <option value="<?= $record['divisi_id'];?>"><?= $record['n_divisi'];?></option>
+                                        <option value="">-- Pilih Divisi --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ket">Jabatan</label>
+                                    <select  type="option" class="form-control"  name="id_jabatan" required>
+                                    <option value="<?= $record['id_jabatan'];?>"><?= $record['n_jabatan'];?></option> 
+                                    <option value="">-- Pilih Jabatan --</option>
+                                        <?php foreach($jabatan as $j):?>
+                                            <option name="id_jabatan" value="<?= $j['id_jabatan'];?>"><?= $j['n_jabatan'];?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div><!-- /.card-body -->
+                        <div class="form-group mt-4">
+                            <button type="submit" name="submit" class="btn btn-success float-right ml-2">Simpan</button>
+                            <!-- <button type="reset" name="reset" class="btn btn-danger float-right ">Reset</button> -->
                         </div>
-                    </div>
-                </div><!-- /.card-body -->
-
-
-                <div class="form-group mt-4">
-                    <button type="submit" name="submit" class="btn btn-success float-right ml-2">Simpan</button>
-                    <button type="reset" name="reset" class="btn btn-danger float-right ">Reset</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<!-- /.container-fluid -->
+    <!-- /.container-fluid -->
 
-<!-- Select multiDropDown -->
+    <!-- Select multiDropDown -->
     <!-- <script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script> -->
     <script src="<?= base_url('assets/')?>js/jquery-3.3.1.js" ></script>
     <script type="text/javascript">
@@ -193,16 +192,14 @@
                 });
                 return false;
             });
-
-            $("#title").autocomplete({
-              source : "<?php echo site_url('admin/get_autocomplete') ?>",
-              select: function(event, ui){
-                $('[name="title"]').val(ui.label);
-                $('[name="nik_profile2"]').val(ui.item.nik_profile);
-                $('[name="id_profile"]').val(ui.item.id);
-                $('[name="id_departement2"]').val(ui.item.departement_id);
-                $('[name="id_divisi2"]').val(ui.item.divisi_id);
-            }
-        });
+                 $("#title").autocomplete({
+                  source : "<?php echo site_url('admin/get_autocomplete') ?>",
+                  select: function(event, ui){
+                    $('[name="title"]').val(ui.label);
+                    $('[name="nik_profile"]').val(ui.item.nik_profile);
+                    $('[name="id_profile"]').val(ui.item.id);
+                }
+            });
         });
     </script>
+

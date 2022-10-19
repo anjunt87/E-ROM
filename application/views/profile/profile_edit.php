@@ -30,6 +30,31 @@
               </div>
             </div>
             <div class="col-md-6">
+              <label for="bantuan">KORWIL | CP | UCP : </label>
+              <div class="form-group">
+                <label for="n_pasien">KORWIL</label>
+                <select  type="option" class="form-control"  name="id_korwil" id="id_korwil" required disabled>
+                  <option value="<?= $record['korwil_id'];?>"><?= $record['n_korwil'];?></option>
+                  <?php foreach($korwil as $kr):?>
+                   <option name="id_korwil" id="id_korwil" value="<?= $kr->id_korwil;?>"><?= $kr->n_korwil;?></option>
+                 <?php endforeach;?>
+               </select>
+             </div>
+             <div class="form-group">
+              <label for="tgl_lahir">Cabang Pelayanan</label>
+              <select  type="option" class="form-control"  name="id_cabang" id="id_cabang" required disabled>
+                <option value="<?= $record['cabang_id'];?>"><?= $record['n_cabang'];?></option>
+                <option value="">-- Pilih Cabang Pelayanan --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tgl_lahir">Unit Cabang Pelayanan</label>
+              <select  type="option" class="form-control"  name="id_unit" id="id_unit" required disabled>
+                <option value="<?= $record['cabang_unit_id'];?>"><?= $record['n_unit'];?></option>
+                <option value="">-- Pilih Unit CP --</option>
+              </select>
+            </div>
+            <br>
               <label for="bantuan">Departement / Divisi / Jabatan : </label>
               <div class="form-group">
                 <label for="n_pasien">Nama Departement</label>

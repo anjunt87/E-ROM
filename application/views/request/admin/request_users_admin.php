@@ -94,7 +94,7 @@
                     <th>Aksi</th>
                 </tr>
             </tfoot>
-            <?php $no=0; foreach ($request->result() as $r) { ?>
+            <?php $no=1; foreach ($request->result() as $r) { ?>
                 <?php if($r->a_departement == 1 && $r->a_divisi == 0 && $r->t_approve == 0 ) {
                     echo "<tbody>";
                     echo "<tr>";

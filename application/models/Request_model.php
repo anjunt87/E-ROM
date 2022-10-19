@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Request_model extends CI_Model {
+    
+    public function multiple_images($uploadImgData = array()){
+         return $this->db->insert_batch('t_image',$uploadImgData);
+    }
+
     public function tambah($post){
         $params = [
             'n_pegawai' => $post['n_pegawai'],
@@ -32,6 +37,19 @@ class Request_model extends CI_Model {
             // 'bukti2' => $post['bukti2'],
         ];
         $this->db->insert('t_request', $params);
+
+        $last_id = $this->db->insert_id();
+        $nik = $post['nik_request'];
+        $tgl = $post['tgl_pengajuan'];
+            // insert DB advantage_user
+            
+                $image_request = [
+                    'request_id' => $last_id,
+                    'n_image' => "a.jpg",
+                    'ket_image' => ("$last_id" ."-". "$nik" ."-". "$tgl")
+                ];  
+        $this->db->insert('t_image', $image_request);
+
     }
 
     public function edit($post){

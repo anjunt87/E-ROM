@@ -52,6 +52,23 @@
                         <td>:</td>
                         <td><?= $record['nik'];?></td>
                       </tr>
+
+                      <tr>
+                        <td>Kordinator Wilayah</td>
+                        <td>:</td>
+                        <td><?= $record['n_korwil'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Cabang Pelayanan</td>
+                        <td>:</td>
+                        <td><?= $record['n_cabang'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Unit Cabang Pelayanan</td>
+                        <td>:</td>
+                        <td><?= $record['n_unit'];?></td>
+                      </tr>
+
                       <tr>
                         <td>Departement</td>
                         <td>:</td>

@@ -37,6 +37,7 @@ class Admin extends CI_Controller {
 		$data['user'] =  $this->Rom_model->dataAccount1();
 		$data['record'] =  $this->Rom_model->dataAccount2();
 		$data['usersManagement'] = $this->Rom_model->queryGetUserProfile();
+		// $data['usersManagement'] = $this->Rom_model->get_data('t_users')->result_array();
 
         // if ($this->input->post('keyword') ) {
         // $data['usersManagement'] = $this->Rom_model->CariallUser();
@@ -334,8 +335,6 @@ class Admin extends CI_Controller {
 					$result_array[] = array(
 						'label'=>$row->n_lengkap,
 						'nik_profile'=>strtoupper($row->nik_profile),
-						'departement_id'=>strtoupper($row->departement_id),
-						'divisi_id'=>strtoupper($row->divisi_id),
 						'id'=>strtoupper($row->id)
 					);
 				echo json_encode($result_array);

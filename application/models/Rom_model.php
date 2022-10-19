@@ -95,7 +95,7 @@ class Rom_Model extends CI_Model {
         $this->db->join('t_profile','t_request.atasan_id = t_profile.id');
         $this->db->join('t_departement', 't_request.departement_id = t_departement.id_departement');
         $this->db->join('t_divisi', 't_request.divisi_id = t_divisi.id_divisi');
-        $this->db->join('t_jabatan', 't_request.jabatan_id = t_jabatan.id_jabatan');
+        $this->db->join('t_jabatan', 't_request.jabatan_id = t_jabatan.id_jabatan' );
         $this->db->where('t_request.id_request' , $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -108,7 +108,7 @@ class Rom_Model extends CI_Model {
         $this->db->join('t_request', 't_request.id_request = t_image.request_id');
         $this->db->where('t_image.request_id' , $id);
         $query = $this->db->get();
-        return $query->result();
+        return $query->result_array();
     }
 
     public function dataAccount1()

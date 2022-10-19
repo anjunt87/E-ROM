@@ -121,43 +121,65 @@
                                 <input type="hidden" name="id_unit" value="<?= $record['cabang_unit_id'];?>">
                                 <input type="hidden" name="id_atasan" value="<?= $user['atasan_id'];?>">
                                 
-                                <!-- Upload -->
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Bukti Kuitansi / Resep / dll</label>
-                                </div>
-                                <!-- HIDDEN DYNAMIC ELEMENT TO CLONE -->
-                                <!-- you can replace it with any other elements -->
-                                <div class="form-group dynamic-element" style="display:none">
-                                  <div class="row">
-                                      <div class=""></div>
-
-                                      <!-- Replace these fields -->
-                                      <div class="col-md-4 mt-4">
-                                        <input type="file" id="image" name="image[]" class="form-control">
+                                <?php if ($page == "Tambah"): ?>
+                                    <!-- Upload -->
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Bukti Kuitansi / Resep / dll</label>
                                     </div>
-                                    <!-- End of fields-->
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-danger btn-del" type="button">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- END OF HIDDEN ELEMENT -->
+                                     <div class="form-group">
+                                          <div class="col-md-4 mt-4">
+                                            <label>Lampiran 1</label>
+                                            <input type="file" id="image" name="image[]" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-4 mt-4">
+                                            <label>Lampiran 2</label>
+                                            <input type="file" id="image" name="image[]" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-4 mt-4">
+                                            <label>Lampiran 3</label> 
+                                            <input type="file" id="image" name="image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4 mt-4">
+                                            <label>Lampiran 4</label>
+                                            <input type="file" id="image" name="image[]" class="form-control">
+                                        </div>
+                                        <div class="col-md-4 mt-4">
+                                            <label>Lampiran 5</label>
+                                            <input type="file" id="image" name="image[]" class="form-control">
+                                        </div>
 
-                            <div class="dynamic-stuff">
-                                <!-- Dynamic element will be cloned here -->
-                                <!-- You can call clone function once if you want it to show it a first element-->
-                            </div>
+                                     </div>
+                                    <!-- HIDDEN DYNAMIC ELEMENT TO CLONE -->
+                                    <!-- you can replace it with any other elements -->
+                                   <!--  <div class="form-group dynamic-element">
+                                      <div class="row"> -->
+                                          <!-- Replace these fields -->
+                                       
+                                        <!-- End of fields-->
+                                        <!-- <span class="input-group-btn">
+                                            <button class="btn btn-danger btn-del" type="button">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div> -->
+                                <!-- END OF HIDDEN ELEMENT -->
 
-                            <!-- Button -->
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="">
-                                      <p class="add-one">+ Tambah Form Upload</p>
+                                <!-- <div class="dynamic-stuff"> -->
+                                    <!-- Dynamic element will be cloned here -->
+                                    <!-- You can call clone function once if you want it to show it a first element-->
+                                <!-- </div> -->
+
+                                <!-- Button -->
+                                <!-- <div class="form-group">
+                                    <div class="row">
+                                        <div class="">
+                                          <p class="add-one">+ Tambah Form Upload</p>
+                                      </div>
                                   </div>
-                              </div>
-                          </div><!-- End Upload -->
+                              </div> -->
+                              <!-- End Upload -->
+                          <?php endif ?>      
                       </div>
                   </div><!-- /.card-body -->
                   <div class="form-group mt-4">
@@ -169,4 +191,4 @@
         </div>
     </div>
 </div>
-<!-- /.container-fluid -->
+<!-- /.container-fluid --> 

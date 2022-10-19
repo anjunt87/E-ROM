@@ -76,8 +76,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="tgl_lahir">Unit Cabang Pelayanan</label>
-                                <select  type="option" class="form-control"  name="id_unit" id="id_unit" required>
-                                    <option value="">-- Pilih Unit CP --</option>
+                                <select  type="option" class="form-control"  name="id_unit" id="id_unit">
+                                    <option value="1"></option>
+                                    <!-- <option value="">-- Pilih Unit CP --</option> -->
                                 </select>
                             </div>
                             <br>
