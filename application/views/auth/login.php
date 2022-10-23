@@ -71,7 +71,7 @@
 						</div> -->
 					</div>
 					<div class="text-center mt-5 text-muted">
-						&copy; Copyright <strong><span>Gagitualdi.com</span></strong>. All Rights Reserved
+						<!-- &copy; Copyright <strong><span>Gagitualdi.com</span></strong>. All Rights Reserved -->
 					</div>
 				</div>
 			</div>

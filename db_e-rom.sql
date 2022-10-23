@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 Okt 2022 pada 04.03
+-- Generation Time: 23 Okt 2022 pada 06.27
 -- Versi Server: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -159,43 +159,33 @@ CREATE TABLE IF NOT EXISTS `t_image` (
   `n_image` varchar(255) DEFAULT NULL,
   `ket_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data untuk tabel `t_image`
 --
 
 INSERT INTO `t_image` (`id_image`, `request_id`, `n_image`, `ket_image`) VALUES
-(1, 1, '92745890_2506821182965775_8350331199918440448_o3.jpg', '1-3215010807960059-2022-10-16'),
-(2, 1, '97345658_2658925207717299_8467430412342263808_n2.jpg', '1-3215010807960059-2022-10-16'),
-(3, 2, '92745890_2506821182965775_8350331199918440448_o4.jpg', '2-3215010807960001-2022-10-16'),
-(4, 2, 'bahan4.jpg', '2-3215010807960001-2022-10-16'),
-(5, 3, '97345658_2658925207717299_8467430412342263808_n3.jpg', '3-3215010807960001-2022-10-16'),
-(6, 4, '92745890_2506821182965775_8350331199918440448_o5.jpg', '4-3215555788997788-2022-10-16'),
-(7, 5, '92745890_2506821182965775_8350331199918440448_o6.jpg', '5-465174967176-2022-10-16'),
-(8, 6, 'BG.jpg', '6-465174967176-2022-10-16'),
-(9, 7, '97345658_2658925207717299_8467430412342263808_n4.jpg', '7-3215010807960001-2022-10-18'),
-(10, 7, '', '7-3215010807960001-2022-10-18'),
-(11, 7, '', '7-3215010807960001-2022-10-18'),
-(12, 7, '97345658_2658925207717299_8467430412342263808_n5.jpg', '7-3215010807960001-2022-10-18'),
-(13, 7, '', '7-3215010807960001-2022-10-18'),
-(19, 8, 'Profile-181022-12f73080e0.jpg', '8-3215010807960001-2022-10-18'),
-(20, 8, 'Profile-181022-8ceab02fd1.jpg', '8-3215010807960001-2022-10-18'),
-(21, 9, '97345658_2658925207717299_8467430412342263808_n7.jpg', '9-3215010807960001-2022-10-18'),
-(22, 9, '', '9-3215010807960001-2022-10-18'),
-(23, 9, '', '9-3215010807960001-2022-10-18'),
-(24, 9, '', '9-3215010807960001-2022-10-18'),
-(25, 9, '', '9-3215010807960001-2022-10-18'),
-(31, 11, '92745890_2506821182965775_8350331199918440448_o7.jpg', '11-32150999998765682-2022-10-18'),
-(32, 11, '97345658_2658925207717299_8467430412342263808_n8.jpg', '11-32150999998765682-2022-10-18'),
-(33, 11, '', '11-32150999998765682-2022-10-18'),
-(34, 11, '', '11-32150999998765682-2022-10-18'),
-(35, 11, '', '11-32150999998765682-2022-10-18'),
-(36, 12, 'bahan5.jpg', '12-32150999998765683-2022-10-18'),
-(37, 12, '', '12-32150999998765683-2022-10-18'),
-(38, 12, '', '12-32150999998765683-2022-10-18'),
-(39, 12, '', '12-32150999998765683-2022-10-18'),
-(40, 12, '', '12-32150999998765683-2022-10-18');
+(1, 1, 'Untitled22.png', '1-32150999998765683-2022-10-23'),
+(2, 1, 'Untitled221.png', '1-32150999998765683-2022-10-23'),
+(3, 1, '', '1-32150999998765683-2022-10-23'),
+(4, 1, '', '1-32150999998765683-2022-10-23'),
+(5, 1, '', '1-32150999998765683-2022-10-23'),
+(6, 2, 'Untitled222.png', '2-32150999998765683-2022-10-23'),
+(7, 2, 'Untitled223.png', '2-32150999998765683-2022-10-23'),
+(8, 2, '', '2-32150999998765683-2022-10-23'),
+(9, 2, '', '2-32150999998765683-2022-10-23'),
+(10, 2, '', '2-32150999998765683-2022-10-23'),
+(11, 3, 'Untitled224.png', '3-32150999998765683-2022-10-23'),
+(12, 3, 'Untitled225.png', '3-32150999998765683-2022-10-23'),
+(13, 3, '', '3-32150999998765683-2022-10-23'),
+(14, 3, '', '3-32150999998765683-2022-10-23'),
+(15, 3, '', '3-32150999998765683-2022-10-23'),
+(16, 4, 'Untitled226.png', '4-32150999998765683-2022-10-23'),
+(17, 4, 'Untitled227.png', '4-32150999998765683-2022-10-23'),
+(18, 4, '', '4-32150999998765683-2022-10-23'),
+(19, 4, '', '4-32150999998765683-2022-10-23'),
+(20, 4, '', '4-32150999998765683-2022-10-23');
 
 -- --------------------------------------------------------
 
@@ -348,15 +338,17 @@ CREATE TABLE IF NOT EXISTS `t_request` (
   `w_ohc` date DEFAULT NULL,
   `w_keuangan` date DEFAULT NULL,
   PRIMARY KEY (`id_request`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data untuk tabel `t_request`
 --
 
 INSERT INTO `t_request` (`id_request`, `departement_id`, `divisi_id`, `jabatan_id`, `atasan_id`, `korwil_id`, `cabang_id`, `cabang_unit_id`, `n_pegawai`, `nik_request`, `k_healt`, `rs_dokter`, `n_pasien`, `ttl_pasien`, `ket`, `pisa`, `d_sakit`, `kronologi`, `kuitansi`, `tgl_kuitansi`, `u_berobat`, `nominal`, `t_pengajuan`, `bukti1`, `bukti2`, `tgl_pengajuan`, `tgl_exp`, `a_departement`, `a_divisi`, `a_ohc`, `a_keuangan`, `t_approve`, `t_ket`, `w_departement`, `w_divisi`, `w_ohc`, `w_keuangan`) VALUES
-(11, 2, 3, 3, 70, 1, 1, 1, 'Trevor Joyce', '32150999998765682', 'Ut accusamus illo', 'Minima id perspiciat', 'Eligendi error dolor', '2018-01-20', 'Aut porro exercitati', 'Enim et fac', 'Voluptates corrupti', 'Excepturi libero vol', 'Occaecat ullam in vo', '2022-10-18', 'Id ex expedita elige', 2147483647, 2147483647, '', '', '2022-10-18', '2022-12-17', 1, 0, 0, 0, 0, '', NULL, NULL, NULL, NULL),
-(12, 2, 3, 3, 70, 1, 1, 1, 'Chester Bean', '32150999998765683', 'Ullam dolore sequ', 'Ad voluptas magni re', 'Est magnam id porro ', '1983-08-02', 'Quibusdam sint rerum', 'Aliquip con', 'Tempore reiciendis ', 'Neque soluta saepe s', 'Provident aliquid i', '2022-10-26', 'Mollitia earum qui n', 33, 33, '', '', '2022-10-18', '2022-12-17', 1, 0, 0, 0, 0, '', '2022-10-18', NULL, NULL, NULL);
+(1, 2, 3, 3, 70, 1, 1, 1, 'Chester Bean', '32150999998765683', 'Sed tenetur facer', 'Eum qui sit molesti', 'Molestias maxime per', '2003-09-21', 'Minima non deleniti ', 'Laboris adi', 'Molestiae sit exped', 'In eos est veniam e', 'Nihil sit rerum non ', '2022-10-23', 'Veritatis officia pr', 26, 26, '', '', '2022-10-23', '2022-12-22', 1, 1, 1, 1, 0, '', '2022-10-23', '2022-10-23', '2022-10-23', '2022-10-23'),
+(2, 2, 3, 3, 70, 1, 1, 1, 'Chester Bean', '32150999998765683', 'Sed tenetur facer', 'Eum qui sit molesti', 'Molestias maxime per', '2003-09-21', 'Minima non deleniti ', 'Laboris adi', 'Molestiae sit exped', 'In eos est veniam e', 'Nihil sit rerum non ', '2022-07-22', 'Veritatis officia pr', 26, 26, '', '', '2022-10-23', '2022-12-22', 2, 2, 2, 2, 1, 'Tanggal Kuitansi telah melebihi batas waktu pengajuan, batas pengajuan hanya berlaku selama 3 bulan dari tanggal kuitansi ke tanggal pengajuan.', '2022-10-23', '2022-10-23', '2022-10-23', '2022-10-23'),
+(3, 2, 3, 3, 70, 1, 1, 1, 'Chester Bean', '32150999998765683', 'Sed tenetur facer', 'Eum qui sit molesti', 'Molestias maxime per', '2003-09-21', 'Minima non deleniti ', 'Laboris adi', 'Molestiae sit exped', 'In eos est veniam e', 'Nihil sit rerum non ', '2022-10-22', 'Veritatis officia pr', 26, 26, '', '', '2022-10-23', '2022-12-22', 2, 0, 0, 0, 1, 'Request Telah Kadaluarsa', '2022-12-25', NULL, NULL, NULL),
+(4, 2, 3, 3, 70, 1, 1, 1, 'Chester Bean', '32150999998765683', 'Sed tenetur facer', 'Eum qui sit molesti', 'Molestias maxime per', '2003-09-21', 'Minima non deleniti ', 'Laboris adi', 'Molestiae sit exped', 'In eos est veniam e', 'Nihil sit rerum non ', '2022-10-22', 'Veritatis officia pr', 26, 26, '', '', '2022-10-23', '2022-12-22', 1, 1, 1, 0, 0, '', '2022-10-23', '2022-10-24', '2022-10-25', '2022-10-26');
 
 -- --------------------------------------------------------
 
@@ -424,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `t_users` (
 
 INSERT INTO `t_users` (`id`, `atasan_id`, `name`, `nik`, `image`, `qr_code`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 1, 'ADMINISTATOR', '3215010807960001', '', '', '$2y$10$4wV39cLYY53wJ3iqutYBN.aIENowJUxxIPUi4hGTBtHrTrxvilnnC', 1, 1, 2022),
-(73, 1, 'Idola Velez', '32150999998765678', '', '', '$2y$10$C/WHp2scWgZCnGQj9rXEGOkaWeKPXjwq47GkuVr4rEhPpKzCpARFm', 2, 1, 2022),
+(73, 1, 'Idola Velez', '32150999998765678', '', '', '$2y$10$71E4SybT2OV7iAfNYlRameWu2zCEmNgo3s9vSDbgDq022AYXqJ6M6', 2, 1, 2022),
 (74, 1, 'Indira Knight', '32150999998765679', '', '', '$2y$10$ttb7SmOOEc.tlY9vHPrwle91sfsBjWVfGxfVIgQQNufUKlxkKXWT2', 5, 1, 2022),
 (75, 1, 'Quamar Ryan', '32150999998765680', '', '', '$2y$10$pBTnO0g6Ir6CvnR0TkricuGsR29J2qWvU3dH2SyDJbRGMyFERkvAO', 3, 1, 2022),
 (77, 69, 'Leigh Barker', '32150999998765681', '', '', '$2y$10$GNGM80PVwu0u1wAwiSJCA.dI05Swtx8hw3.DNNoVhwq4.wOp/sfEi', 4, 1, 2022),

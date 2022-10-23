@@ -174,16 +174,17 @@ class Request extends CI_Controller {
 	{   
 	    //upload an image options
 	    $config = array();
-	    $config['image_library'] = 'gd2';
-	    $config['upload_path'] = './assets/img/lampiran/';
-	    $config['allowed_types'] = 'gif|jpg|jpeg|png';
-	    $config['max_size']      = '0';
-	    $config['create_thumb']      = FALSE;
-	    $config['maintain_ratio']      = FALSE;
-	    $config['quality']      = '50%';
-	    $config['width'] = 300;
-	 	$config['height'] = 300; 
-	    $config['overwrite']     = FALSE;
+	    $config['allowed_types']	= 'gif|png|jpg|jpeg';
+	    $config['image_library']	= 'gd2';
+	    $config['upload_path'] 		= './assets/img/lampiran/';
+	    $config['allowed_types'] 	= 'gif|jpg|jpeg|png';
+	    $config['max_size']      	= '0';
+	    $config['create_thumb']     = FALSE;
+	    $config['maintain_ratio']   = FALSE;
+	    $config['quality']      	= '50%';
+	    $config['width'] 			= 300;
+	 	$config['height'] 			= 300; 
+	    $config['overwrite']     	= FALSE;
 
 	    return $config;
 	}
@@ -212,15 +213,10 @@ class Request extends CI_Controller {
 			$data['title'] = 'Request History';
 			$data['user'] =  $this->Rom_model->dataAccount1();
 			$data['record'] =  $this->Rom_model->dataAccount2();
-
-			// memfilter berdasarkan NIK yang Login 
-			// $where = array ('nik_request' => $this->session->userdata('nik'));
+			
 			$id=  $this->uri->segment(3);
 			$where =   array('id_image'=>$id);
 			$data['lampiran'] = $this->Rom_model->find_data($where, 't_image')->result_array();
-			// $data['request']= $this->Rom_model->find_data($where, 't_request');
-			// $data['request'] = $this->Rom_model->queryRequest($id);
-			// $data['lampiran'] = $this->Rom_model->queryGetRequestImage($id);
 
 			$this->load->view('template/dashboard/header', $data);
 			$this->load->view('template/dashboard/sidebar', $data);
@@ -234,21 +230,21 @@ class Request extends CI_Controller {
 		$config['upload_path']		=	"./assets/img/lampiran";
 		$config['allowed_types']	=	'gif|png|jpg|jpeg';
 		// $config['encrypt_name'] = TRUE;
-		$config['file_name']		=	 'Profile-'.date('dmy').'-'.substr(md5(rand()), 0,10);
+		$config['file_name']		=	 'Lampiran-'.date('dmy').'-'.substr(md5(rand()), 0,10);
 
 		$this->load->library('upload',$config);
 		if($this->upload->do_upload("file")){
 			$data = $this->upload->data();
 
 	        //Resize and Compress Image
-			$config['image_library']='gd2';
-			$config['source_image']='./assets/img/lampiran/'.$data['file_name'];
-			$config['create_thumb']= FALSE;
-			$config['maintain_ratio']= FALSE;
-			$config['quality']= '60%';
-			$config['width']= 600;
-			$config['height']= 400;
-			$config['new_image']= './assets/img/lampiran/'.$data['file_name'];
+			$config['image_library']	='gd2';
+			$config['source_image']		='./assets/img/lampiran/'.$data['file_name'];
+			$config['create_thumb']		= FALSE;
+			$config['maintain_ratio']	= FALSE;
+			$config['quality']			= '60%';
+			$config['width']			= 600;
+			$config['height']			= 400;
+			$config['new_image']		= './assets/img/lampiran/'.$data['file_name'];
 			$this->load->library('image_lib', $config);
 			$this->image_lib->resize();
 

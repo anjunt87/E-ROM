@@ -16,8 +16,12 @@
                             Jumlah Request Users</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                <?php
-                               $this->db->select('*')->from('t_request')->like('a_ohc', '0' && '1' && '2');
-                               echo $this->db->count_all_results();
+                               $this->db->select('*')->from('t_request')->like('a_ohc', '1' && '2');
+                               $hitung1 = $this->db->count_all_results();
+                               $this->db->select('*')->from('t_request')->like('a_divisi', '1' );
+                               $hitung2 = $this->db->count_all_results();
+                               $jumlah = $hitung1 + $hitung2;
+                               echo "$jumlah";
                                ?>
                            </div>
                        </div>
@@ -39,7 +43,7 @@
                                         Cancel Request Users</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                                            <?php
-                                           $this->db->select('*')->from('t_request')->like('t_approve', '1');
+                                           $this->db->select('*')->from('t_request')->like('a_ohc', '2')->like('t_approve', '1');
                                            echo $this->db->count_all_results();
                                            ?>
                                         </div>

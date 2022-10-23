@@ -18,7 +18,7 @@ class Unit extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Unit Setting';
+		$data['title'] = 'Unit Cabang Setting';
 		$data['user'] =  $this->Rom_model->dataAccount1();
 		$data['record'] =  $this->Rom_model->dataAccount2();
 		$data['unit'] =  $this->Rom_model->queryKorwilCabangUnit();

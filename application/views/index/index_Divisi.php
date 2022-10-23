@@ -17,8 +17,12 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                <?php
                                                $data = $record['divisi_id'];
-                                               $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_divisi', '0' && '1' && '2');
-                                               echo $this->db->count_all_results();
+                                               $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_departement', '1' )->like('a_divisi', '1' && '2');
+                                               $hitung1 = $this->db->count_all_results();
+                                               $this->db->select('*')->from('t_request')->like('divisi_id', $data)->like('a_departement', '2' )->like('a_divisi', '2' );
+                                               $hitung2 = $this->db->count_all_results();
+                                               $jumlah = $hitung1 + $hitung2;
+                                               echo "$jumlah";
                                                ?>
                                             </div>
                                         </div>

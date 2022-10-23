@@ -18,7 +18,7 @@ class Korwil extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Dashboard';
+		$data['title'] = 'Korwil Setting';
 		$data['user'] =  $this->Rom_model->dataAccount1();
 		$data['record'] =  $this->Rom_model->dataAccount2();
 		$data['korwil'] =  $this->Rom_model->get_data('t_korwil')->result_array();

@@ -18,7 +18,7 @@ class Cabang extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Dashboard';
+		$data['title'] = 'Cabang Setting';
 		$data['user'] =  $this->Rom_model->dataAccount1();
 		$data['record'] =  $this->Rom_model->dataAccount2();
 		$data['cabang'] =  $this->Rom_model->queryKorwilCabang();

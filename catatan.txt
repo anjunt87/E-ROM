@@ -16,12 +16,13 @@ dashboard semua role OK
 kadep kadip kebalik OK
 
 Input Request Gambar OK
-Edit Request Gambar
+Edit Request Gambar OK
 
 
 
 Bug
 Search data request users keseluruhan
+Index Divisi Departement OK
 
 Link Github
 https://github.com/anjunt87/E-ROM.git

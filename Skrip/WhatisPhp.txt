@@ -1,0 +1,6 @@
+PHP (Hypertext Preprocessor) adalah bahasa skrip tujuan umum open source yang banyak digunakan yang sangat cocok untuk pengembangan web dan dapat disematkan ke dalam HTML.
+Whats is PHP(2022)[diakses 20 Oktober 2022].https://www.php.net/manual/en/intro-whatis.php
+
+
+Metode Agile merupakan metode pengembangan incremental yang fokus pada perkembangan yang cepat, perangkat lunak  yang dirilis bertahap, mengurangi overhead proses, dan menghasilkan kode berkualitas tinggi dan pada proses perkembangannya melibatkan pelanggan  secara  langsung[3]
+I. Sommerville, Software Engineering (Rekayasa Perangkat Lunak). Jakarta: Erlangga, 2011.

@@ -180,7 +180,7 @@ class Profile extends CI_Controller {
 
             $where = array ('nik' => $nik);
             $this->Rom_model->update_data('t_users', $data, $where);
-            echo $this->session->set_flashdata('msg','<div class="alert alert-success text-center" role="alert">Password Berhasil Di Ubah</div>');
+            echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Password Berhasil Di Ubah</div>');
             redirect('Profile/indexProfile/'.$nik);
 
     	}
