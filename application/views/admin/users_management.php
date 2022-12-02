@@ -63,8 +63,18 @@
                                      }
                                      ?>
                                  </td> 
-                                 <td><?= date('d F Y', $uM['date_created']); ?></td>
-                                 <td><?= $uM['is_active']; ?></td>
+                                 <td>
+                                    <?php $sampeledate = ($uM['date_created']); 
+                                        $converdate = format_indo(date('Y-m-d', strtotime($sampeledate)));
+                                        echo $converdate;
+                                    ?>    
+                                </td>
+                                 <td>
+                                    <?php if($uM['is_active'] == 0 ){ 
+                                       echo '<div class="text-danger">Tidak Aktif</div>';
+                                   }elseif ($uM['is_active'] == 1 ){ 
+                                    echo '<div class="text-success">Aktif</div>';}?>
+                                 </td>
                                  <td>
                                     <a href="<?= site_url('admin/edit/').$uM['nik']; ?>" class="badge badge-pill badge-primary">Edit</a>
                                     <a class="badge badge-danger mr-2" data-toggle="modal" data-target="#hapusDivisiModal<?= $uM['nik'];?>" href="#" >Hapus</a>
@@ -98,8 +108,7 @@
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Batal</button>
                     <a class="btn btn-danger" href="<?= site_url('admin/deleteuser/'.$uM['nik']); ?>">Delete</a>
                 </div>
-
             </div>
         </div>
     </div>
-    <?php endforeach ?>
+<?php endforeach ?>

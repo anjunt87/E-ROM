@@ -40,6 +40,7 @@ class Request_model extends CI_Model {
             'nominal' => $post['nominal'],
             't_pengajuan' => $post['nominal'],
             'tgl_pengajuan' => $post['tgl_pengajuan'],
+            'tgl_exp' => date('Y-m-d', strtotime("+60 days")),
             // 'bukti1' => $post['bukti1'],
             // 'bukti2' => $post['bukti2'],
         ];
@@ -67,7 +68,7 @@ class Request_model extends CI_Model {
             'u_berobat' => empty($post['u_berobat']) ? null : $post['u_berobat'],
             'nominal' => $post['nominal'],
             't_pengajuan' => $post['nominal'],
-            'tgl_pengajuan' => $post['tgl_pengajuan'],
+            // 'tgl_pengajuan' => $post['tgl_pengajuan'],
             // 'bukti1' => $post['bukti1'],
             // 'bukti2' => $post['bukti2'],
         ];
@@ -114,4 +115,4 @@ class Request_model extends CI_Model {
         $this->db->where('id_request',  $id);
         $this->db->update('t_request', $params);
     }
-}
+} 

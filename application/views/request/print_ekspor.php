@@ -26,7 +26,7 @@
                 <tbody>
                     <tr>
                         <td width="2%">A.</td>
-                        <td width="16%">Data Diri </td>
+                        <td width="31%">Data Diri </td>
                         <td width="3%">:</td>
                         <td></td>
                     </tr>
@@ -37,8 +37,8 @@
             <table width="100%">
                 <thead>
                     <tr>
-                        <th width="2%"></th>
-                        <th width="16%"></th>
+                        <th width="3%"></th>
+                        <th width="31%"></th>
                         <th width="3%"></th>
                         <th></th>
                     </tr>
@@ -84,7 +84,7 @@
             <tbody>
                 <tr>
                     <td width="2%">B.</td>
-                    <td width="16%">Bantuan dimintakan untuk</td>
+                    <td width="31%">Bantuan dimintakan untuk</td>
                     <td width="3%">:</td>
                     <td></td>
                 </tr>
@@ -120,7 +120,7 @@
     <tbody>
         <tr>
             <td width="2%">C.</td>
-            <td width="16%">Diagnosa Sakit</td>
+            <td width="30%">Diagnosa Sakit</td>
             <td width="3%">:</td>
             <td><?= $record['d_sakit']?></td>
         </tr>
@@ -130,7 +130,7 @@
     <tbody>
         <tr>
             <td width="2%">D.</td>
-            <td width="16%">Kronologi</td>
+            <td width="30%">Kronologi</td>
             <td width="3%">:</td>
             <td><?= $record['kronologi']?></td>
         </tr>
@@ -142,7 +142,7 @@
     <thead>
         <tr>
             <th width="2%"></th>
-            <th width="16%"></th>
+            <th width="30%"></th>
             <th width="3%"></th>
             <th></th>
         </tr>
@@ -195,13 +195,13 @@
 <table style="margin-left:2%;" id="" width="95%">
     <tr>
         <td width="40%" style="text-align: center;">Memengetahui dan Menyetujui,</td>
-        <td width="30%"></td>
+        <td width="23%"></td>
         <td style="text-align: center;">Jakarta, <?= $record['tgl_pengajuan']?></td>
     </table>
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
             <td width="40%" style="text-align: center;">Kepada Divisi <?= $record['kep_divisi']?></td>
-            <td width="30%"></td>
+            <td width="32%"></td>
             <td style="text-align: center;">Pemohon,</td>
             <td></td>
         </tr>
@@ -217,15 +217,13 @@
     <table style="margin-left:2%;" class="" id="" width="95%">
         <tr>
             <td width="40%" style="text-align: center; font-weight: bold; text-decoration: underline;"><?= $record['n_lengkap']?></td>
-            <td width="30%"></td>
+            <td width="23%"></td>
             <td style="text-align: center; font-weight: bold; text-decoration: underline;"><?= $record['n_pegawai']?></td>
-            <td></td>
         </tr>
         <tr>
             <td width="40%" style="text-align: center;">NIK. <?= $record['nik_profile']?>5</td>
-            <td width="30%"></td>
-            <td style="text-align: center; ">NIK. <?= $record['nik_request']?></td>
-            <td></td>
+            <td width="23%"></td>
+            <td style="text-align: center; " width="40%">NIK. <?= $record['nik_request']?></td>
         </tr>
     </table>
 </div>

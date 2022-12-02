@@ -20,12 +20,20 @@
                 <label for="nik">NIK</label>
                 <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?= $record['nik'];?>" disabled required>
               </div>
+              <div class="form-group mt-2">
+                <label for="password">Alamat</label>
+                <input type="text" class="form-control" name="alamat" placeholder="Alamat" value="<?= $record['alamat']?>" required>
+              </div>
+              <div class="form-group">
+                <label for="password">No. Handphone</label>
+                <input type="text" class="form-control" name="no_hp" id="no_hp" onkeypress="return telp(event)" placeholder="No. Handphone" value="<?= $record['no_hp']?>" required>
+              </div>
             </div>
             <div class="col-md-6">
-              <!-- <label for="bantuan">Departement / Divisi / Jabatan : </label>
+              <label for="bantuan">Departement / Divisi / Jabatan : </label>
               <div class="form-group">
                 <label for="n_pasien">Nama Departement</label>
-                <select  type="option" class="form-control"  name="id_departement" id="id_departement" required>
+                <select  type="option" class="form-control"  name="id_departement" id="id_departement" required disabled>
                   <option value="<?= $record['id_departement'];?>"><?= $record['n_departement'];?></option>
                   <?php foreach($departement as $dp):?>
                     <option name="id_departement" value="<?= $dp['id'];?>"><?= $dp['n_departement'];?></option>
@@ -34,28 +42,19 @@
               </div>
               <div class="form-group">
                 <label for="tgl_lahir">Nama Divisi</label>
-                <select  type="option" class="form-control"  name="id_divisi" id="id_divisi" required>
+                <select  type="option" class="form-control"  name="id_divisi" id="id_divisi" required disabled>
                   <option value="<?= $record['id_divisi'];?>"><?= $record['n_divisi'];?></option>
                   <option value="">-- Pilih Divisi --</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="ket">Nama Jabatan</label>
-                <select  type="option" class="form-control"  name="id_jabatan" required>
+                <select  type="option" class="form-control"  name="id_jabatan" required disabled>
                   <option value="<?= $record['id_jabatan'];?>"><?= $record['n_jabatan'];?></option>
                   <?php foreach($jabatan as $j):?>
                     <option name="id_jabatan" value="<?= $j['id'];?>"><?= $j['n_jabatan'];?></option>
                   <?php endforeach;?>
                 </select>
-              </div> -->
-              <label for=""></label>
-              <div class="form-group mt-2">
-                <label for="password">Alamat</label>
-                <input type="text" class="form-control" name="alamat" placeholder="Alamat" value="<?= $record['alamat']?>" required>
-              </div>
-              <div class="form-group">
-                <label for="password">No. Handphone</label>
-                <input type="text" class="form-control" name="no_hp" id="no_hp" onkeypress="return telp(event)" placeholder="No. Handphone" value="<?= $record['no_hp']?>" required>
               </div>
             </div>
           </div>

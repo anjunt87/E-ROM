@@ -1,6 +1,31 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+   <!-- Waktu Pengajuan Bug haya eapilka selisih buka egurag-->
+    <div class="m-0 d-sm-flex font-weight-bold mb-4 float-right">
+     <?php if($request['a_divisi'] == 0 || $request['a_departement'] == 0 || $request['a_ohc'] == 0 || $request['a_keuangan'] == 0 && $request['a_divisi'] == 1 && $request['a_departement'] == 1 && $request['a_ohc'] == 1){
+         $tgl_exp = new DateTime($request['tgl_exp']);
+         $tgl_now = new DateTime(date('Y-m-d'));
+         $jarak = $tgl_exp -> diff($tgl_now);
+         if ($tgl_now >=$tgl_exp) {
+             // echo "data Sudah expired11";
+            $id = $request['id_request'];
+            // $edit_request =  array(
+            //     't_approve' => '1',
+            //     't_ket' => "data Sudah expired"
+            // );
+            // $this->Rom_model->update_data("t_request", $edit_request, $id);
+            $sql = "UPDATE t_request SET t_approve='1', t_ket='data Sudah expired' WHERE id_request=$id";
+            var_dump($sql);
+            // var_dump($id);
 
+         }else{
+            echo "Batas pegajuan sisa $jarak->days hari lagi";
+         }
+     }?>
+ </div>
+ <br>
+ <br>
+ <!-- End Waktu Pengajuan -->
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Request</h1>
@@ -9,8 +34,8 @@
                 <a class="btn btn-sm btn-primary shadow-sm" href="<?= site_url('PrintEkspor/printoutRequest/'.$request['id_request'])?> "><i class="fas fa-print fa-sm text-white-50"></i> Print Out Request</a>
                 <a class="btn btn-sm btn-primary shadow-sm ml-2"  href="<?= site_url('PrintEkspor/exportPdfRequest/'.$request['id_request'])?>"><i class="fas fa-print fa-sm text-white-50"></i> Ekspor Pdf Request</a>
             </div>
-        <?php elseif($this->session->userdata('role_id')=== '3' || '4' || '5' || '6' ):?>
-            <div class="float-right">
+        <?php elseif($this->session->userdata('role_id') === '3' || '4' ||'5' || '6'  ):?>
+                <div class="float-right">
                 <?php if($request['a_ohc'] == 0 ){ 
                // echo '<div style="color: gray;"><i class="fas fa-clock"></i> Menunggu</div>';
                 }elseif ($request['a_ohc'] == 1 ){ 
@@ -101,7 +126,8 @@
               echo $request['t_ket'];
             echo '</div>
         </div>';
-     }?>
+    }?>
+    
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 bg-success">
@@ -159,7 +185,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <table width="100%">
+                <table class="mt-4" width="100%">
                     <thead>
                         <th></th>
                     </thead>
@@ -189,11 +215,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="" width="100%">
+                <table class="mb-4" width="100%">
                     <thead>
                         <th width="18%"></th>
                         <th width="3%"></th>
-                        <th width="3%"></th>
+                        <th width="50%"></th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -204,11 +230,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="" width="100%">
+                <table class="mb-4" width="100%">
                     <thead>
                         <th width="18%"></th>
                         <th width="3%"></th>
-                        <th width="3%"></th>
+                        <th width="50%"></th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -219,7 +245,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="" width="100%">
+                <table class="mb-4" width="100%">
                     <thead>
                         <th width="18%"></th>
                         <th width="3%"></th>
@@ -228,7 +254,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>E. Bukti - bukti yang dilampirkan</td>
+                            <td>E. Bukti yang dilampirkan</td>
                             <td>:</td>
                             <td>Terlampir</td>
                         </tr>
@@ -370,7 +396,7 @@
             <?php elseif($this->session->userdata('role_id')=== '5'):?>
                 <?php if($request['a_keuangan'] == 0 ){ 
                     echo "<a class=\"btn btn-primary float-right\"  href=".site_url('request/historyRequestApp').">Kembali</a>";
-                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#KeuangaTolakModal\" href=\"#\" >Tolak</a>";   
+                    echo "<a class=\"btn btn-danger float-right  mr-2\" data-toggle=\"modal\" data-target=\"#KeuanganTolakModal\" href=\"#\" >Tolak</a>";   
                     echo "<a class=\"btn btn-success float-right  mr-2\" data-toggle=\"modal\" data-target=\"#KeuanganApproveModal\" href=\"#\" >Approve</a>";
 
                 }elseif ($request['a_keuangan'] == 1 || $request['a_keuangan'] == 2 ){ 

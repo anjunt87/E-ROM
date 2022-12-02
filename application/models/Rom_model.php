@@ -101,6 +101,7 @@ class Rom_Model extends CI_Model {
         $this->db->select('*');
         $this->db->from('user');
         $this->db->join('t_profile','user.nik = t_profile.nik_profile', $nik);
+        $this->db->join('user_role', 'user.role_id = user_role.id');
         $this->db->join('t_departement', 't_profile.id_departement = t_departement.id');
         $this->db->join('t_divisi', 't_profile.id_divisi = t_divisi.id');
         $this->db->join('t_jabatan', 't_profile.id_jabatan = t_jabatan.id');
@@ -146,6 +147,5 @@ class Rom_Model extends CI_Model {
       $this->db->limit(10);
       return $this->db->get('t_profile')->result();
     } 
-
 }
 

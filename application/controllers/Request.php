@@ -16,7 +16,7 @@ class Request extends CI_Controller {
 		}
 	} 
 
-	// Form Request Users 
+	// Form Request Users
 	public function Tambah()
 	{	
 		// memfilter berdasarkan NIK yang Login 

@@ -108,41 +108,40 @@ class Profile extends CI_Controller {
 		}
 	}
 
-	  public function EditImage() {
-            // $nik = $this->uri->segment(3);
+	public function editImage(){
+		$config['upload_path']="./assets/img/profile";
+		$config['allowed_types']='gif|jpg|png';
+		$config['encrypt_name'] = TRUE;
 
-            $config['upload_path']         = 'assets/img/profile';  // foler upload 
-            $config['allowed_types']        = 'gif|jpg|png|svg'; // jenis file
-            $config['max_size']             = 3000;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+		$this->load->library('upload',$config);
+		if($this->upload->do_upload("file")){
+			$data = $this->upload->data();
 
-            $this->load->library('upload', $config);
+	        //Resize and Compress Image
+			$config['image_library']='gd2';
+			$config['source_image']='./assets/img/profile/'.$data['file_name'];
+			$config['create_thumb']= FALSE;
+			$config['maintain_ratio']= FALSE;
+			$config['quality']= '60%';
+			$config['width']= 600;
+			$config['height']= 400;
+			$config['new_image']= './assets/img/profile/'.$data['file_name'];
+			$this->load->library('image_lib', $config);
+			$this->image_lib->resize();
 
-            if ( ! $this->upload->do_upload('img_profile')) //sesuai dengan name pada form 
-            {
-                   echo 'anda belum upload';
-            }
-            else
-            {
-                //tampung data dari form
-                $file = $this->upload->data();
-                $gambar = $file['file_name'];
+			$image= $data['file_name']; 
 
-                $edit_profile = array (
-					'img_profile' => $gambar
-				);
-                $id = htmlspecialchars($this->input->post('nik'));
-				$where  =   array('nik_profile'=>$id); 
-				var_dump($gamabr);
-				// $this->Rom_model->update_data("t_profile", $edit_profile, $where);
-    			// $this->session->set_flashdata('message','data berhasil di update');
-				// redirect('Profile/indexProfile/'.$nik);
-            }
-            
-			// $data['record'] = $this->Rom_model->queryEditUserProfile($nik);
-            // $this->load->view('productedit',$data);
-          }
+			$data2 = array(
+				'img_profile' => $image
+			);  
+			$id = htmlspecialchars($this->input->post('nik'));
+			$where = array('nik_profile'=>$id); 
+			$this->Rom_model->update_data("t_profile", $data2, $where);
+			echo $this->session->set_flashdata('message','<div class="alert alert-success text-center" role="alert">Image Profile Berhasil Di Ubah</div>');
+			echo json_decode($result);
+		}
+
+	}
 
     public function editPassword($nik){
     	$data['title'] = 'Edit Password';

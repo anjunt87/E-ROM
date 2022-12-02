@@ -90,7 +90,6 @@
 </div>
 
 <!-- Edit Image Profile Modal -->
-
 <div class="modal fade" id="editImageProfileModal<?= $record['nik'];?>" tabindex="-1" role="dialog" aria-labelledby="editImageProfiletModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -100,23 +99,22 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="<?= site_url('profile/editImage'); ?>" method="post">
+      <form class="form-horizontal" id="submit">
         <div class="modal-body">
           <div class="form-group">
             <input type="hidden" name="nik" value="<?= $record['nik'];?>">
-            <input type="file" class="form-control"  name="img_profile" id="img_profile" onchange="preview()">
+            <input type="file" name="file" id="file" accept="image/png, image/jpeg, image/jpg, image/gif"  onchange="preview()">
           </div>
-        </div>
-        <div class="modal-body">
+          <div class="modal-body">
+            <div class="form-group">
+              <img id="frame" src="" class="img-fluid" />
+            </div>
+          </div>
           <div class="form-group">
-            <img id="frame" src="" class="img-fluid" />
+            <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </form>
+      </form> 
     </div>
   </div>
 </div>
@@ -125,7 +123,28 @@
     frame.src = URL.createObjectURL(event.target.files[0]);
   }
   function clearImage() {
-    document.getElementById('img_profile').value = null;
+    document.getElementById('file').value = null;
     frame.src = "";
   }
+</script>
+<!-- <script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script> -->
+<script src="<?= base_url('assets/')?>js/jquery-3.2.1.js" ></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#submit').submit(function(e){
+      e.preventDefault(); 
+      $.ajax({
+        url:'<?php echo base_url();?>index.php/profile/editImage',
+        type:"post",
+                 data:new FormData(this), //this is formData
+                 processData:false,
+                 contentType:false,
+                 cache:false,
+                 async:false,
+                 success: function(data){
+                  document.location.href = "<?= site_url('profile/IndexProfile/'.$record['nik']); ?>";
+                }
+              });
+    });
+  });
 </script>

@@ -142,7 +142,7 @@ class Auth extends CI_Controller {
         $this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">
             Terimakasih sudah berkunjung, <br> berhasil Logout!
             </div>');
-        redirect('auth/loginIndex');
+        redirect('auth');
     }
 
     public function blocked()

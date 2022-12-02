@@ -22,13 +22,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nik">NIK</label>
-                                    <input type="text" class="form-control" name="nik" placeholder="NIK" value="<?= $record['nik'];?>" required>
+                                    <input type="text" class="form-control" name="nik1" placeholder="NIK" value="<?= $record['nik'];?>">
                                 </div>
                                 <div class="form-group ">
                                     <label for="role">Role</label>
                                     <!-- <input type="text" class="form-control" name="role" placeholder="Role" value="<?=$row->role?>" required> -->
                                     <select  type="option" class="form-control"  name="role" required>
-                                        <option value="<?= $record['role_id'];?>"><?= $record['role_id'];?></option>
+                                        <option value="<?= $record['role_id'];?>"><?= $record['role'];?></option>
                                         <?php foreach($role as $r):?>
                                             <option name="role" value="<?= $r['id'];?>"><?= $r['role'];?></option>
                                         <?php endforeach;?>
@@ -94,7 +94,7 @@
 <!-- /.container-fluid -->
 
 <!-- Select multiDropDown -->
-<script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script>
+<!-- <script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script> -->
 <script src="<?= base_url('assets/')?>js/jquery-3.3.1.js" ></script>
 <script type="text/javascript">
     $(document).ready(function(){

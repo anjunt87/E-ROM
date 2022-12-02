@@ -79,9 +79,9 @@ class Admin extends CI_Controller {
 	public function tambah_aksi(){
 
 		$name = htmlspecialchars($this->input->post('name'));
-		$nik = htmlspecialchars($this->input->post('nik'));
+		$nik = htmlspecialchars($this->input->post('nik1'));
 		$role = htmlspecialchars($this->input->post('role'));
-		$password = password_hash($this->input->post('nik'), PASSWORD_DEFAULT);
+		$password = password_hash($this->input->post('nik1'), PASSWORD_DEFAULT);
 		$id_departement = htmlspecialchars($this->input->post('id_departement'));
 		$id_divisi = htmlspecialchars($this->input->post('id_divisi'));
 		$id_jabatan = htmlspecialchars($this->input->post('id_jabatan'));
@@ -98,7 +98,7 @@ class Admin extends CI_Controller {
 			'password' => $password,
 			'id_atasan' => $id_profile,
 			'is_active' => "1",
-			'date_created' => time()
+			'date_created' => date('Y-m-d')
 		);
 
 		$insert_profile = array (
@@ -145,7 +145,7 @@ class Admin extends CI_Controller {
 
 		if(isset($_POST['submit'])){
 			$name = htmlspecialchars($this->input->post('name'));
-			$nik = htmlspecialchars($this->input->post('nik'));
+			$nik = htmlspecialchars($this->input->post('nik1'));
 			$role = htmlspecialchars($this->input->post('role'));
 			$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
 			$id_departement = htmlspecialchars($this->input->post('id_departement'));
@@ -162,8 +162,8 @@ class Admin extends CI_Controller {
 				'role_id' => $role,
 				'password' => $password,
 				'is_active' => "1",
-				'id_atasan' => $id_profile,
-				'date_created' => time()
+				'id_atasan' => $id_profile
+				// 'date_created' => date('Y-m-d')
 			);
 
 			$edit_profile = array (
@@ -286,8 +286,8 @@ class Admin extends CI_Controller {
         $result_array[] = array(
             'label'=>$row->n_lengkap,
             'nik_profile'=>strtoupper($row->nik_profile),
-            // 'id_departement'=>strtoupper($row->id_departement),
-            // 'id_divisi'=>strtoupper($row->id_divisi),
+            'id_departement'=>strtoupper($row->id_departement),
+            'id_divisi'=>strtoupper($row->id_divisi),
             'id'=>strtoupper($row->id)
           );
         echo json_encode($result_array);

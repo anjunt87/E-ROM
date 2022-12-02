@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="nik">NIK</label>
-                                    <input type="text" class="form-control" name="nik" placeholder="NIK" value="" required>
+                                    <input type="text" class="form-control" name="nik1" placeholder="NIK" value="" required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="role">Role</label>
@@ -75,16 +75,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">NIK Atasan</label>
-                                    <input type="text" class="form-control" name="nik_profile" id="nik_profile" placeholder="NIK Atasan" disabled="">
+                                    <input type="text" class="form-control" name="nik_profile2" id="nik_profile2" placeholder="NIK Atasan" disabled="">
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="exampleInputPassword1">Departement Atasan</label>
-                                    <input type="text" class="form-control" name="id_departement" id="id_departement" placeholder="Departement Atasan" disabled="">
+                                    <input type="text" class="form-control" name="id_departement2" id="id_departement2" placeholder="Departement Atasan" disabled="">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Divisi Atasan</label>
-                                    <input type="text" class="form-control" name="id_divisi" id="id_divisi" placeholder="Divisi Atasan" disabled="">
-                                </div> -->
+                                    <input type="text" class="form-control" name="id_divisi2" id="id_divisi2" placeholder="Divisi Atasan" disabled="">
+                                </div>
                             </div>
                             
                           </div>
@@ -101,7 +101,7 @@
 <!-- /.container-fluid -->
 
 <!-- Select multiDropDown -->
-<script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script>
+<!-- <script src="<?= base_url('assets/')?>vendor/bootstrap/js/bootstrap.js" ></script> -->
 <script src="<?= base_url('assets/')?>js/jquery-3.3.1.js" ></script>
 
 <script type="text/javascript">
@@ -136,11 +136,11 @@
       source : "<?php echo site_url('admin/get_autocomplete') ?>",
       select: function(event, ui){
         $('[name="title"]').val(ui.label);
-        $('[name="nik_profile"]').val(ui.item.nik_profile);
+        $('[name="nik_profile2"]').val(ui.item.nik_profile);
         $('[name="id_profile"]').val(ui.item.id);
-        // $('[name="id_departement"]').val(ui.item.id_departement);
-        // $('[name="id_divisi"]').val(ui.item.id_divisi);
+        $('[name="id_departement2"]').val(ui.item.id_departement);
+        $('[name="id_divisi2"]').val(ui.item.id_divisi);
       }
     });
 });
-</script>
+</script><!-- End Select multiDropDown -->
